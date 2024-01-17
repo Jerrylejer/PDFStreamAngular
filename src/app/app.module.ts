@@ -14,8 +14,10 @@ import { Page404Component } from './pages/page404/page404.component';
 import { PageConnexionComponent } from './pages/page-connexion/page-connexion.component';
 import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
 import { PageCharteComponent } from './pages/page-charte/page-charte.component';
-import { PageCategorieHomeComponent } from './pages/page-categorie-home/page-categorie-home.component';
-import { RechercheComponent } from './components/shared/recherche/recherche.component';
+import { PageHomeComponent } from './pages/page-home/page-home.component';
+import { BannerComponent } from './components/shared/banner/banner.component';
+import { NavCategoriesComponent } from './components/shared/nav-categories/nav-categories.component';
+import { SearchComponent } from './components/shared/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { RechercheComponent } from './components/shared/recherche/recherche.comp
     PageConnexionComponent,
     PageInscriptionComponent,
     PageCharteComponent,
-    PageCategorieHomeComponent,
-    RechercheComponent
+    PageHomeComponent,
+    SearchComponent,
+    BannerComponent,
+    NavCategoriesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,27 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageCategorieHomeComponent } from './pages/page-categorie-home/page-categorie-home.component';
+import { PageHomeComponent } from './pages/page-home/page-home.component';
+import { PageCharteComponent } from './pages/page-charte/page-charte.component';
+import { PageConnexionComponent } from './pages/page-connexion/page-connexion.component';
+import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
+import { Page404Component } from './pages/page404/page404.component';
 
 const routes: Routes = [
   {
     path:"",
-    component:PageCategorieHomeComponent
+    component:PageHomeComponent
   },
   {
     path:"charte",
-    component:PageCategorieHomeComponent
+    component:PageCharteComponent
   },
   {
     path:"connexion",
-    component:PageCategorieHomeComponent
+    component:PageConnexionComponent
   },
   {
     path:"inscription",
-    component:PageCategorieHomeComponent
+    component:PageInscriptionComponent
   },
   {
     path:"not-found",
-    component:PageCategorieHomeComponent
+    component:Page404Component
   },
   {
     path: "**",

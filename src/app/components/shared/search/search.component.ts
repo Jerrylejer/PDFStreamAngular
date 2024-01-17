@@ -3,11 +3,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-recherche',
-  templateUrl: './recherche.component.html',
-  styleUrl: './recherche.component.css'
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.css'
 })
-export class RechercheComponent {
+export class SearchComponent {
   constructor(private router: Router){}
  // ReactiveForms
  myForm!: FormGroup;

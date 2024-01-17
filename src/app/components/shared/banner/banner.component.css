@@ -13,6 +13,7 @@
 .text {
     font-size: clamp(0.625rem, 0rem + 1.6667vw, 1.25rem);
     color: var(--greytext);
+    text-align: justify;
 }
 
 .button {
@@ -64,6 +65,7 @@
 .mobile-txt {
     font-size: 15px;
     color: var(--greytext);
+    text-align: justify;
 }
 
 .mobile-btn {

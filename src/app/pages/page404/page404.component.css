@@ -1,10 +1,73 @@
 /* répartition header et footer */
-article {
+.wrapper {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    width: 100vw;
 }
 
-main {
+.main {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start
+}
+
+.not-found {
+    scale: 90%;
+    flex-grow: 1;
+}
+
+/* ############################################ */
+/* ############## MEDIAQUERIES ################ */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+        .nav {
+            display: none;
+        }
+        .main {
+            justify-content: center;
+        }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+        .nav {
+            display: none;
+        }
+        .main {
+            justify-content: center;
+        }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+        .nav {
+            display: block;
+        }
+        .main {
+            justify-content: start;
+        }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+        .nav {
+            display: block;
+        }
+        .main {
+            justify-content: start;
+        }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+        .nav {
+            display: block;
+        }
+        .main {
+            justify-content: start;
+        }
 }

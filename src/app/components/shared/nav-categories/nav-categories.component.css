@@ -1,0 +1,15 @@
+nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+li {
+    display: inline;
+}
+
+a {
+    color: var(--greytext);
+    font-size: 20px;
+    font-weight: 600;
+}

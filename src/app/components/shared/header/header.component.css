@@ -29,6 +29,10 @@ li:first-child {
     margin-right: 60px;
 }
 
+a {
+    color: var(--white);
+}
+
 /* ############################################ */
 /* ############## MEDIAQUERIES ################ */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
@@ -68,7 +72,23 @@ li:first-child {
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+    .header {
+        height: 120px;
+    }
+
+    .navigation {
+        display: block;
+    }
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+    .header {
+        height: 120px;
+    }
+
+    .navigation {
+        display: block;
+    }
+}

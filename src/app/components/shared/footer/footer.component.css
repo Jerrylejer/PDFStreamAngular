@@ -83,11 +83,31 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .footer {
+        padding: 1%;
+    }
 
+    span {
+        display: block;
+    }
+
+    .burger {
+        display: none;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+    .footer {
+        padding: 1%;
+    }
 
+    span {
+        display: block;
+    }
+
+    .burger {
+        display: none;
+    }
 }
 

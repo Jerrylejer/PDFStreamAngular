@@ -1,0 +1,6 @@
+<form [formGroup]="myForm" (ngSubmit)="searchTerm(myForm)">
+    <div class="container">
+        <input type="text" class="input" [(ngModel)]="terme" name="terme" formControlName="terme" placeholder="Commencez votre recherche ..."/> 
+        <button class="btn" type="submit">Recherche</button>
+    </div>
+</form>

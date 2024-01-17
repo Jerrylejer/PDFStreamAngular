@@ -1,0 +1,93 @@
+/* Général */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--red);
+}
+
+/* PDFStream */
+.logo {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+/* Barre des réseaux sociaux */
+.reseaux {
+    display: flex;
+    justify-content: space-around;
+    width: 10%;
+}
+
+.icone {
+    width: 30px;
+    height: 30px;
+    /* minimum d'espacement */
+    margin-right: 5px;
+}
+
+/* ############################################ */
+/* ############## MEDIAQUERIES ################ */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .footer {
+        padding: 4%;
+    }
+
+    span {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .footer {
+        padding: 4%;
+    }
+
+    span {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .footer {
+        padding: 1%;
+    }
+
+    span {
+        display: block;
+    }
+
+    .burger {
+        display: none;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+

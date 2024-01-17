@@ -1,0 +1,74 @@
+.header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: var(--red);
+}
+
+.logo {
+    margin-left: 3%;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+    margin-top: 1%;
+    margin-right: 3%;
+    /* clamp : adapter la taille du texte au dimension de l'écran */
+    font-size: 18px;
+    color: var(--white);
+}
+
+li {
+    display: inline;
+}
+
+li:first-child {
+    margin-right: 60px;
+}
+
+/* ############################################ */
+/* ############## MEDIAQUERIES ################ */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .header {
+        height: 100px;
+    }
+
+    .navigation {
+        display: none;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .header {
+        height: 100px;
+    }
+
+    .navigation {
+        display: none;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .header {
+        height: 120px;
+    }
+
+    .navigation {
+        display: block;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

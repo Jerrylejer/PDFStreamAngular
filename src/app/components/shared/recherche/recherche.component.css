@@ -1,0 +1,12 @@
+.input {
+    width: 70%;
+    height: 70%;
+    margin-right: 18px;
+    color: black;
+    font-size: 100%;
+}
+
+.btn {
+    width: 30%;
+    background-color: var(--skin);
+}

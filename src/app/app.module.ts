@@ -18,6 +18,7 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
 import { NavCategoriesComponent } from './components/shared/nav-categories/nav-categories.component';
 import { SearchComponent } from './components/shared/search/search.component';
+import { RegistrationFormComponent } from './components/standalone/registration-form/registration-form.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SearchComponent } from './components/shared/search/search.component';
     SearchComponent,
     BannerComponent,
     NavCategoriesComponent,
+    RegistrationFormComponent,
   ],
   imports: [
     BrowserModule,

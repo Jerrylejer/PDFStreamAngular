@@ -1,0 +1,37 @@
+.wrapper {
+
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10%;
+}
+
+.radiobtn {
+    display: flex;
+    gap: 40px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.inline {
+    display: flex;
+}
+
+.between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skin {
+    background-color: var(--skin);
+    padding: 5px;
+}
+
+h5 {
+    background-color: var(--red);
+}

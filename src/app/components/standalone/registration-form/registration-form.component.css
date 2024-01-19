@@ -85,8 +85,10 @@ input {
     border: 1px solid rgba(0, 0, 0, 0.525);
     border-radius: 5px;
     line-height: 35px;
-    max-width: 145px;
+}
 
+.inline input {
+    max-width: 145px;
 }
 
 .message {

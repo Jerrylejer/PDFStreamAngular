@@ -19,6 +19,9 @@ import { BannerComponent } from './components/shared/banner/banner.component';
 import { NavCategoriesComponent } from './components/shared/nav-categories/nav-categories.component';
 import { SearchComponent } from './components/shared/search/search.component';
 import { RegistrationFormComponent } from './components/standalone/registration-form/registration-form.component';
+import { PageCategorieComponent } from './pages/page-categorie/page-categorie.component';
+import { PageSousCategorieComponent } from './pages/page-sous-categorie/page-sous-categorie.component';
+import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { RegistrationFormComponent } from './components/standalone/registration-
     BannerComponent,
     NavCategoriesComponent,
     RegistrationFormComponent,
+    PageCategorieComponent,
+    PageSousCategorieComponent,
+    PagePdfComponent,
   ],
   imports: [
     BrowserModule,

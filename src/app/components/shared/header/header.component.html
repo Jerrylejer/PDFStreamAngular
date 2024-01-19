@@ -4,7 +4,36 @@
     </div>
     <!-- Implentation du futur composant "recherche" -->
     <nav class="navigation">
-       <a href=""><li>Connexion</li></a>
-      <a href=""><li>Inscription</li></a> 
+       <li (click)="openModale()">Connexion</li>
+      <li>Inscription</li>
     </nav>
+    <!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title title">CONNEXION</h4>
+            <a type="button" 
+                    (click)="closeModale()">
+             <img src="../../../assets/icones/close.png" alt="close">
+            </a>
+        </div>
+        <div class="modal-body">
+            <form class="form" [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+                <div class="column">
+                    <div class="column">
+                        <label for="username">Username</label>
+                        <input type="text" class="input" name="username" formControlName="username"/> 
+                    </div>
+                    <div class="column">
+                        <label for="password">Password</label>
+                        <input type="password" class="input" name="password" formControlName="password"/> 
+                    </div>
+                </div>
+                <button class="mobile-btn" type="submit">Connexion</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

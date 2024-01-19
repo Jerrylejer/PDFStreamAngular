@@ -18,7 +18,14 @@ export class RegistrationFormComponent {
       adress1: new FormControl(''),
       adress2: new FormControl(''),
       zipcode: new FormControl(''),
-      city: new FormControl('')
+      city: new FormControl(''),
+      pseudo: new FormControl(''),
+      avatar: new FormControl(''),
+      email: new FormControl(''),
+      confemail: new FormControl(''),
+      mdp: new FormControl(''),
+      confmdp: new FormControl(''),
+      bio: new FormControl('')
     });
   }
 

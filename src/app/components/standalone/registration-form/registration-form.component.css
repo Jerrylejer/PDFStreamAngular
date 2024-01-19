@@ -1,14 +1,75 @@
 .wrapper {
-
     display: flex;
     justify-content: center;
-    align-items: baseline;
-    gap: 10%;
+}
+
+/* Elements formulaire */
+h5 {
+    background-color: var(--red);
+    margin-bottom: 0px;
+    padding: 7px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.spanwhite {
+    color: var(--white);
+}
+
+.spanblack {
+    color: var(--black);
 }
 
 .radiobtn {
     display: flex;
-    gap: 40px;
+    justify-content: flex-start;
+}
+
+.radioinput {
+    margin-right: 10px;
+}
+
+.radio {
+width: 50%;
+}
+
+label {
+    margin-bottom: 17px;
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.525);
+    border-radius: 5px;
+    line-height: 35px;
+    max-width: 145px;
+
+}
+
+.input100 {
+    min-width: 100%;
+}
+
+.groupe {
+    min-width:340px;
+}
+
+.groupe-a, .groupe-b {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.groupe-a1, .groupe-a2, .groupe-a3, .groupe-a4, .groupe-a5, .groupe-b1, .groupe-b2, .groupe-b3, .groupe-b4, .groupe-b5 {
+    margin-bottom: 20px;
+}
+
+.groupe-a2, .groupe-a5, .groupe-b1, .groupe-b4 {
+    gap: 5%;
+    justify-content: space-between;
+}
+
+.skin {
+    background-color: var(--skin);
+    padding: 13px;
 }
 
 .column {
@@ -27,11 +88,152 @@
     align-items: center;
 }
 
-.skin {
+.message {
+    font-size: clamp(1.25rem, 0.5rem + 2vw, 2rem);
+    text-align: center;
+}
+
+/* version mobile */
+.mobile {
+    min-width: 340px;
+    min-height: fit-content;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 5px;
     background-color: var(--skin);
+    padding: 10px;
+    text-align: center;
+}
+
+.mobile-txt {
+    font-size: 15px;
+    color: var(--greytext);
+    text-align: justify;
+}
+
+.mobile-btn {
+    width: 182px;
+    height: 43px;
+    background-color: var(--skin);
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid black;
+    border-radius: 5px;
     padding: 5px;
 }
 
-h5 {
-    background-color: var(--red);
+.redtext {
+    font-size: 24px;
+    color: var(--red);
+    font-weight: 1000;
+}
+
+.blacktext {
+    font-size: 24px;
+    color: var(--black);
+    font-weight: 1000;
+}
+
+/* ############################################ */
+/* ############## MEDIAQUERIES ################ */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .groupe {
+        margin-bottom: 2%;
+    }
+
+    .groupe-c {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .mobile-btn {
+        display: block;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .groupe {
+        margin-bottom: 2%;
+    }
+
+    .groupe-c {
+        display: none;
+    }
+
+    .mobile {
+        display: block
+    }
+
+    .mobile-btn {
+        display: block;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .groupe {
+        margin-bottom: 2%;
+    }
+
+    .groupe-c {
+        display: none;
+    }
+
+    .mobile {
+        display: block
+    }
+
+    .mobile-btn {
+        display: block;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 900px) {
+    .wrapper {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 5%;
+    }
+
+    .groupe-c {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .mobile-btn {
+        display: none;
+    }
+
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }

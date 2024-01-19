@@ -28,6 +28,18 @@
         .nav {
             display: none;
         }
+
+        .appfooter {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+        }
+    
+        .appheader {
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -40,6 +52,18 @@
     
         .nav {
             display: none;
+        }
+
+        .appfooter {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+        }
+    
+        .appheader {
+            position: sticky;
+            top: 0;
+            left: 0;
         }
 }
 

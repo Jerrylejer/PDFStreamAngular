@@ -14,7 +14,8 @@
 }
 
 .form {
-    margin-top: 5%;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 
 /* ############################################ */
@@ -26,6 +27,22 @@
         .nav {
             display: none;
         }
+
+        .form {
+            margin-top: 2%;
+        }
+
+        .appfooter {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+        }
+
+        .appheader {
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -33,13 +50,45 @@
         .nav {
             display: none;
         }
+
+        .form {
+            margin-top: 2%;
+        }
+
+        .appfooter {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+        }
+
+        .appheader {
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-        .nav {
-            display: block;
-        }
+    .nav {
+        display: none;
+    }
+
+    .form {
+        margin-top: 2%;
+    }
+
+    .appfooter {
+        position: sticky;
+        bottom: 0;
+        left: 0;
+    }
+
+    .appheader {
+        position: sticky;
+        top: 0;
+        left: 0;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -47,11 +96,12 @@
         .nav {
             display: block;
         }
+
+        .form {
+            margin-top: 1%;
+        }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-        .nav {
-            display: block;
-        }
 }

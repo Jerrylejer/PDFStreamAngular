@@ -12,7 +12,7 @@
 <!--  Inscrivez-vous version mobile -->
 <form [formGroup]="myForm" (ngSubmit)="storeFullDatas(myForm)">
     <div class="wrapper">
-        <div class="groupe">
+        <!-- <div class="groupe">
             <h5><span class="spanwhite">Coo</span><span class="spanblack">rdonnées</span></h5>
             <div class="groupe-a skin">
                 <div class="groupe-a1 ">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="groupe">
             <h5><span class="spanwhite">Com</span><span class="spanblack">pte</span></h5>
             <div class="groupe-b skin">
@@ -94,13 +94,13 @@
                         <input type="text" class="input" name="confmdp" formControlName="conf-mdp"/> 
                     </div>
                 </div>
-                <div class="groupe-b5 column">
+                <!-- <div class="groupe-b5 column">
                     <label for="bio">Bio</label>
                     <textarea formControlName="bio" rows="6"></textarea>
-                </div>
+                </div> -->
             </div>
         </div>
-        <!-- Inscrivez-vous version desktop -->
+        <!-- Bloc Inscrivez-vous + validation version desktop -->
             <div class="groupe-c">
                 <div class="message">
                     <p>Rejoignez-nous !</p>
@@ -109,7 +109,7 @@
                 </div>
                 <button class="btn" type="submit">S'inscrire</button>
             </div>
-            <!-- validation inscription version mobile  -->
+            <!-- validation version mobile  -->
             <button class="mobile-btn" type="submit">
                 S'inscrire
             </button>

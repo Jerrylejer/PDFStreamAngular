@@ -1,0 +1,73 @@
+/* répartition header et footer */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+        .nav {
+            display: none;
+        }
+
+        .appfooter {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+        }
+    
+        .appheader {
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+        .nav {
+            display: none;
+        }
+
+        .appfooter {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+        }
+    
+        .appheader {
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+        .nav {
+            display: block;
+        }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+        .nav {
+            display: block;
+        }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+        .nav {
+            display: block;
+        }
+}

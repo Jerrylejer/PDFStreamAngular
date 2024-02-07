@@ -9,7 +9,7 @@
     margin-left: 3%;
 }
 
-/* Navigation */
+/* NAVIGATION */
 .navigation {
     display: flex;
     justify-content: space-between;
@@ -35,18 +35,38 @@ a {
     color: var(--white);
 }
 
-/* Modale connexion */
+/* MODALE */
 .modal {
     background-color: #2b2b2ba2;
 }
 
+.modal-dialog {
+    /* hauteur 100vh pour ensuite centrer le modal-content */
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-title {
+    font-size: 16px;
+}
+
 .modal-content {
     background-color: var(--skin);
+    max-width: 336px;
+}
+
+.modal-header {
+    background-color: var(--red);
+    height:35px;
+    color: var(--white)
 }
 
 .form {
-text-align: center; 
-color: var(--greytext);
+    display: flex;
+    flex-direction: column;
 }
 
 label {
@@ -65,11 +85,11 @@ input {
     margin-bottom: 20px;
 }
 
-.mobile-btn {
+.submit-btn {
+    align-self: center;
     width: 182px;
     height: 43px;
     background-color: var(--skin);
-    color: var(--greytext);
     font-size: 20px;
     font-weight: 600;
     border: 1px solid var(--greytext);

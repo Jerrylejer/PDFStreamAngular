@@ -1,21 +1,14 @@
-/* répartition header et footer */
-.wrapper {
+.image {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-}
-
-.main {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: start
+    justify-content: center;
+    align-items: center;
 }
 
 .not-found {
     scale: 90%;
     flex-grow: 1;
+    z-index: -1;
 }
 
 /* ############################################ */
@@ -24,50 +17,55 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-        .nav {
-            display: none;
-        }
         .main {
             justify-content: center;
+        }
+
+        .not-found {
+            scale: 30%;
         }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-        .nav {
-            display: none;
-        }
         .main {
             justify-content: center;
+        }
+
+        .not-found {
+            scale: 40%;
         }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-        .nav {
-            display: block;
-        }
         .main {
             justify-content: start;
+        }
+
+        .not-found {
+            scale: 60%;
         }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-        .nav {
-            display: block;
-        }
         .main {
             justify-content: start;
+        }
+
+        .not-found {
+            scale: 70%;
         }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-        .nav {
-            display: block;
-        }
         .main {
             justify-content: start;
+        }
+
+        .not-found {
+            scale: 90%;
         }
 }

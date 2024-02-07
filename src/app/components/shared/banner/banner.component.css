@@ -92,6 +92,11 @@
     .desktop {
         display: none;
     }
+    article {
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+        }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -103,6 +108,12 @@
     .desktop {
         display: none;
     }
+
+    article {
+        margin-top: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
+        }
 }
 
 
@@ -115,6 +126,11 @@
     .desktop {
         display:inline-flex;
     }
+
+    article {
+        margin-right: 70px;
+        margin-left: 70px;
+        }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -126,6 +142,11 @@
     .desktop {
         display: inline-flex;
     }
+
+    article {
+        margin-right: 70px;
+        margin-left: 70px;
+        }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -137,4 +158,9 @@
     .desktop {
         display: inline-flex;
     }
+
+    article {
+        margin-right: 70px;
+        margin-left: 70px;
+        }
 }

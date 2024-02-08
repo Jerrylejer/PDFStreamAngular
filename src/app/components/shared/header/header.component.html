@@ -9,7 +9,7 @@
         <li>Inscription</li>
       </div>
       <div *ngIf="isConnected">
-        <li>Déconnexion</li>
+        <li (click)="logout()">Déconnexion</li>
         <!-- A FAIRE : créer une fonction qui appelle le service auth/deconnexion au click -->
         <li>Compte</li>
          <!-- A FAIRE : rediriger vers la page Compte -->

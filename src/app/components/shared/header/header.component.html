@@ -2,12 +2,21 @@
     <div class="logo">
         <a href=""><img class="logo" src="../../../../assets/icones/identité/PDFStream.svg" alt="logo PDFStream"></a>
     </div>
-    <!-- Implentation du futur composant "recherche" -->
+    <!-- A FAIRE : Implentation du futur composant "recherche" -->
     <nav class="navigation">
-       <li (click)="openModale()">Connexion</li>
-      <li>Inscription</li>
+      <div *ngIf="!isConnected">
+        <li (click)="openModale()">Connexion</li>
+        <li>Inscription</li>
+      </div>
+      <div *ngIf="isConnected">
+        <li>Déconnexion</li>
+        <!-- A FAIRE : créer une fonction qui appelle le service auth/deconnexion au click -->
+        <li>Compte</li>
+         <!-- A FAIRE : rediriger vers la page Compte -->
+      </div>
     </nav>
     <!-- Modal -->
+    <!-- [ngStyle]="{'display':displayStyle} =>  -->
 <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -18,19 +27,21 @@
              <img src="../../../assets/icones/close.png" alt="close">
             </a>
         </div>
+        <!-- Formulaire username & password -->
         <div class="modal-body">
-            <form class="form" [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+            <form class="form" [formGroup]="authForm" (ngSubmit)="submit()">
                 <div class="column">
                     <div class="column">
                         <label for="username">Username</label>
-                        <input type="text" class="input" name="username" formControlName="username"/> 
+                        <input type="text" class="input" id="username" formControlName="username"/> 
                     </div>
                     <div class="column">
                         <label for="password">Password</label>
-                        <input type="password" class="input" name="password" formControlName="password"/> 
+                        <input type="password" class="input" id="password" formControlName="password"/> 
                     </div>
                 </div>
-                <button class="submit-btn" type="submit">Connexion</button>
+                <!-- [disabled] => si les champs requis ne sont pas tous remplis, le btn de validation est inactif -->
+                <button class="submit-btn" type="submit" [disabled]="authForm.invalid">Connexion</button>
             </form>
         </div>
       </div>

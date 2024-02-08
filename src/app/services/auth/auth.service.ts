@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Environnement } from 'src/env/environnement';
@@ -24,8 +24,20 @@ export class AuthService {
      * @param data 
      * @returns 
      */
-    connexion(data: any): Observable<any> {
-      return this.http.post(`${this.apiUrl}/auth/connexion`, data).pipe(
+    connexion(username: String, password: String): Observable<any> {
+      // Content-Type 'text/plain;charset=UTF-8' is not supported] provenant de l'api
+      // Il faut préciser dans le Header de la requête, le type de data envoyé vers le back avec l'aide HttpHeaders
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json'
+        })
+      };
+  
+      const body = {
+        username: username,
+        password: password
+      };
+      return this.http.post(`${this.apiUrl}/auth/connexion`, body, httpOptions).pipe(
         catchError((error) => {
           return throwError(() => "Il y a une erreur sur l'identifiant ou le mot de passe. Ré-essayez.")
         })

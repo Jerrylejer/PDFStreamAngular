@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 import { Environnement } from 'src/env/environnement';
 
 @Injectable({
@@ -37,6 +38,17 @@ export class AuthService {
         username: username,
         password: password
       };
+
+
+    //   this.http.get<any[]>(`${this.apiUrl}/auth/connectedUsers`).subscribe(
+    //   (users) => {
+    //     console.log('Liste des utilisateurs connectés : ', users);
+    //   },
+    //   (error) => {
+    //     console.error('Erreur lors de la récupération de la liste des utilisateurs connectés : ', error);
+    //   }
+    // )
+
       return this.http.post(`${this.apiUrl}/auth/connexion`, body, httpOptions).pipe(
         catchError((error) => {
           return throwError(() => "Il y a une erreur sur l'identifiant ou le mot de passe. Ré-essayez.")
@@ -49,8 +61,18 @@ export class AuthService {
      * @param data 
      * @returns 
      */
-    inscription(data: any): Observable<any> {
-      return this.http.post(`${this.apiUrl}/auth/inscription`, data).pipe(
+    inscription(username: String, email: String, password: String): Observable<any> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json'
+        })
+      };
+      const body = {
+        username: username,
+        email: email,
+        password: password
+      };
+      return this.http.post(`${this.apiUrl}/auth/inscription`, body, httpOptions).pipe(
         catchError((error) => {
           return throwError(() => "Les données récoltées sont incomplêtes ou corrompues. Ré-essayez.")
         })
@@ -68,4 +90,16 @@ export class AuthService {
         })
       )
     }
+
+    /**
+     * Envoi d'une requête GET pour obtenir la liste des utilisateurs connectés
+     * @returns 
+     */
+    // authenticatedUsersList(): Observable<any> {
+    //   return this.http.get(`${this.apiUrl}/auth/connectedUsers`).pipe(
+    //     catchError((error) => {
+    //       return throwError(() => "Erreur lors de la réponse à la requête. Ré-essayez.")
+    //     })
+    //   )
+    // }
 }

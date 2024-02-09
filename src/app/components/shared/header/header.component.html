@@ -6,12 +6,11 @@
     <nav class="navigation">
       <div *ngIf="!isConnected">
         <li (click)="openModale()">Connexion</li>
-        <li>Inscription</li>
+        <li (click)="routerInscription()">Inscription</li>
       </div>
       <div *ngIf="isConnected">
         <li (click)="logout()">Déconnexion</li>
-        <!-- A FAIRE : créer une fonction qui appelle le service auth/deconnexion au click -->
-        <li>Compte</li>
+        <li (click)="routerCompte()">Compte</li>
          <!-- A FAIRE : rediriger vers la page Compte -->
       </div>
     </nav>

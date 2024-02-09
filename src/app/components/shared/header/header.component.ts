@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   // ReactiveForms
   authForm!: FormGroup;
   //Injections de FormBuilder + AuthService
-  constructor(private formBuilder: FormBuilder, private auth: AuthService) {};
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router:Router) {};
 
   // ###################### Variables utilisées ######################
   // Boolean pour rendre la modale visible ou non au click "connexion", "X"
@@ -38,6 +39,23 @@ export class HeaderComponent implements OnInit {
     });
     this.isLoggedInPersistence();
   }
+
+  // Ne fonctionne pas, je ne récupère rien
+  // ngOnChanges(changes: SimpleChanges) {
+  //   // changes.prop contains the old and the new value...
+  //   changes['isConnected'];
+  //   this.auth.authenticatedUsersList().pipe(
+  //     catchError((error) => {
+  //       console.log("erreur lors de la requête : ", error);
+  //       return throwError(() => error);
+  //     })
+  //   )
+  //   .subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //     }
+  //   );
+  // }
 
   // Persistence de l'état connecté grâce au LocalStorage
   isLoggedInPersistence() {
@@ -76,6 +94,16 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  // Redirection vers la page de compte (mode connecté et au click "compte")
+  routerInscription() {
+    this.router.navigate(["/inscription"]);
+  }
+  // Redirection vers la page de compte (mode connecté et au click "compte")
+  routerCompte() {
+    this.router.navigate(["/compte"]);
+  }
+
+  // Click "déconnexion"
   logout() {
     this.auth.deconnexion()
     .pipe(

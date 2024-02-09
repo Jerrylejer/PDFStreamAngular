@@ -1,35 +1,54 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { createPasswordStrengthValidator } from 'src/utils/passwordStrength';
 
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
   styleUrl: './registration-form.component.css'
 })
-export class RegistrationFormComponent {
+export class RegistrationFormComponent implements OnInit{
   // ReactiveForms
-  myForm!: FormGroup;
+  inscriptionForm!: FormGroup; 
+  // Injections
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router){}
+
   // Initialisation du formulaire
   ngOnInit() {
-    this.myForm = new FormGroup({
-      gender: new FormControl('1'),
-      firstname: new FormControl(''),
-      lastname: new FormControl(''),
-      adress1: new FormControl(''),
-      adress2: new FormControl(''),
-      zipcode: new FormControl(''),
-      city: new FormControl(''),
-      pseudo: new FormControl(''),
-      avatar: new FormControl(''),
-      email: new FormControl(''),
-      confemail: new FormControl(''),
-      mdp: new FormControl(''),
-      confmdp: new FormControl(''),
-      bio: new FormControl('')
+    this.inscriptionForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+      // Validators.email ne tient pas compte du .com ...
+      email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]],
+      // confemail: ['', Validators.required, Validators.email],
+      password: ['', [Validators.required, Validators.minLength(12), createPasswordStrengthValidator()]],
+      // confpsw: ['', Validators.required],
     });
   }
 
-  storeFullDatas(form: FormGroup) {
-
+  submit() {
+    if(this.inscriptionForm.valid) {
+      const username = this.inscriptionForm.value.username;
+      const email = this.inscriptionForm.value.email;
+      const password = this.inscriptionForm.value.password;
+      // Appel au service d'inscription
+      this.auth.inscription(username, email, password)
+        .pipe(
+          catchError((error) => {
+            console.log("erreur d'authentification : ", error);
+            return throwError(() => error);
+          })
+        )
+        .subscribe(
+          (response) => {
+            console.log("inscription réussie")
+            alert("Compte activé. Vous pouvez à présent vous connecter ! ")
+            // Si la connexion est ok, je ferme ma page et redirige vers l'accueil
+            this.router.navigate(['/']);
+          }
+        );
+    }
   }
 }

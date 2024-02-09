@@ -10,7 +10,7 @@
     </div>
 </div>
 <!--  Inscrivez-vous version mobile -->
-<form [formGroup]="myForm" (ngSubmit)="storeFullDatas(myForm)">
+<form class="form" [formGroup]="inscriptionForm" (ngSubmit)="submit()">
     <div class="wrapper">
         <!-- <div class="groupe">
             <h5><span class="spanwhite">Coo</span><span class="spanblack">rdonnées</span></h5>
@@ -66,33 +66,42 @@
         <div class="groupe">
             <h5><span class="spanwhite">Com</span><span class="spanblack">pte</span></h5>
             <div class="groupe-b skin">
-                <div class="groupe-b1 inline">
+                <div class="groupe-b2 column">
                     <div class="pseudo column">
-                        <label for="pseudo">Pseudo</label>
-                        <input type="text" class="input" name="pseudo" formControlName="pseudo"/> 
+                        <label for="username">Username</label>
+                        <input type="text" class="input" id="username" formControlName="username"/> 
+                        <div class="field-message" *ngIf="inscriptionForm.get('username')?.invalid  && (inscriptionForm.get('username')?.dirty || inscriptionForm.get('username')?.touched)">
+                            De 3 à 15 caractères alphanumérics.
+                        </div>
                     </div>
-                    <div class="avatar column">
+                    <!-- <div class="avatar column">
                         <label for="avatar">Image de profile</label>
                         <input type="text" class="input" name="avatar" formControlName="avatar"/> 
-                    </div>
+                    </div> -->
                 </div>
                 <div class="groupe-b2 column">
                     <label for="email">Email</label>
-                    <input class="input100" type="text" class="input" name="email" formControlName="email"/> 
+                    <input class="input100" type="text" class="input" id="email" formControlName="email"/> 
+                    <div class="field-message" *ngIf="inscriptionForm.get('email')?.invalid  && (inscriptionForm.get('email')?.dirty || inscriptionForm.get('email')?.touched)">
+                        Cet email n'est pas valide.
+                    </div>
                 </div>
-                <div class="groupe-b3 column">
+                <!-- <div class="groupe-b3 column">
                     <label for="conf-email">Email conf.</label>
-                    <input class="input100" type="text" class="input" name="confemail" formControlName="conf-email"/> 
-                </div>
+                    <input class="input100" type="text" class="input" id="confemail" formControlName="conf-email"/> 
+                </div> -->
                 <div class="groupe-b4 inline">
                     <div class="mdp column">
-                        <label for="mdp">Mdp</label>
-                        <input type="text" class="input" name="mdp" formControlName="mdp"/> 
+                        <label for="password">Mdp</label>
+                        <input type="text" class="input" id="password" formControlName="password"/> 
+                        <div class="field-message" *ngIf="inscriptionForm.get('password')?.invalid  && (inscriptionForm.get('password')?.dirty || inscriptionForm.get('password')?.touched)">
+                            Majuscules, minuscules, chiffres et 12 caractères minimum.
+                        </div>
                     </div>
-                    <div class="conf-mdp column">
+                    <!-- <div class="conf-mdp column">
                         <label for="conf-mdp">Mdp conf.</label>
-                        <input type="text" class="input" name="confmdp" formControlName="conf-mdp"/> 
-                    </div>
+                        <input type="text" class="input" id="confmdp" formControlName="conf-mdp"/> 
+                    </div> -->
                 </div>
                 <!-- <div class="groupe-b5 column">
                     <label for="bio">Bio</label>
@@ -101,17 +110,17 @@
             </div>
         </div>
         <!-- Bloc Inscrivez-vous + validation version desktop -->
-            <div class="groupe-c">
-                <div class="message">
-                    <p>Rejoignez-nous !</p>
-                    <p>L'inscription est gratuite, rapide et facile.</p>
-                    <span class=""></span>
-                </div>
-                <button class="btn" type="submit">S'inscrire</button>
+        <div class="groupe-c">
+            <div class="message">
+                <p>Rejoignez-nous !</p>
+                <p>L'inscription est gratuite, rapide et facile.</p>
+                <span class=""></span>
             </div>
-            <!-- validation version mobile  -->
-            <button class="mobile-btn" type="submit">
-                S'inscrire
-            </button>
+            <button class="btn" type="submit" [disabled]="inscriptionForm.invalid">S'inscrire</button>
+        </div>
+        <!-- validation version mobile  -->
+        <button class="mobile-btn" type="submit" [disabled]="inscriptionForm.invalid">
+            S'inscrire
+        </button>
     </div>
 </form>

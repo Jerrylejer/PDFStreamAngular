@@ -112,6 +112,13 @@ input {
     padding: 5px;
 }
 
+/* FORMULAIRE MESSAGES ERREURS */
+
+.field-message {
+    font-size: 10px;
+    color: red;
+}
+
 /* MESSAGE => VERSION MOBILE */
 
 .mobile {

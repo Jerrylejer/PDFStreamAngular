@@ -40,23 +40,6 @@ export class HeaderComponent implements OnInit {
     this.isLoggedInPersistence();
   }
 
-  // Ne fonctionne pas, je ne récupère rien
-  // ngOnChanges(changes: SimpleChanges) {
-  //   // changes.prop contains the old and the new value...
-  //   changes['isConnected'];
-  //   this.auth.authenticatedUsersList().pipe(
-  //     catchError((error) => {
-  //       console.log("erreur lors de la requête : ", error);
-  //       return throwError(() => error);
-  //     })
-  //   )
-  //   .subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //     }
-  //   );
-  // }
-
   // Persistence de l'état connecté grâce au LocalStorage
   isLoggedInPersistence() {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
@@ -98,9 +81,9 @@ export class HeaderComponent implements OnInit {
   routerInscription() {
     this.router.navigate(["/inscription"]);
   }
-  // Redirection vers la page de compte (mode connecté et au click "compte")
-  routerCompte() {
-    this.router.navigate(["/compte"]);
+  // Redirection vers la page des paramétrages (mode connecté et au click "compte")
+  routerParams() {
+    this.router.navigate(["/params"]);
   }
 
   // Click "déconnexion"
@@ -114,7 +97,8 @@ export class HeaderComponent implements OnInit {
     )
     .subscribe(
       (response) => {
-        console.log("Déconnexion réussie")
+        alert("Déconnexion réussie")
+        this.router.navigate(["/"]);
         // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage
         localStorage.setItem('isAuthenticated', 'false');
         this.isConnected = false;

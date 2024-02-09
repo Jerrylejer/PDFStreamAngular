@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageConnexionComponent } from './page-connexion.component';
+import { SharesComponent } from './shares.component';
 
-describe('PageConnexionComponent', () => {
-  let component: PageConnexionComponent;
-  let fixture: ComponentFixture<PageConnexionComponent>;
+describe('SharesComponent', () => {
+  let component: SharesComponent;
+  let fixture: ComponentFixture<SharesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PageConnexionComponent]
+      declarations: [SharesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PageConnexionComponent);
+    fixture = TestBed.createComponent(SharesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

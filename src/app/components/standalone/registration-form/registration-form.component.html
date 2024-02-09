@@ -86,22 +86,14 @@
                         Cet email n'est pas valide.
                     </div>
                 </div>
-                <!-- <div class="groupe-b3 column">
-                    <label for="conf-email">Email conf.</label>
-                    <input class="input100" type="text" class="input" id="confemail" formControlName="conf-email"/> 
-                </div> -->
-                <div class="groupe-b4 inline">
+                <div class="groupe-b2 column">
                     <div class="mdp column">
-                        <label for="password">Mdp</label>
-                        <input type="text" class="input" id="password" formControlName="password"/> 
+                        <label for="password">Password</label>
+                        <input class="input100" type="text" class="input" id="password" formControlName="password"/> 
                         <div class="field-message" *ngIf="inscriptionForm.get('password')?.invalid  && (inscriptionForm.get('password')?.dirty || inscriptionForm.get('password')?.touched)">
                             Majuscules, minuscules, chiffres et 12 caractères minimum.
                         </div>
                     </div>
-                    <!-- <div class="conf-mdp column">
-                        <label for="conf-mdp">Mdp conf.</label>
-                        <input type="text" class="input" id="confmdp" formControlName="conf-mdp"/> 
-                    </div> -->
                 </div>
                 <!-- <div class="groupe-b5 column">
                     <label for="bio">Bio</label>

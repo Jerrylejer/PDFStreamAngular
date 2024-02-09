@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
-import { PageCharteComponent } from './pages/page-charte/page-charte.component';
-import { PageConnexionComponent } from './pages/page-connexion/page-connexion.component';
 import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
 import { Page404Component } from './pages/page404/page404.component';
+import { PageParamsComponent } from './pages/page-params/page-params/page-params.component';
 
 const routes: Routes = [
   {
@@ -12,12 +11,8 @@ const routes: Routes = [
     component:PageHomeComponent
   },
   {
-    path:"charte",
-    component:PageCharteComponent
-  },
-  {
-    path:"connexion",
-    component:PageConnexionComponent
+    path:"params",
+    component:PageParamsComponent
   },
   {
     path:"inscription",

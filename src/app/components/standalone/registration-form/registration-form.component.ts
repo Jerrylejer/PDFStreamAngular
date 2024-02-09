@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { createPasswordStrengthValidator } from 'src/utils/passwordStrength';
+import { createPasswordStrengthValidator } from 'src/utils/passwordSrength';
 
 @Component({
   selector: 'app-registration-form',
@@ -22,9 +22,7 @@ export class RegistrationFormComponent implements OnInit{
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
       // Validators.email ne tient pas compte du .com ...
       email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]],
-      // confemail: ['', Validators.required, Validators.email],
       password: ['', [Validators.required, Validators.minLength(12), createPasswordStrengthValidator()]],
-      // confpsw: ['', Validators.required],
     });
   }
 
@@ -37,6 +35,7 @@ export class RegistrationFormComponent implements OnInit{
       this.auth.inscription(username, email, password)
         .pipe(
           catchError((error) => {
+            // Voir erreur si username existe déjà
             console.log("erreur d'authentification : ", error);
             return throwError(() => error);
           })

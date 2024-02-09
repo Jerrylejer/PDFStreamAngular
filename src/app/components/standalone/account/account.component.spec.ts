@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageCharteComponent } from './page-charte.component';
+import { AccountComponent } from './account.component';
 
-describe('PageCharteComponent', () => {
-  let component: PageCharteComponent;
-  let fixture: ComponentFixture<PageCharteComponent>;
+describe('AccountComponent', () => {
+  let component: AccountComponent;
+  let fixture: ComponentFixture<AccountComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PageCharteComponent]
+      declarations: [AccountComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PageCharteComponent);
+    fixture = TestBed.createComponent(AccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

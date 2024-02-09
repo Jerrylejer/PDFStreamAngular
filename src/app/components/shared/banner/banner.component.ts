@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-banner',
@@ -7,4 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BannerComponent {
 
+  constructor(private router: Router){}
+
+  routerInscription() {
+    this.router.navigate(['/inscription']);
+  }
 }

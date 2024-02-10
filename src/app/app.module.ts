@@ -25,8 +25,8 @@ import { AccountComponent } from './components/standalone/account/account.compon
 import { CollectionComponent } from './components/standalone/collection/collection.component';
 import { SharesComponent } from './components/standalone/shares/shares.component';
 import { ConventionComponent } from './components/standalone/convention/convention.component';
-import { PageParamsComponent } from './pages/page-params/page-params/page-params.component';
-import { ParamsComponent } from './components/shared/params/params.component';
+import { DashboardComponent } from './components/standalone/dashboard/dashboard.component';
+import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +47,8 @@ import { ParamsComponent } from './components/shared/params/params.component';
     CollectionComponent,
     SharesComponent,
     ConventionComponent,
-    PageParamsComponent,
-    ParamsComponent,
+    DashboardComponent,
+    PageDashboardComponent
   ],
   imports: [
     BrowserModule,

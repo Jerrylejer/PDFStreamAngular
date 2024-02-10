@@ -27,5 +27,6 @@ html, body {
     --green: #198754;
     --blue: #0d6efd;
     --yellow: #F1C40F;
-    --greytext: #3E515B;
+    --greytext: #3e515b;
+    --lightGreytext: #3e515b45;
 }

@@ -1,0 +1,19 @@
+.nav-item > a {
+    color: var(--lightGreytext);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#compte-tab.nav-link.active {
+    color: var(--greytext); 
+}
+#collection-tab.nav-link.active {
+    color: var(--greytext); 
+}
+#partages-tab.nav-link.active {
+    color: var(--greytext); 
+}
+#charte-tab.nav-link.active {
+    color: var(--greytext); 
+}
+

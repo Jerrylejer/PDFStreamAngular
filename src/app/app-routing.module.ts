@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
 import { Page404Component } from './pages/page404/page404.component';
-import { PageParamsComponent } from './pages/page-params/page-params/page-params.component';
+import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 
 const routes: Routes = [
   {
@@ -11,8 +11,8 @@ const routes: Routes = [
     component:PageHomeComponent
   },
   {
-    path:"params",
-    component:PageParamsComponent
+    path:"dashboard",
+    component:PageDashboardComponent
   },
   {
     path:"inscription",

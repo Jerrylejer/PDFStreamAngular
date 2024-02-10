@@ -94,8 +94,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["/inscription"]);
   }
   // Redirection vers la page des paramétrages (mode connecté et au click "compte")
-  routerParams() {
-    this.router.navigate(["/params"]);
+  routerDashboard() {
+    this.router.navigate(["/dashboard"]);
   }
 
   // Click "déconnexion"

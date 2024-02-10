@@ -74,55 +74,12 @@ input {
     color: red;
 }
 
-/* MESSAGE => VERSION MOBILE */
-
-.mobile {
-    min-width: 340px;
-    min-height: fit-content;
-    margin-bottom: 2%;
-    margin-left: 10%;
-    margin-right: 10%;
-    border-radius: 5px;
-    background-color: var(--skin);
-    padding: 10px;
-    text-align: center;
-}
-
-.mobile-btn {
-    width: 182px;
-    height: 43px;
-    background-color: var(--skin);
-    font-size: 20px;
-    font-weight: 600;
-    border: none;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 4%;
-}
-
 /* ############################################ */
 /* ############## MEDIAQUERIES ################ */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
-    .groupe {
-        margin-bottom: 2%;
-    }
-
-    .groupe-c {
-        display: none;
-    }
-
-    .mobile {
-        display: block;
-    }
-
-    .mobile-btn {
-        display: block;
-    }
 
     input {
         width: 80%; /* Ajuster la largeur pour les écrans encore plus grands */
@@ -136,22 +93,6 @@ input {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 
-    .groupe {
-        margin-bottom: 2%;
-    }
-
-    .groupe-c {
-        display: none;
-    }
-
-    .mobile {
-        display: block;
-    }
-
-    .mobile-btn {
-        display: block;
-    }
-
     input {
         width: 80%; /* Ajuster la largeur pour les écrans encore plus grands */
     }
@@ -163,22 +104,6 @@ input {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
-    .groupe {
-        margin-bottom: 2%;
-    }
-
-    .groupe-c {
-        display: none;
-    }
-
-    .mobile {
-        display: block;
-    }
-
-    .mobile-btn {
-        display: block;
-    }
 
     input {
         width: 80%; /* Ajuster la largeur pour les écrans encore plus grands */
@@ -195,6 +120,7 @@ input {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 990px) {
+
     .inline-or-column {
         display: flex;
         flex-direction: row;
@@ -205,6 +131,7 @@ input {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+    
     .inline-or-column {
         display: flex;
         flex-direction: row;

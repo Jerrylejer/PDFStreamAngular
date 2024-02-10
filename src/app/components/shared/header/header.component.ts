@@ -76,9 +76,11 @@ export class HeaderComponent implements OnInit {
             // Dans cette réponse, je peux récupérer certaines datas du user connecté
             if(response.accessToken) {
               const jwtToken = response.accessToken;
+              const userId = response.id;
               const username = response.username;
               const userRoles = response.roles;
               localStorage.setItem('jwtToken', jwtToken);
+              localStorage.setItem('userId', userId);
               localStorage.setItem('username', username);
               localStorage.setItem('roles', userRoles);
             }

@@ -65,11 +65,21 @@ export class HeaderComponent implements OnInit {
           })
         )
         .subscribe(
+          // J'accède à la réponse renvoyée par le serveur
           (response) => {
             console.log("authentification réussie")
             // Si la connexion est ok, je ferme ma modale et je modifie l'affichage de la nav
             this.displayStyle = "none";
             this.isConnected = true;
+            // Dans cette réponse, 
+            if(response.accessToken) {
+              const jwtToken = response.accessToken;
+              const username = response.username;
+              const userRoles = response.roles;
+              localStorage.setItem('jwtToken', jwtToken);
+              localStorage.setItem('username', username);
+              localStorage.setItem('roles', userRoles);
+            }
             // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage
             localStorage.setItem('isAuthenticated', 'true');
           }

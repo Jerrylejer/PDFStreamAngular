@@ -17,3 +17,6 @@
     color: var(--greytext); 
 }
 
+.account {
+    width: 100vh;
+}

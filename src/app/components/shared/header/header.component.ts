@@ -29,6 +29,8 @@ export class HeaderComponent implements OnInit {
   errorMessage: String = '';
   // Boolean => switcher l'affichage de la nav (connexion/inscription => déconnexion/compte)
   isConnected: boolean = false;
+  // Récupération du username renvoyé dans le body de la réponse à la demende de connexion
+  username: any = localStorage.getItem('username');
   // ##################################################################
 
   // Initialisation du formulaire et des critères de validation quant au remplissage des champs
@@ -71,7 +73,7 @@ export class HeaderComponent implements OnInit {
             // Si la connexion est ok, je ferme ma modale et je modifie l'affichage de la nav
             this.displayStyle = "none";
             this.isConnected = true;
-            // Dans cette réponse, 
+            // Dans cette réponse, je peux récupérer certaines datas du user connecté
             if(response.accessToken) {
               const jwtToken = response.accessToken;
               const username = response.username;

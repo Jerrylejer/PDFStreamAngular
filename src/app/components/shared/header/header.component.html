@@ -10,7 +10,7 @@
       </div>
       <div *ngIf="isConnected">
         <li (click)="logout()">Déconnexion</li>
-        <li (click)="routerParams()">Compte</li>
+        <li (click)="routerParams()" [(ngModel)]="username">{{username}}</li>
          <!-- A FAIRE : faire apparaitre la nav-connected + params avec onglet Compte -->
       </div>
     </nav>

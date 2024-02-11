@@ -66,7 +66,12 @@ export class UserService {
    * @returns 
    */
   getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/user/id/${id}`).pipe(
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': 'http://localhost:4200',
+      })
+    };
+    return this.http.get<User>(`${this.apiUrl}/user/single/${id}`, httpOptions).pipe(
       catchError((error) => {
         return throwError(() => error);
       }),

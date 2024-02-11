@@ -6,24 +6,24 @@
                 <div class="groupe-a">
                     <div class="column">
                         <div class="inline-or-column">
-                            <label for="username">Username</label>
-                            <input type="text" class="input" id="username" readonly="readonly"/> 
+                            <label for="registeredUsername">Username</label>
+                            <input type="text" name="registeredUsername" class="input" id="registeredUsername" [value]="username" readonly="readonly"/> 
                         </div>
                         <div class="inline-or-column">
-                            <label for="avatar">Image de profile</label>
-                            <input type="text" class="input" name="avatar" readonly="readonly"/> 
+                            <label for="registeredAvatar">Image de profile</label>
+                            <input type="text" name="registeredAvatar" class="input" id="registeredAvatar" [value]="avatar" readonly="readonly" /> 
                         </div>
                         <div class="inline-or-column">
-                            <label for="email">Email</label>
-                            <input type="text" class="input" id="email" readonly="readonly"/> 
+                            <label for="registeredEmail">Email</label>
+                            <input type="text" name="registeredEmail" class="input" id="registeredEmail" [value]="email" readonly="readonly" /> 
                         </div>
                         <div class="inline-or-column">
-                            <label for="password">Password</label>
-                            <input type="text" class="input" id="password" readonly="readonly"/> 
+                            <label for="regiteredPassword">Password</label>
+                            <input type="text" name="regiteredPassword" class="input" id="regiteredPassword" [value]="password" readonly="readonly" /> 
                         </div>
                         <div class="inline-or-column">
-                            <label for="bio">Bio</label>
-                            <textarea class="textarea" rows="10"  readonly="readonly"></textarea>
+                            <label for="registeredBio">Bio</label>
+                            <textarea class="textarea" name="registeredBio" id="registeredBio" rows="10"  [value]="bio" readonly="readonly" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -53,33 +53,33 @@
                         <div class="groupe-a">
                             <div class="column">
                                 <div class="inline-or-column">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="input" id="username" formControlName="username" /> 
-                                    <div class="field-message" *ngIf="updateForm.get('username')?.invalid  && (updateForm.get('username')?.dirty || updateForm.get('username')?.touched)">
+                                    <label for="updatedUsername">Username</label>
+                                    <input type="text" class="input" id="updatedUsername" formControlName="updatedUsername" /> 
+                                    <!-- <div class="field-message" *ngIf="updateForm.get('username')?.invalid  && (updateForm.get('username')?.dirty || updateForm.get('username')?.touched)">
                                         De 3 à 15 caractères alphanumérics.
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="inline-or-column">
-                                    <label for="avatar">Image de profile</label>
-                                    <input type="text" class="input" name="avatar" formControlName="avatar" /> 
+                                    <label for="updatedAvatar">Image de profile</label>
+                                    <input type="text" class="input" id="updatedAvatar"formControlName="updatedAvatar" /> 
                                 </div>
                                 <div class="inline-or-column">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="input" id="email" formControlName="email" /> 
-                                    <div class="field-message" *ngIf="updateForm.get('email')?.invalid  && (updateForm.get('email')?.dirty || updateForm.get('email')?.touched)">
+                                    <label for="updatedEmail">Email</label>
+                                    <input type="text" class="input" id="updatedEmail" formControlName="updatedEmail" /> 
+                                    <!-- <div class="field-message" *ngIf="updateForm.get('email')?.invalid  && (updateForm.get('email')?.dirty || updateForm.get('email')?.touched)">
                                         Cet email n'est pas valide.
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="inline-or-column">
-                                    <label for="password">Password</label>
-                                    <input type="text" class="input" id="password" formControlName="password" /> 
-                                    <div class="field-message" *ngIf="updateForm.get('password')?.invalid  && (updateForm.get('password')?.dirty || updateForm.get('password')?.touched)">
+                                    <label for="updatedPassword">Password</label>
+                                    <input type="text" class="input" id="updatedPassword" formControlName="updatedPassword" /> 
+                                    <!-- <div class="field-message" *ngIf="updateForm.get('password')?.invalid  && (updateForm.get('password')?.dirty || updateForm.get('password')?.touched)">
                                         Majuscules, minuscules, chiffres et 12 caractères minimum.
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="inline-or-column">
-                                    <label for="bio">Bio</label>
-                                    <textarea class="textarea" formControlName="bio" rows="10"></textarea>
+                                    <label for="updatedBio">Bio</label>
+                                    <textarea class="textarea" id="updatedBio" formControlName="updatedBio" rows="10"></textarea>
                                 </div>
                             </div>
                         </div>

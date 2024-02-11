@@ -1,5 +1,5 @@
 /* Import de la bibliothèque pour les notifications d'actions */
-@import '~ngx-toastr/toastr';
+/* @import '~ngx-toastr/toastr'; */
 /* Import de Bootstrap */
 @import "~../node_modules/bootstrap/dist/css/bootstrap.min.css";
 /* Reset et conf de base */

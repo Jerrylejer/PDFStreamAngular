@@ -14,6 +14,14 @@
     width: 100vh;
 }
 
+.inline-or-column input {
+    color: var(--lightGreytext)
+}
+
+.inline-or-column textarea {
+    color: var(--lightGreytext)
+}
+
 /* CONTAINER */
 .wrapper {
     display: flex;

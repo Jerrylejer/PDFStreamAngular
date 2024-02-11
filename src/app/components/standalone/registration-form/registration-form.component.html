@@ -12,93 +12,34 @@
 <!--  Inscrivez-vous version mobile -->
 <form class="form" [formGroup]="inscriptionForm" (ngSubmit)="submit()">
     <div class="wrapper">
-        <!-- <div class="groupe">
-            <h5><span class="spanwhite">Coo</span><span class="spanblack">rdonnées</span></h5>
-            <div class="groupe-a skin">
-                <div class="groupe-a1 ">
-                    <div>
-                        <label>Titre</label>
-                        <div class="radiobtn">
-                            <div class="radio">
-                                <label class="radiolabel">
-                                    <input class="radioinput" type="radio" name="gender" formControlName="gender" value=1 checked>Madame
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label class="radiolabel">
-                                    <input class="radioinput" type="radio" name="gender" formControlName="gender" value=0>Monsieur
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="groupe-a2 inline">
-                    <div class="firstname column">
-                        <label for="firstname">Nom</label>
-                        <input type="text" class="input" name="firstname" formControlName="firstname"> 
-                    </div>
-                    <div class="lastname column">
-                        <label for="lastname">Prénom</label>
-                        <input type="text" class="input" name="lastname" formControlName="lastname"/> 
-                    </div>
-                </div>
-                <div class="groupe-a3 column">
-                    <label for="adress1">Adresse 1</label>
-                    <input class="input100" type="text" class="input" name="adress1" formControlName="adress1"/> 
-                </div>
-                <div class="groupe-a4 column">
-                    <label for="adress2">Adresse 2</label>
-                    <input class="input100" type="text" class="input" name="adress2" formControlName="adress2"/> 
-                </div>
-    
-                <div class="groupe-a5 inline">
-                    <div class="zipcode column">
-                        <label for="zipcode">Code postal</label>
-                        <input type="text" class="input" name="zipcode" formControlName="zipcode"/> 
-                    </div>
-                    <div class="city column">
-                        <label for="city">Ville</label>
-                        <input type="text" class="input" name="city" formControlName="city"/> 
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="groupe">
             <h5><span class="spanwhite">Com</span><span class="spanblack">pte</span></h5>
             <div class="groupe-b skin">
                 <div class="groupe-b2 column">
                     <div class="pseudo column">
-                        <label for="username">Username</label>
-                        <input type="text" class="input" id="username" formControlName="username"/> 
+                        <label for="usernameRegistration">Username</label>
+                        <input type="text" class="input" id="usernameRegistration" formControlName="username"/> 
                         <div class="field-message" *ngIf="inscriptionForm.get('username')?.invalid  && (inscriptionForm.get('username')?.dirty || inscriptionForm.get('username')?.touched)">
                             De 3 à 15 caractères alphanumérics.
                         </div>
                     </div>
-                    <!-- <div class="avatar column">
-                        <label for="avatar">Image de profile</label>
-                        <input type="text" class="input" name="avatar" formControlName="avatar"/> 
-                    </div> -->
                 </div>
                 <div class="groupe-b2 column">
-                    <label for="email">Email</label>
-                    <input class="input100" type="text" class="input" id="email" formControlName="email"/> 
+                    <label for="emailRegistration">Email</label>
+                    <input class="input100" type="text" class="input" id="emailRegistration" formControlName="email"/> 
                     <div class="field-message" *ngIf="inscriptionForm.get('email')?.invalid  && (inscriptionForm.get('email')?.dirty || inscriptionForm.get('email')?.touched)">
                         Cet email n'est pas valide.
                     </div>
                 </div>
                 <div class="groupe-b2 column">
                     <div class="mdp column">
-                        <label for="password">Password</label>
-                        <input class="input100" type="text" class="input" id="password" formControlName="password"/> 
+                        <label for="passwordRegistration">Password</label>
+                        <input class="input100" type="text" class="input" id="passwordRegistration" formControlName="password"/> 
                         <div class="field-message" *ngIf="inscriptionForm.get('password')?.invalid  && (inscriptionForm.get('password')?.dirty || inscriptionForm.get('password')?.touched)">
                             Majuscules, minuscules, chiffres et 12 caractères minimum.
                         </div>
                     </div>
                 </div>
-                <!-- <div class="groupe-b5 column">
-                    <label for="bio">Bio</label>
-                    <textarea formControlName="bio" rows="6"></textarea>
-                </div> -->
             </div>
         </div>
         <!-- Bloc Inscrivez-vous + validation version desktop -->

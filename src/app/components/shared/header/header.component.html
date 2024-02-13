@@ -11,7 +11,7 @@
       <div *ngIf="isConnected">
         <li (click)="logout()">Déconnexion</li>
         <li (click)="routerDashboard()">Compte</li>
-        <!-- <li (click)="routerDashboard()" [textContent]="username">{{username}}</li> -->
+        <!-- <li (click)="routerDashboard()" [textContent]="username">{{username}}</li> décalage d'affichage et bug CORS-->
         <!-- [(ngModel)]="username" provoque un message d'erreur : Avoid mixing ngModel and formControlName directives on the same element.-->
       </div>
     </nav>

@@ -9,7 +9,7 @@ export class User {
     id?: number;
     username?: String;
     password?: String;
-    avatar?: Uint8Array; // ou Blob si ne fonctionne pas
+    avatar?: File; // ou Blob si ne fonctionne pas
     email?: String;
     bio?: String;
     roles?:Role[];

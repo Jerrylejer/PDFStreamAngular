@@ -40,7 +40,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title title">Connexion</h4>
+          <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Modification de compte</span></div>
             <a type="button" 
                     (click)="closeModale()">
              <img src="../../../assets/icones/close.png" alt="close">
@@ -48,7 +48,7 @@
         </div>
         <!-- Formulaire de modification des détails user-->
         <div class="modal-body">
-            <form class="form" [formGroup]="updateForm" (ngSubmit)="submit()">
+            <form class="form" [formGroup]="updateForm" (ngSubmit)="submitFormModifications()">
                 <div class="wrapper">
                         <div class="groupe-a">
                             <div class="column">
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="inline-or-column">
                                     <label for="updatedAvatar">Image de profile</label>
-                                    <input type="text" class="input" id="updatedAvatar"formControlName="updatedAvatar" /> 
+                                    <input type="file" class="input" id="updatedAvatar"formControlName="updatedAvatar" /> 
                                 </div>
                                 <div class="inline-or-column">
                                     <label for="updatedEmail">Email</label>
@@ -85,8 +85,8 @@
                         </div>
                     <!-- Bloc boutons -->
                     <div class="groupe-b">
-                        <button class="btn" type="submit" (click)="closeModale()">Annuler</button>
-                        <button class="btn" type="submit" (click)="submit()">Modifier</button>
+                        <button class="btn delete" type="submit" (click)="closeModale()">Annuler</button>
+                        <button class="btn modify" type="submit">Modifier</button>
                     </div>
                 </div>
             </form>

@@ -23,6 +23,9 @@ export class AccountComponent implements OnInit{
   bio: any = ''; 
   // Boolean pour rendre la modale visible ou non au click "connexion", "X"
   displayStyle = "none";
+  // Récupéreration de l'id du User connecté et stocké dans le LS
+  id = Number(localStorage.getItem("userId"));
+
   // #################################################################
 
   constructor(private formBuilder: FormBuilder, private userService: UserService){};
@@ -36,11 +39,9 @@ export class AccountComponent implements OnInit{
       updatedPassword: ['', [Validators.required, Validators.minLength(12), createPasswordStrengthValidator()]],
       updatedBio: ['', Validators.required]
     })
-    // Récupérer l'idUser stocké dans le LS
-    const id = Number(localStorage.getItem("userId"));
-    console.log(id)
+    console.log(this.id)
     // Lancer le service pour récupérer les datas du user
-    this.userService.getUserById(id).pipe(
+    this.userService.getUserById(this.id).pipe(
       catchError((error) => {
         return throwError(() => error);
       })
@@ -49,17 +50,13 @@ export class AccountComponent implements OnInit{
       // J'accède à la réponse renvoyée par le serveur
       (response) => {
         console.log(response)
-        // Dans cette réponse, je peux récupérer certaines datas du user connecté
+        // Dans cette réponse, je peux récupérer certaines datas du user connecté et les afficher
         this.username = response.username;
         this.avatar = response.avatar;
         this.email = response.email;
         this.password = response.password;
         this.bio = response.bio;
         console.log(this.username)
-        console.log(this.avatar)
-        console.log(this.email)
-        console.log(this.password)
-        console.log(this.bio)
         }
     )
   }
@@ -79,7 +76,31 @@ export class AccountComponent implements OnInit{
   }
 
   // Soumission du formulaire d'update
-  submit() {
-
+  submitFormModifications() {
+  // Vérification des datas du formulaire en console
+  console.log(this.updateForm.value.updatedUsername);    
+  console.log(this.updateForm.value.updatedAvatar);    
+  console.log(this.updateForm.value.updatedEmail);    
+  console.log(this.updateForm.value.updatedPassword);    
+  console.log(this.updateForm.value.updatedBio);        
+  // Propriétés modifiées provenant de mon formulaire de modif
+  const updatedUsername: any = this.updateForm.value.updatedUsername;
+  const updatedAvatar: any = this.updateForm.value.updatedAvatar;
+  const updatedEmail: any = this.updateForm.value.updatedEmail;
+  const updatedPassword: any = this.updateForm.value.updatedPassword;
+  const updatedBio: any = this.updateForm.value.updatedBio;
+  // Appel à mon service
+  this.userService.updateUser(this.id, updatedUsername, updatedAvatar, updatedEmail, updatedPassword, updatedBio).pipe(
+    catchError((error) => {
+      console.log("erreur mon ptit gars!");
+      return throwError(() => error);
+    })
+  )
+  .subscribe(
+    (response) => {console.log(response, "datas modifiées !"),
+  this.closeModale();
+  this.ngOnInit();
+  }
+  )
   }
 }

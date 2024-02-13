@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
     this.isLoggedInPersistence();
   }
 
-  // Persistence de l'état connecté grâce au LocalStorage
+  // Persistence de l'état connecté et switch nav grâce au LocalStorage
   isLoggedInPersistence() {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if(isAuthenticated && isAuthenticated === 'true') {
@@ -113,9 +113,18 @@ export class HeaderComponent implements OnInit {
       (response) => {
         alert("Déconnexion réussie")
         this.router.navigate(["/"]);
-        // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage
+        // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage + valeurs du user à ''
         localStorage.setItem('isAuthenticated', 'false');
+        localStorage.setItem('jwtToken', '');
+        localStorage.setItem('userId', '');
+        localStorage.setItem('username', '');
+        localStorage.setItem('roles', '');
+        // Je vide les inputs du formulaire
+        this.authForm.value.username = '';
+        this.authForm.value.password = '';
+        // Je switch ma nav
         this.isConnected = false;
+        this.ngOnInit();
       }
     )
   }

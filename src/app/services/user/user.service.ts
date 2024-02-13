@@ -27,12 +27,35 @@ export class UserService {
    * @returns 
    */
 
-  updateUser(id: number, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/user/update/${id}`, data).pipe(
+  updateUser(id: number, 
+    updatedUsername: string, 
+    updatedAvatar: File, 
+    updatedEmail: string, 
+    updatedPassword: string, 
+    updatedBio: string): Observable<any> {
+    
+    const formData: FormData = new FormData();
+    if (updatedUsername != null) {
+      formData.append('username', updatedUsername);
+    }
+    if (updatedAvatar != null) {
+      formData.append('avatar', updatedAvatar);
+    }
+    if (updatedEmail != null) {
+      formData.append('email', updatedEmail);
+    }
+    if (updatedPassword != null) {
+      formData.append('password', updatedPassword);
+    }
+    if (updatedBio != null) {
+      formData.append('bio', updatedBio);
+    }
+
+    return this.http.put(`${this.apiUrl}/user/update/${id}`, formData).pipe(
       catchError((error) => {
         return throwError(() => error);
       }),
-      );
+    );
   }
 
   /**

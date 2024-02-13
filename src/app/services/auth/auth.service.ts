@@ -38,16 +38,6 @@ export class AuthService {
         password: password
       };
 
-
-    //   this.http.get<any[]>(`${this.apiUrl}/auth/connectedUsers`).subscribe(
-    //   (users) => {
-    //     console.log('Liste des utilisateurs connectés : ', users);
-    //   },
-    //   (error) => {
-    //     console.error('Erreur lors de la récupération de la liste des utilisateurs connectés : ', error);
-    //   }
-    // )
-
       return this.http.post(`${this.apiUrl}/auth/connexion`, body, httpOptions).pipe(
         catchError((error) => {
           return throwError(() => "Il y a une erreur sur l'identifiant ou le mot de passe. Ré-essayez.")

@@ -50,13 +50,12 @@ export class AccountComponent implements OnInit{
       // J'accède à la réponse renvoyée par le serveur
       (response) => {
         console.log(response)
-        // Dans cette réponse, je peux récupérer certaines datas du user connecté et les afficher
+        // Avec cette réponse, je peux afficher les datas enregistrées en bdd
         this.username = response.username;
         this.avatar = response.avatar;
         this.email = response.email;
         this.password = response.password;
         this.bio = response.bio;
-        console.log(this.username)
         }
     )
   }
@@ -72,7 +71,6 @@ export class AccountComponent implements OnInit{
 
   // Suppression du compte
   deleteAccount() {
-
   }
 
   // Soumission du formulaire d'update
@@ -93,6 +91,7 @@ export class AccountComponent implements OnInit{
   this.userService.updateUser(this.id, updatedUsername, updatedAvatar, updatedEmail, updatedPassword, updatedBio).pipe(
     catchError((error) => {
       console.log("erreur mon ptit gars!");
+      //this.ngOnInit();
       return throwError(() => error);
     })
   )

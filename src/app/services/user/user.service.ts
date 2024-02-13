@@ -35,19 +35,19 @@ export class UserService {
     updatedBio: string): Observable<any> {
     
     const formData: FormData = new FormData();
-    if (updatedUsername != null) {
+    if (updatedUsername !== '') {
       formData.append('username', updatedUsername);
     }
-    if (updatedAvatar != null) {
+    if (updatedAvatar !== null) {
       formData.append('avatar', updatedAvatar);
     }
-    if (updatedEmail != null) {
+    if (updatedEmail !== '') {
       formData.append('email', updatedEmail);
     }
-    if (updatedPassword != null) {
+    if (updatedPassword !== '') {
       formData.append('password', updatedPassword);
     }
-    if (updatedBio != null) {
+    if (updatedBio !== '') {
       formData.append('bio', updatedBio);
     }
 

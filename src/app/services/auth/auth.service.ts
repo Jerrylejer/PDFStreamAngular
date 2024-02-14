@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 import { Environnement } from 'src/env/environnement';
 
 @Injectable({
@@ -10,15 +10,38 @@ export class AuthService {
 
     // url de base pour l'accès à l'API
     private readonly apiUrl = Environnement.pdfStreamApiUrl;
-    // Injection du module HttpClient pour l'utilisation des requêtes http
-    constructor(private readonly http: HttpClient) { }
-  
+
+    // #############################
+    // ETAT DE CONNEXION I
+    // Objet qui est un Observable mais aussi un "Observateur" (Rxjs)
+    private isConnectedSubject: BehaviorSubject<boolean>;
+    public isConnected$!: Observable<boolean>;
+
+    constructor(private readonly http: HttpClient) { 
+    // #############################
+    // ETAT DE CONNEXION II
+    // Initialisation des propriétés
+      this.isConnectedSubject = new BehaviorSubject<boolean>(false), 
+      this.isConnected$ = this.isConnectedSubject.asObservable()
+    }
+    // #############################
+    // ETAT DE CONNEXION III
+    // Déterminer une valeur booléenne pour "isConnected"
+    setIsConnected(value: boolean) {
+      // next() renvoie la valeur à BehaviorSubject<boolean> qui le diffuse
+      this.isConnectedSubject.next(value);
+    }
+    // Communiquer la valeur de "isConnected"
+    getIsConnected() {
+      return this.isConnectedSubject.value;
+    }
+    
     // #########################################################
     // METHODES "MIROIR" ENDPOINTS DE MON BACK API
     // Observable => asynchronicité - en attente du résultat de la requête (datas ou erreur)
     // pipe() => ici est utilisé pour canaliser les éventuelles erreurs
     // #########################################################
-
+    
     /**
      * Envoi d'une requête http POST pour la connexion d'un user
      * @param data 
@@ -42,8 +65,10 @@ export class AuthService {
         catchError((error) => {
           return throwError(() => "Il y a une erreur sur l'identifiant ou le mot de passe. Ré-essayez.")
         })
-      )
-    }
+        )
+      }
+      
+
 
     /**
      * Envoi d'une requête http POST pour l'inscription d'un user

@@ -4,11 +4,11 @@
     </div>
     <!-- A FAIRE : Implentation du futur composant "recherche" -->
     <nav class="navigation">
-      <div *ngIf="!isConnected">
+      <div *ngIf="!isConnectedUser">
         <li (click)="openModale()">Connexion</li>
         <li (click)="routerInscription()">Inscription</li>
       </div>
-      <div *ngIf="isConnected">
+      <div *ngIf="isConnectedUser">
         <li (click)="logout()">Déconnexion</li>
         <li (click)="routerDashboard()">Compte</li>
         <!-- <li (click)="routerDashboard()" [textContent]="username">{{username}}</li> décalage d'affichage et bug CORS-->

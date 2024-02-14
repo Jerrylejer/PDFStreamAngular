@@ -1,5 +1,5 @@
 <section>
-    <!-- Formulaire de présentation non modifiable -->
+    <!-- DEBUT - Formulaire de présentation non modifiable -->
     <form class="form">
         <div class="wrapper">
             <div class="groupe">
@@ -11,7 +11,7 @@
                         </div>
                         <div class="inline-or-column">
                             <label for="registeredAvatar">Image de profile</label>
-                            <input type="text" name="registeredAvatar" class="input" id="registeredAvatar" [value]="avatar" readonly="readonly" /> 
+                            <input type="file" name="registeredAvatar" class="input" id="registeredAvatar" [value]="avatar" readonly="readonly" /> 
                         </div>
                         <div class="inline-or-column">
                             <label for="registeredEmail">Email</label>
@@ -19,7 +19,7 @@
                         </div>
                         <div class="inline-or-column">
                             <label for="regiteredPassword">Password</label>
-                            <input type="text" name="regiteredPassword" class="input" id="regiteredPassword" [value]="password" readonly="readonly" /> 
+                            <input type="password" name="regiteredPassword" class="input" id="regiteredPassword" [value]="password" readonly="readonly" /> 
                         </div>
                         <div class="inline-or-column">
                             <label for="registeredBio">Bio</label>
@@ -30,68 +30,105 @@
             </div>
             <!-- Bloc boutons -->
             <div class="groupe-b">
-                <button class="btn" type="submit" (click)="openModale()">Modifier</button>
-                <button class="btn" type="submit" (click)="deleteAccount()">Supprimer</button>
+                <button class="btn" type="submit" (click)="openUpdateModale()">Modifier</button>
+                <button class="btn delete" type="submit" (click)="openDeleteModale()">Supprimer</button>
             </div>
         </div>
     </form>
-    <!-- Modal de modification du formulaire -->
-<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Modification de compte</span></div>
-            <a type="button" 
-                    (click)="closeModale()">
-             <img src="../../../assets/icones/close.png" alt="close">
-            </a>
-        </div>
-        <!-- Formulaire de modification des détails user-->
-        <div class="modal-body">
-            <form class="form" [formGroup]="updateForm" (ngSubmit)="submitFormModifications()">
-                <div class="wrapper">
-                        <div class="groupe-a">
-                            <div class="column">
-                                <div class="inline-or-column">
-                                    <label for="updatedUsername">Username</label>
-                                    <input type="text" class="input" id="updatedUsername" formControlName="updatedUsername" /> 
-                                    <!-- <div class="field-message" *ngIf="updateForm.get('username')?.invalid  && (updateForm.get('username')?.dirty || updateForm.get('username')?.touched)">
-                                        De 3 à 15 caractères alphanumérics.
-                                    </div> -->
+    <!-- DEBUT - Formulaire de présentation non modifiable -->
+    
+    <!-- DEBUT - Modal de modification du formulaire -->
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Modification de compte</span></div>
+                    <a type="button" 
+                            (click)="closeUpdateModale()">
+                    <img src="../../../assets/icones/close.png" alt="close">
+                    </a>
+                </div>
+                <!-- Formulaire de modification des détails user-->
+                <div class="modal-body">
+                    <form class="form" [formGroup]="updateForm" (ngSubmit)="submitFormModifications()">
+                        <div class="wrapper">
+                                <div class="groupe-a">
+                                    <div class="column">
+                                        <div class="inline-or-column">
+                                            <label for="updatedUsername">Username</label>
+                                            <input type="text" class="input" id="updatedUsername" formControlName="updatedUsername" /> 
+                                            <!-- <div class="field-message" *ngIf="updateForm.get('username')?.invalid  && (updateForm.get('username')?.dirty || updateForm.get('username')?.touched)">
+                                                De 3 à 15 caractères alphanumérics.
+                                            </div> -->
+                                        </div>
+                                        <div class="inline-or-column">
+                                            <label for="updatedAvatar">Image de profile</label>
+                                            <input type="file" class="input" id="updatedAvatar"formControlName="updatedAvatar" accept="image/*,.pdf"/> 
+                                        </div>
+                                        <div class="inline-or-column">
+                                            <label for="updatedEmail">Email</label>
+                                            <input type="text" class="input" id="updatedEmail" formControlName="updatedEmail" /> 
+                                            <!-- <div class="field-message" *ngIf="updateForm.get('email')?.invalid  && (updateForm.get('email')?.dirty || updateForm.get('email')?.touched)">
+                                                Cet email n'est pas valide.
+                                            </div> -->
+                                        </div>
+                                        <div class="inline-or-column">
+                                            <label for="updatedPassword">Password</label>
+                                            <input type="text" class="input" id="updatedPassword" formControlName="updatedPassword" /> 
+                                            <!-- <div class="field-message" *ngIf="updateForm.get('password')?.invalid  && (updateForm.get('password')?.dirty || updateForm.get('password')?.touched)">
+                                                Majuscules, minuscules, chiffres et 12 caractères minimum.
+                                            </div> -->
+                                        </div>
+                                        <div class="inline-or-column">
+                                            <label for="updatedBio">Bio</label>
+                                            <textarea class="textarea" id="updatedBio" formControlName="updatedBio" rows="10"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="inline-or-column">
-                                    <label for="updatedAvatar">Image de profile</label>
-                                    <input type="file" class="input" id="updatedAvatar"formControlName="updatedAvatar" /> 
-                                </div>
-                                <div class="inline-or-column">
-                                    <label for="updatedEmail">Email</label>
-                                    <input type="text" class="input" id="updatedEmail" formControlName="updatedEmail" /> 
-                                    <!-- <div class="field-message" *ngIf="updateForm.get('email')?.invalid  && (updateForm.get('email')?.dirty || updateForm.get('email')?.touched)">
-                                        Cet email n'est pas valide.
-                                    </div> -->
-                                </div>
-                                <div class="inline-or-column">
-                                    <label for="updatedPassword">Password</label>
-                                    <input type="text" class="input" id="updatedPassword" formControlName="updatedPassword" /> 
-                                    <!-- <div class="field-message" *ngIf="updateForm.get('password')?.invalid  && (updateForm.get('password')?.dirty || updateForm.get('password')?.touched)">
-                                        Majuscules, minuscules, chiffres et 12 caractères minimum.
-                                    </div> -->
-                                </div>
-                                <div class="inline-or-column">
-                                    <label for="updatedBio">Bio</label>
-                                    <textarea class="textarea" id="updatedBio" formControlName="updatedBio" rows="10"></textarea>
-                                </div>
+                            <!-- Bloc boutons -->
+                            <div class="groupe-b">
+                                <button class="btn delete" type="submit" (click)="closeUpdateModale()">Annuler</button>
+                                <button class="btn modify" type="submit">Modifier</button>
                             </div>
                         </div>
-                    <!-- Bloc boutons -->
-                    <div class="groupe-b">
-                        <button class="btn delete" type="submit" (click)="closeModale()">Annuler</button>
-                        <button class="btn modify" type="submit">Modifier</button>
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+    <!-- FIN - Modal de modification du formulaire  -->
+
+    <!-- DEBUT - Modale pour warning suppression de compte -->
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayDeleteModaleStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Suppression de compte</span></div>
+                    <a type="button" 
+                            (click)="closeDeleteModale()">
+                    <img src="../../../assets/icones/close.png" alt="close">
+                    </a>
+                </div>
+                <!-- Formulaire de modification des détails user-->
+                <div class="modal-body">
+                    <form class="form" [formGroup]="updateForm" (ngSubmit)="deleteAccount()">
+                        <div class="wrapper">
+                                <div class="groupe-a">
+                                    <div class="column">
+                                        <p>Cette action va définitivement supprimer votre compte ainsi que votre historique de téléchargements et de fichiers partagés !</p>
+                                        <p>Confirmez-vous la suppression du compte ?</p>
+                                    </div>
+                                </div>
+                            <!-- Bloc boutons -->
+                            <div class="groupe-b">
+                                <button class="btn modify" type="button" (click)="closeDeleteModale()">Annuler</button>
+                                <button class="btn delete" type="submit" >Supprimer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN - Modale pour warning suppression de compte -->
 </section>

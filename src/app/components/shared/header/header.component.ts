@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   // Configuration du message d'erreur si connexion failed
   errorMessage: String = '';
   // Boolean => switcher l'affichage de la nav (connexion/inscription => déconnexion/compte)
-  isConnected: boolean = false;
+  isConnectedUser?: boolean;
   // Récupération du username renvoyé dans le body de la réponse à la demende de connexion
   username: any = localStorage.getItem('username');
   // ##################################################################
@@ -39,20 +39,16 @@ export class HeaderComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-    this.isLoggedInPersistence();
-  }
-
-  // Persistence de l'état connecté et switch nav grâce au LocalStorage
-  isLoggedInPersistence() {
-    const isAuthenticated = localStorage.getItem("isAuthenticated");
-    if(isAuthenticated && isAuthenticated === 'true') {
-      this.isConnected = true;
-    } else {
-      this.isConnected = false;
-    }
+    // #############################
+    // ETAT DE CONNEXION IV (voir dans authService)
+    // Communication de la valeur de "isConnected$ (Observable dans authService) à "isConnected => " 
+    // Puis affectation de la valeur de "isConnected => " à "this.isConnectedUser"
+    this.auth.isConnected$.subscribe(isConnected => {
+      this.isConnectedUser = isConnected;
+    });
   }
   
-  // Soumission du formulaire
+  // Soumission du formulaire d'authentification
   submit() {
     if(this.authForm.valid) {
       const username = this.authForm.value.username;
@@ -72,7 +68,8 @@ export class HeaderComponent implements OnInit {
             console.log("authentification réussie")
             // Si la connexion est ok, je ferme ma modale et je modifie l'affichage de la nav
             this.displayStyle = "none";
-            this.isConnected = true;
+            // isConnectedSubject$ reçoit et émet cette nouvelle valeur "true"
+            this.isConnectedUser = true;
             // Dans cette réponse, je peux récupérer certaines datas du user connecté
             if(response.accessToken) {
               const jwtToken = response.accessToken;
@@ -84,8 +81,6 @@ export class HeaderComponent implements OnInit {
               localStorage.setItem('username', username);
               localStorage.setItem('roles', userRoles);
             }
-            // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage
-            localStorage.setItem('isAuthenticated', 'true');
           }
         );
     }
@@ -122,8 +117,8 @@ export class HeaderComponent implements OnInit {
         // Je vide les inputs du formulaire
         this.authForm.value.username = '';
         this.authForm.value.password = '';
-        // Je switch ma nav
-        this.isConnected = false;
+        // Je modifie l'état de connexion à false
+        this.isConnectedUser = false;
         this.ngOnInit();
       }
     )

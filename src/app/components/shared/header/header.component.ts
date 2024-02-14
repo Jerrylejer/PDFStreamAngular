@@ -68,7 +68,7 @@ export class HeaderComponent implements OnInit {
             console.log("authentification réussie")
             // Si la connexion est ok, je ferme ma modale et je modifie l'affichage de la nav
             this.displayStyle = "none";
-            // isConnectedSubject$ reçoit et émet cette nouvelle valeur "true"
+            // isConnectedSubject$ reçoit et émet cette nouvelle état
             this.isConnectedUser = true;
             // Dans cette réponse, je peux récupérer certaines datas du user connecté
             if(response.accessToken) {
@@ -76,6 +76,7 @@ export class HeaderComponent implements OnInit {
               const userId = response.id;
               const username = response.username;
               const userRoles = response.roles;
+              localStorage.setItem('isAuthenticated', 'true');
               localStorage.setItem('jwtToken', jwtToken);
               localStorage.setItem('userId', userId);
               localStorage.setItem('username', username);
@@ -109,11 +110,11 @@ export class HeaderComponent implements OnInit {
         alert("Déconnexion réussie")
         this.router.navigate(["/"]);
         // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage + valeurs du user à ''
-        localStorage.setItem('isAuthenticated', 'false');
-        localStorage.setItem('jwtToken', '');
-        localStorage.setItem('userId', '');
-        localStorage.setItem('username', '');
-        localStorage.setItem('roles', '');
+        localStorage.removeItem('isAuthenticated');
+        localStorage.removeItem('jwtToken');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('username');
+        localStorage.removeItem('roles');
         // Je vide les inputs du formulaire
         this.authForm.value.username = '';
         this.authForm.value.password = '';

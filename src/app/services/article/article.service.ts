@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Article } from 'src/app/models/article.model';
@@ -65,7 +65,12 @@ export class ArticleService {
      * @returns 
      */
     getArticlesList(): Observable<Article[]> {
-      return this.http.get<Article[]>(`${this.apiUrl}/article`).pipe(
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': 'http://localhost:4200',
+        })
+      };
+      return this.http.get<Article[]>(`${this.apiUrl}/article`, httpOptions).pipe(
         catchError((error) => {
           return throwError(() => error)
         })

@@ -1,1 +1,33 @@
-<p>convention works!</p>
+<section>
+    <h3>Charte - Utilisation des services PDFStream</h3>
+    <h6>I. Types de fichiers PDF autorisés :</h6>
+    <ul>
+        <li *ngFor="let article of articles">
+            <ng-container *ngIf="article.ordering! >= 1 && article.ordering! <= 6">
+                {{article.description}}
+            </ng-container>
+        </li>
+        <p>Nous nous réservons le droit de retirer tout contenu qui ne respecte pas ces directives. En partageant des fichiers PDF sur notre site, vous acceptez de respecter ces règles.</p>
+    </ul>
+    <h6>II. Droits d'auteur :</h6>
+    <p>Le respect des droits d'auteur est fondamental sur notre site. Nous prenons très au sérieux les questions liées aux droits d'auteur et nous vous encourageons à faire de même. Voici quelques points importants à considérer :
+    </p>
+    <ul>
+        <li *ngFor="let article of articles">
+            <ng-container *ngIf="article.ordering! >= 7 && article.ordering! <= 10">
+                {{article.description}}
+            </ng-container>
+        </li>
+    </ul>
+    <h6>III. Responsabilités de l'utilisateur :</h6>
+    <p>En utilisant notre site pour télécharger ou mettre à disposition des fichiers PDF, vous acceptez de respecter les règles suivantes en matière de responsabilité </p>
+    <ul>
+        <li *ngFor="let article of articles">
+            <ng-container *ngIf="article.ordering! >= 11">
+                {{article.description}}
+            </ng-container>
+        </li>
+    </ul>
+    <p>En utilisant notre site, vous reconnaissez que la violation de ces règles peut entraîner des conséquences, y compris la suppression de contenu, la suspension de compte ou d'autres mesures ou sanctions appropriées. Nous vous encourageons à utiliser notre plateforme de manière responsable et éthique.
+    </p>
+</section>

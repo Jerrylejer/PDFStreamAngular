@@ -1,12 +1,18 @@
 // Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon'
 import { HttpClientModule } from '@angular/common/http';
-
+// Material tables
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 // Components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -57,7 +63,13 @@ import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.co
     ReactiveFormsModule,
     MatIconModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

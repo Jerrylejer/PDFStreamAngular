@@ -12,7 +12,10 @@ export class AppComponent implements OnInit{
   constructor(private authService: AuthService){}
 
     ngOnInit() {
+    // #############################
+    // ETAT DE CONNEXION IV (voir dans authService)
       const isAuthenticated = localStorage.getItem('isAuthenticated');
+      // isAuthenticated est modifié au click connexionUser(), logoutUser() // header
       if (isAuthenticated === 'true') {
           // L'utilisateur est connecté
           this.authService.setIsConnected(true);

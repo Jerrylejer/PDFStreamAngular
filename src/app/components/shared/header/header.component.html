@@ -9,7 +9,7 @@
         <li (click)="routerInscription()">Inscription</li>
       </div>
       <div *ngIf="isConnectedUser">
-        <li (click)="logout()">Déconnexion</li>
+        <li (click)="logoutUser()">Déconnexion</li>
         <li (click)="routerDashboard()">Compte</li>
         <!-- <li (click)="routerDashboard()" [textContent]="username">{{username}}</li> décalage d'affichage et bug CORS-->
         <!-- [(ngModel)]="username" provoque un message d'erreur : Avoid mixing ngModel and formControlName directives on the same element.-->
@@ -29,7 +29,7 @@
         </div>
         <!-- Formulaire username & password -->
         <div class="modal-body">
-            <form class="form" [formGroup]="authForm" (ngSubmit)="submit()">
+            <form class="form" [formGroup]="authForm" (ngSubmit)="connexionUser()">
                 <div class="column">
                     <div class="column">
                         <label for="username">Username</label>

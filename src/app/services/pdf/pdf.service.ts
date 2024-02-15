@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
+import { Category } from 'src/app/models/category.model';
 import { Pdf } from 'src/app/models/pdf.model';
+import { User } from 'src/app/models/user.model';
 import { Environnement } from 'src/env/environnement';
 
 @Injectable({
@@ -25,13 +27,27 @@ export class PdfService {
      * @param data 
      * @returns 
      */
-    uploadPdf(data: any): Observable<any> {
-      return this.http.post(`${this.apiUrl}/pdf/upload`, data).pipe(
-        catchError((error) => {
-          return throwError(() => error)
-        })
-      )
-    }
+    // uploadPdf(author: User, smallDescription: String, description: String, pdfFile: File): Observable<any> {
+    //   const formData: FormData = new FormData();
+
+    //   if (author !== null) {
+    //     formData.append('author', author);
+    //   }
+    //   if (smallDescription !== null) {
+    //     formData.append('smallDescription', smallDescription);
+    //   }
+    //   if (description !== '') {
+    //     formData.append('description', description);
+    //   }
+    //   if (pdfFile !== null) {
+    //     formData.append('pdfFile', pdfFile);
+    //   }
+    //   return this.http.post(`${this.apiUrl}/pdf/upload`, formData).pipe(
+    //     catchError((error) => {
+    //       return throwError(() => error)
+    //     })
+    //   )
+    // }
 
     /**
      * Envoi d'une requête http UPDATE pour la modification d'un pdf selon son id
@@ -84,4 +100,22 @@ export class PdfService {
         })
       )
     }
+
+        /**
+     * Envoi d'une requête http GET pour la liste de tous les pdfs par auteur
+     * @param id 
+     * @returns 
+     */
+        getPdfsListByAuthor(id: User): Observable<Pdf[]> {
+          const httpOptions = {
+            headers: new HttpHeaders({
+              'Access-Control-Allow-Origin': 'http://localhost:4200',
+            })
+          };
+          return this.http.get<Pdf[]>(`${this.apiUrl}/pdf/author/${id}`, httpOptions).pipe(
+            catchError((error) => {
+              return throwError(() => error)
+            })
+          )
+        }
 }

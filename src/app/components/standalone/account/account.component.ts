@@ -104,11 +104,11 @@ export class AccountComponent implements OnInit{
                 alert("Vous avez été déconnecté-e !")
             this.router.navigate(["/"]);
             // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage + valeurs du user à ''
-            localStorage.setItem('isAuthenticated', 'false');
-            localStorage.setItem('jwtToken', '');
-            localStorage.setItem('userId', '');
-            localStorage.setItem('username', '');
-            localStorage.setItem('roles', '');
+            localStorage.removeItem('isAuthenticated');
+            localStorage.removeItem('jwtToken');
+            localStorage.removeItem('userId');
+            localStorage.removeItem('username');
+            localStorage.removeItem('roles');
             // Lancer une requête à une méthode du serviceAuth qui s'occupera d'alterner un booléen suivant si connecté ou pas
             this.ngOnInit();
           }

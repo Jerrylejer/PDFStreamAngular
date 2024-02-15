@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit {
   }
   
   // Soumission du formulaire d'authentification
-  submit() {
+  connexionUser() {
     if(this.authForm.valid) {
       const username = this.authForm.value.username;
       const password = this.authForm.value.password;
@@ -97,7 +97,7 @@ export class HeaderComponent implements OnInit {
   }
 
   // Click "déconnexion"
-  logout() {
+  logoutUser() {
     this.auth.deconnexion()
     .pipe(
       catchError((error) => {

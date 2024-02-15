@@ -7,13 +7,15 @@ import { User } from "./user.model";
 
 export class Pdf {
     id?: number;
+    title?: String;
     smallDescription?: String;
     description?: String;
     image?: String;
     type?: String;
-    file?: Uint8Array; // ou Blob si ne fonctionne pas
+    pdfFile?: Uint8Array; // ou Blob si ne fonctionne pas
     size?: number;
     counter?: number;
+    authorId?: number;
     createdAt?: Date;
     updatedAt?: Date;
     categories?: Category[];

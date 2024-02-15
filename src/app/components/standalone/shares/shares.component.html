@@ -1,1 +1,3 @@
-<p>shares works!</p>
+<ul *ngFor="let pdf of uploadedPdf">
+    <li>{{pdf.title}} - {{pdf.createdAt}}</li>
+</ul>

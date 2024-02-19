@@ -12,7 +12,7 @@ export class Pdf {
     description?: String;
     image?: String;
     type?: String;
-    pdfFile?: Uint8Array; // ou Blob si ne fonctionne pas
+    pdfFile?: Uint8Array; 
     size?: number;
     counter?: number;
     authorId?: number;

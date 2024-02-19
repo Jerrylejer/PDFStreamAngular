@@ -1,0 +1,83 @@
+/* FORMULAIRES => INPUTS ET LABELS */
+label {
+    margin-bottom: 17px;
+    width: 20%;
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.525);
+    border-radius: 5px;
+    line-height: 35px;
+}
+
+.inline input {
+    width: 100vh;
+}
+
+.textarea {
+    width: 100vh;
+}
+
+.custbtn {
+    width: 182px;
+    height: 43px;
+    align-self: flex-end;
+    background-color: var(--skin);
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    border: none;
+    border-radius: 5px;
+    margin-right: 30px;
+    padding: 5px;
+}
+
+/* MODALE */
+.modal {
+    background-color: #2b2b2ba2;
+    overflow-y: hidden;
+}
+
+.modal-dialog {
+    /* hauteur 100vh pour ensuite centrer le modal-content */
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-span-PDF {
+    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
+    font-weight: 800;
+}
+.modal-span-STREAM {
+    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
+    font-weight: 800;
+    color: var(--red);
+}
+.modal-span-MODIF {
+    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
+}
+
+.modal-body {
+    width: 100%;
+}
+
+.modal-title {
+    font-size: 16px;
+}
+
+.modal-content {
+    background-color: var(--skin);
+    width:fit-content;
+}
+
+.delete  {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.modify {
+    border: 2px solid black;
+}

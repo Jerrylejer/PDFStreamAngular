@@ -106,14 +106,22 @@ export class AuthService {
     }
 
     /**
-     * Envoi d'une requête GET pour obtenir la liste des utilisateurs connectés
+     * Compare la date de validité du token avec la date actuelle, renvoie un booléen true si sup, false si inf
      * @returns 
      */
-    // authenticatedUsersList(): Observable<any> {
-    //   return this.http.get(`${this.apiUrl}/auth/connectedUsers`).pipe(
-    //     catchError((error) => {
-    //       return throwError(() => "Erreur lors de la réponse à la requête. Ré-essayez.")
-    //     })
-    //   )
-    // }
+    isTokenExpired(): boolean {
+      // Récupérer le token du localStorage
+      const token = localStorage.getItem('jwtToken');
+      // Vérifier si le token est défini
+      if (token) {
+        // Décoder le token pour obtenir la date d'expiration
+        const tokenPayload = JSON.parse(atob(token.split('.')[1]));
+        const expirationDate = new Date(tokenPayload.exp * 1000); // Convertir en millisecondes
+  
+        // Comparer la date d'expiration avec la date actuelle
+        return expirationDate <= new Date();
+      } else {
+        return true
+      }
+    }
 }

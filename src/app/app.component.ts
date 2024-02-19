@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,20 @@ import { AuthService } from './services/auth/auth.service';
 export class AppComponent implements OnInit{
   title = 'pdf-stream-angular';
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private router: Router){}
 
     ngOnInit() {
     // #############################
+    // Vérification de l'expiration du token
+    if (this.authService.isTokenExpired()) {
+      // Effacer le token du localStorage
+      localStorage.removeItem('jwtToken');
+      localStorage.removeItem('isAuthenticated');
+      // L'utilisateur n'est plus considéré comme connecté
+      this.authService.setIsConnected(false);
+      // Retour page home
+      this.router.navigate(["/"]);
+    }
     // ETAT DE CONNEXION IV (voir dans authService)
       const isAuthenticated = localStorage.getItem('isAuthenticated');
       // isAuthenticated est modifié au click connexionUser(), logoutUser() // header

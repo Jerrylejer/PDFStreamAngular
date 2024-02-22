@@ -106,7 +106,7 @@ export class AuthService {
     }
 
     /**
-     * Compare la date de validité du token avec la date actuelle, renvoie un booléen true si sup, false si inf
+     * Compare la date de validité du token avec la date actuelle, renvoie un booléen true si exp, false si ok
      * @returns 
      */
     isTokenExpired(): boolean {
@@ -117,10 +117,10 @@ export class AuthService {
         // Décoder le token pour obtenir la date d'expiration
         const tokenPayload = JSON.parse(atob(token.split('.')[1]));
         const expirationDate = new Date(tokenPayload.exp * 1000); // Convertir en millisecondes
-  
-        // Comparer la date d'expiration avec la date actuelle
+        // Si la date d'expiration est < ou = à aujourd'hui => le token a expiré = true, sinon elle renvoie false.
         return expirationDate <= new Date();
       } else {
+        // Si pas de token (expiré) => true
         return true
       }
     }

@@ -10,9 +10,9 @@ export class Pdf {
     title?: String;
     smallDescription?: String;
     description?: String;
-    image?: String;
+    image?: File;
     type?: String;
-    pdfFile?: Uint8Array; 
+    pdfFile?: File; 
     size?: number;
     counter?: number;
     authorId?: number;

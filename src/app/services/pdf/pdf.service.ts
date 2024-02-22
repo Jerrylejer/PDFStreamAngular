@@ -27,27 +27,32 @@ export class PdfService {
      * @param data 
      * @returns 
      */
-    // uploadPdf(author: User, smallDescription: String, description: String, pdfFile: File): Observable<any> {
-    //   const formData: FormData = new FormData();
-
-    //   if (author !== null) {
-    //     formData.append('author', author);
-    //   }
-    //   if (smallDescription !== null) {
-    //     formData.append('smallDescription', smallDescription);
-    //   }
-    //   if (description !== '') {
-    //     formData.append('description', description);
-    //   }
-    //   if (pdfFile !== null) {
-    //     formData.append('pdfFile', pdfFile);
-    //   }
-    //   return this.http.post(`${this.apiUrl}/pdf/upload`, formData).pipe(
-    //     catchError((error) => {
-    //       return throwError(() => error)
-    //     })
-    //   )
-    // }
+    uploadPdf(pdfTitle: any, pdfSmallDesc: any, pdfDesc: any, pdfImage: any, pdfFile: any, pdfCategory: any): Observable<any> {
+      const formData: FormData = new FormData();
+      if (pdfTitle !== null) {
+        formData.append('title', pdfTitle);
+      }
+      if (pdfSmallDesc !== null) {
+        formData.append('smallDescription', pdfSmallDesc);
+      }
+      if (pdfDesc !== '') {
+        formData.append('description', pdfDesc);
+      }
+      if (pdfImage !== null) {
+        formData.append('image', pdfImage);
+      }
+      if (pdfFile !== null) {
+        formData.append('pdfFile', pdfFile);
+      }
+      if (pdfCategory !== null) {
+        formData.append('category', pdfCategory);
+      }
+      return this.http.post(`${this.apiUrl}/pdf/upload`, formData).pipe(
+        catchError((error) => {
+          return throwError(() => error)
+        })
+      )
+    }
 
     /**
      * Envoi d'une requête http UPDATE pour la modification d'un pdf selon son id
@@ -55,8 +60,8 @@ export class PdfService {
      * @param data 
      * @returns 
      */
-    updatePdf(id: number, data: any): Observable<any> {
-      return this.http.put(`${this.apiUrl}/pdf/update/${id}`, data).pipe(
+    updatePdf(pdfId: number, formData: FormData): Observable<any> {
+      return this.http.put(`${this.apiUrl}/pdf/update/${pdfId}`, formData).pipe(
         catchError((error) => {
           return throwError(() => error)
         })

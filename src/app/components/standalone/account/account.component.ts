@@ -17,7 +17,7 @@ export class AccountComponent implements OnInit{
 
   // ###################### Variables utilisées ######################
   // #### Récupération des datas this.userService.getUserById(id) ####
-  // ############## puis valeurs communiqués au Form #################
+  // ############## puis valeurs communiquées au Form #################
   username: any = ''; 
   avatar: any = ''; 
   email: any = ''; 
@@ -118,7 +118,7 @@ export class AccountComponent implements OnInit{
   }
 
   // Soumission du formulaire d'update
-  submitFormModifications() {
+  updateAccount() {
   const updatedUsername: any = this.updateForm.value.updatedUsername;
   const updatedAvatar: any = this.updateForm.value.updatedAvatar;
   const updatedEmail: any = this.updateForm.value.updatedEmail;

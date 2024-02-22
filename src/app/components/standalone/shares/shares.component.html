@@ -16,9 +16,9 @@
             <ng-container matColumnDef="config">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="text">ACTIONS</th>
                 <td mat-cell *matCellDef="let pdf"> <a type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#modaleModification" (click)="selectedPdf(pdf)"><mat-icon>build</mat-icon></a>
+                    data-target="#modaleModification" (click)="openUpdateModale(pdf)"><mat-icon>build</mat-icon></a>
                     <!-- Si j'ouvre une modale souci => undefined -->
-                    <button type="button" class="btn btn-danger" (click)="openDeleteModale()"
+                    <button type="button" class="btn btn-danger" (click)="openDeleteModale(pdf)"
                     ><mat-icon>delete</mat-icon></button>
                 </td>
             </ng-container>
@@ -46,12 +46,12 @@
     </div>
     <!-- Si liste vide message suivant apparait -->
 
-        <!-- DEBUT - Modal de modification du formulaire -->
+        <!-- DEBUT - Modal de création  -->
         <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayCreationModale}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Modification de compte</span></div>
+                    <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Ajout d'un PDF</span></div>
                         <a type="button" 
                                 (click)="closeCreationModale()">
                         <img src="../../../assets/icones/close.png" alt="close">
@@ -59,17 +59,14 @@
                     </div>
                     <!-- Formulaire de modification des détails user-->
                     <div class="modal-body">
-                        <!-- <form class="form" [formGroup]="updateForm" (ngSubmit)="submitFormModifications()"> -->
-                        <form class="form">
+                        <form class="form" [formGroup]="createForm" (ngSubmit)="createPdf()" enctype="multipart/form-data">
+                        <!-- <form class="form"> -->
                             <div class="wrapper">
                                     <div class="groupe-a">
                                         <div class="column">
                                             <div class="inline-or-column">
                                                 <label for="pdfTitle">Titre: </label>
                                                 <input type="text" class="input" id="pdfTitle" formControlName="pdfTitle" /> 
-                                                <!-- <div class="field-message" *ngIf="updateForm.get('username')?.invalid  && (updateForm.get('username')?.dirty || updateForm.get('username')?.touched)">
-                                                    De 3 à 15 caractères alphanumérics.
-                                                </div> -->
                                             </div>
                                             <div class="inline-or-column">
                                                 <label for="pdfSmallDesc">Chapeau :</label>
@@ -78,23 +75,21 @@
                                             <div class="inline-or-column">
                                                 <label for="pdfDesc">Description : </label>
                                                 <textarea class="input" id="pdfDesc" formControlName="pdfDesc"></textarea>
-                                                <!-- <div class="field-message" *ngIf="updateForm.get('email')?.invalid  && (updateForm.get('email')?.dirty || updateForm.get('email')?.touched)">
-                                                    Cet email n'est pas valide.
-                                                </div> -->
                                             </div>
                                             <div class="inline-or-column">
                                                 <label for="pdfImage">Image : </label>
-                                                <input type="file" class="input" id="pdfImage" formControlName="pdfImage" /> 
-                                                <!-- <div class="field-message" *ngIf="updateForm.get('password')?.invalid  && (updateForm.get('password')?.dirty || updateForm.get('password')?.touched)">
-                                                    Majuscules, minuscules, chiffres et 12 caractères minimum.
-                                                </div> -->
+                                                <input type="text" class="input" id="pdfImage" formControlName="pdfImage" /> 
+                                            </div>
+                                            <div class="inline-or-column">
+                                                <label for="pdfFile">Image : </label>
+                                                <input type="text" class="input" id="pdfFile" formControlName="pdfFile" /> 
                                             </div>
                                             <!-- Adapter à catégorie -->
                                             <div class="form-group row mb-2">
                                                 <label class="col-md-3 col-form-label" for="selectCategorie">Catégorie  : </label>
                                                 <div class="select col-md-9">
                                                     <select name="selectCategorie" class="form-select" 
-                                                        [(ngModel)]="pdf.categories!">
+                                                    id="pdfCategory" formControlName="pdfCategory">
                                                         <option class="dropdown-item">
                                                             Sélection de la catégorie
                                                         </option>
@@ -123,12 +118,84 @@
         </div>
         <!-- FIN - Modal de modification du formulaire  -->
 
+        <!-- DEBUT - Modal de modification  -->
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayUpdateModale}">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Modifier un PDF</span></div>
+                        <a type="button" 
+                                (click)="closeUpdateModale()">
+                        <img src="../../../assets/icones/close.png" alt="close">
+                        </a>
+                    </div>
+                    <!-- Formulaire de modification des détails user-->
+                    <div class="modal-body">
+                        <form class="form" [formGroup]="updateForm" (ngSubmit)="updatePdf()" enctype="multipart/form-data"> 
+                        <!-- <form class="form"> -->
+                            <div class="wrapper">
+                                    <div class="groupe-a">
+                                        <div class="column">
+                                            <div class="inline-or-column">
+                                                <label for="pdfUpdatedTitle">Titre :</label>
+                                                <input type="text" class="input" id="pdfUpdatedTitle"formControlName="pdfUpdatedTitle" [value]="pdfTitle"/> 
+                                            </div>
+                                            <div class="inline-or-column">
+                                                <label for="pdfUpdatedSmallDesc">Chapeau :</label>
+                                                <input type="text" class="input" id="pdfUpdatedSmallDesc"formControlName="pdfUpdatedSmallDesc" [value]="pdfSmallDesc"/> 
+                                            </div>
+                                            <div class="inline-or-column">
+                                                <label for="pdfUpdatedDesc">Description : </label>
+                                                <textarea class="input" id="pdfUpdatedDesc" formControlName="pdfUpdatedDesc" [value]="pdfDesc"></textarea>
+                                            </div>
+                                            <div class="inline-or-column">
+                                                <label for="pdfUpdatedImage">Image : </label>
+                                                <input type="file" class="input" id="pdfUpdatedImage" formControlName="pdfUpdatedImage" accept="image/*,.pdf"/> 
+                                            </div>
+                                            <div class="inline-or-column">
+                                                <label for="pdfUpdatedFile">Pdf : </label>
+                                                <input type="file" class="input" id="pdfUpdatedFile" formControlName="pdfUpdatedFile" accept=".pdf"/> 
+                                            </div>
+                                            <!-- Adapter à catégorie -->
+                                            <div class="form-group row mb-2">
+                                                <label class="col-md-3 col-form-label" for="pdfUpdatedCategory">Catégorie : </label>
+                                                <div class="select col-md-9">
+                                                    <select name="pdfUpdatedCategory" class="form-select" 
+                                                    id="pdfUpdatedCategory" formControlName="pdfUpdatedCategory" [value]="pdfCategory">
+                                                        <option class="dropdown-item">
+                                                            Sélection de la catégorie
+                                                        </option>
+                                                        <!-- [value] pour type string only, [ngValue] pour any type  -->
+                                                        <option *ngFor="let categorie of allCategories; let x = index" class="dropdown-item"
+                                                            [value]="categorie.id">
+                                                            <!-- Je veux pouvoir afficher le nom du poste au lieu de l'id -->
+                                                            <!-- mais passer la valeur de l'id à ngModel -->
+                                                            {{categorie.title}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <!-- Bloc boutons -->
+                                <div class="groupe-b">
+                                    <button class="custbtn delete" type="submit" (click)="closeUpdateModale()">Annuler</button>
+                                    <button class="custbtn modify" type="submit">Modifier</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN - Modal de modification  -->
+
     <!-- DEBUT - Modale pour warning suppression de compte -->
     <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayDeleteModale}">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Suppression de compte</span></div>
+                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Suppression d'un PDF</span></div>
                     <a type="button" 
                             (click)="closeDeleteModale()">
                     <img src="../../../assets/icones/close.png" alt="close">
@@ -136,13 +203,13 @@
                 </div>
                 <!-- Formulaire de modification des détails user-->
                 <div class="modal-body">
-                    <form class="form" (click)="deletePdf(pdf)">
+                    <form class="form" (click)="deletePdf()">
                     <!-- <form class="form" [formGroup]="updateForm" (ngSubmit)="deleteAccount()"> -->
                         <div class="wrapper">
                                 <div class="groupe-a">
                                     <div class="column">
-                                        <p>Cette action va définitivement supprimer votre compte ainsi que votre historique de téléchargements et de fichiers partagés !</p>
-                                        <p>Confirmez-vous la suppression du compte ?</p>
+                                        <p>Cette action va définitivement supprimer ce PDF de vos fichiers partagés !</p>
+                                        <p>Confirmez-vous la suppression du PDF ?</p>
                                     </div>
                                 </div>
                             <!-- Bloc boutons -->

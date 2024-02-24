@@ -102,8 +102,10 @@ constructor(private pdfService: PdfService,
   this.createForm = this.formBuilder.group({
     smallDescription: ['', Validators.required],
     description: ['', Validators.required],
+    image: [null, Validators.required],
     pdfFile: [null, Validators.required],
-    categories: ['', Validators.required]
+    categories: ['', Validators.required],
+    author: [this.id]
   });
 
   // Initialisation du formulaire d'update
@@ -156,6 +158,16 @@ constructor(private pdfService: PdfService,
     formData.append('smallDescription', this.createForm.value.smallDescription);
     formData.append('description', this.createForm.value.description);
     formData.append('categories', this.createForm.value.categories);
+    formData.append('author', this.createForm.value.author);
+
+    const image = this.createForm.get('image')?.value;
+    if (image) {
+      const imageInput = <HTMLInputElement>document.getElementById('image'); // Récupère l'élément input
+      if (imageInput.files && imageInput.files.length > 0) {
+        const imageToUpload = imageInput.files[0]; // Récupère le fichier réel à partir de l'élément input
+        formData.append('image', imageToUpload, imageToUpload.name);
+      }
+    }
 
     const pdfFile = this.createForm.get('pdfFile')?.value;
     if (pdfFile) {
@@ -267,4 +279,4 @@ constructor(private pdfService: PdfService,
 }
 }
 }
-  
+

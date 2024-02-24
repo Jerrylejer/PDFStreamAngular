@@ -66,22 +66,22 @@
                                         <div class="column">
                                             <div class="inline-or-column">
                                                 <label for="smallDescription">Chapeau :</label>
-                                                <input type="text" class="input" id="smallDescription"formControlName="smallDescription" /> 
+                                                <input type="text" class="input" id="smallDescription"formControlName="smallDescription" required="true"/> 
                                             </div>
                                             <div class="inline-or-column">
                                                 <label for="description">Description : </label>
-                                                <textarea class="input" id="description" formControlName="description"></textarea>
+                                                <textarea class="input" id="description" formControlName="description" required="true"></textarea>
                                             </div>
                                             <div class="inline-or-column">
                                                 <label for="pdfFile">Pdf : </label>
-                                                <input type="file" class="input" id="pdfFile" formControlName="pdfFile"/> 
+                                                <input type="file" class="input" id="pdfFile" formControlName="pdfFile" required="true"/> 
                                             </div>
                                             <!-- Adapter à catégorie -->
                                             <div class="form-group row mb-2">
                                                 <label class="col-md-3 col-form-label" for="categories">Catégorie  : </label>
                                                 <div class="select col-md-9">
                                                     <select name="categories" class="form-select" 
-                                                    id="categories" formControlName="categories">
+                                                    id="categories" formControlName="categories" required="true">
                                                         <option class="dropdown-item">
                                                             Sélection de la catégorie
                                                         </option>
@@ -129,27 +129,27 @@
                                     <div class="groupe-a">
                                         <div class="column">
                                             <div class="inline-or-column">
-                                                <label for="pdfUpdatedSmallDesc">Chapeau :</label>
-                                                <input type="text" class="input" id="pdfUpdatedSmallDesc"formControlName="pdfUpdatedSmallDesc" [value]="pdfSmallDesc"/> 
+                                                <label for="updatedSmallDesc">Chapeau :</label>
+                                                <input type="text" class="input" id="updatedSmallDesc"formControlName="updatedSmallDesc" [value]="pdfSmallDesc"/> 
                                             </div>
                                             <div class="inline-or-column">
-                                                <label for="pdfUpdatedDesc">Description : </label>
-                                                <textarea class="input" id="pdfUpdatedDesc" formControlName="pdfUpdatedDesc" [value]="pdfDesc"></textarea>
+                                                <label for="updatedDesc">Description : </label>
+                                                <textarea class="input" id="updatedDesc" formControlName="updatedDesc" [value]="pdfDesc"></textarea>
                                             </div>
                                             <!-- <div class="inline-or-column">
                                                 <label for="pdfUpdatedImage">Image : </label>
                                                 <input type="file" class="input" id="pdfUpdatedImage" formControlName="pdfUpdatedImage" accept="image/*,.pdf"/> 
                                             </div> -->
                                             <div class="inline-or-column">
-                                                <label for="pdfUpdatedFile">Pdf : </label>
-                                                <input type="file" class="input" id="pdfUpdatedFile" formControlName="pdfUpdatedFile" accept=".pdf"/> 
+                                                <label for="updatedFile">Pdf : </label>
+                                                <input type="file" class="input" id="updatedFile" formControlName="updatedFile" accept=".pdf"/> 
                                             </div>
                                             <!-- Adapter à catégorie -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="pdfUpdatedCategory">Catégorie : </label>
+                                                <label class="col-md-3 col-form-label" for="updatedCategory">Catégorie : </label>
                                                 <div class="select col-md-9">
-                                                    <select name="pdfUpdatedCategory" class="form-select" 
-                                                    id="pdfUpdatedCategory" formControlName="pdfUpdatedCategory" [value]="pdfCategory">
+                                                    <select name="updatedCategory" class="form-select" 
+                                                    id="updatedCategory" formControlName="updatedCategory" [value]="pdfCategory">
                                                         <option class="dropdown-item">
                                                             Sélection de la catégorie
                                                         </option>

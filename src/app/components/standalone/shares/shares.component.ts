@@ -100,22 +100,16 @@ constructor(private pdfService: PdfService,
 
   // Initialisation du formulaire de creation
   this.createForm = this.formBuilder.group({
-    author: ['', Validators.required], // invisible client ou non accessible
-    pdfTitle:['', Validators.required],
-    pdfSmallDesc: ['', Validators.required],
-    pdfDesc: ['', Validators.required],
-    pdfImage: ['', Validators.required],
-    pdfFile: ['', Validators.required],
-    pdfCategory: ['', Validators.required]
+    smallDescription: ['', Validators.required],
+    description: ['', Validators.required],
+    pdfFile: [null, Validators.required],
+    categories: ['', Validators.required]
   });
 
   // Initialisation du formulaire d'update
   this.updateForm = this.formBuilder.group({
-    author: ['', Validators.required], // invisible client ou non accessible
-    pdfUpdatedTitle: [''],
     pdfUpdatedSmallDesc: [''],
     pdfUpdatedDesc: [''],
-    pdfUpdatedImage: [''],
     pdfUpdatedFile: [''],
     pdfUpdatedCategory: ['']
   });
@@ -155,30 +149,40 @@ constructor(private pdfService: PdfService,
   // ######################################################################
   // ############### METHODES ADMINISTRATION DES PDFS #####################
   // ######################################################################
-  
+
   // Création d'un pdf
   createPdf() {
-    const pdfTitle: any = this.createForm.value.pdfTitle;
-    const pdfSmallDesc: any = this.createForm.value.pdfSmallDesc;
-    const pdfDesc: any = this.createForm.value.pdfDesc;
-    const pdfImage: any = this.createForm.value.pdfImage;
-    const pdfFile: any = this.createForm.value.pdfFile;
-    const pdfCategory: any = this.createForm.value.pdfCategory;
-    // Appel à mon service
-    this.pdfService.uploadPdf(pdfTitle, pdfSmallDesc, pdfDesc, pdfImage, pdfFile, pdfCategory).pipe(
-      catchError((error) => {
-        console.log("erreur mon ptit gars!");
-        //this.ngOnInit();
-        return throwError(() => error);
-      })
-    )
-    .subscribe(
-      (response) => {console.log(response, "datas modifiées !"),
-    this.closeUpdateModale();
-    this.ngOnInit();
+    const formData = new FormData();
+    formData.append('smallDescription', this.createForm.value.smallDescription);
+    formData.append('description', this.createForm.value.description);
+    formData.append('categories', this.createForm.value.categories);
+
+    const pdfFile = this.createForm.get('pdfFile')?.value;
+    if (pdfFile) {
+      const fileInput = <HTMLInputElement>document.getElementById('pdfFile'); // Récupère l'élément input
+      if (fileInput.files && fileInput.files.length > 0) {
+        const fileToUpload = fileInput.files[0]; // Récupère le fichier réel à partir de l'élément input
+        formData.append('pdfFile', fileToUpload, fileToUpload.name);
+  
+        // Appel à mon service
+        this.pdfService.uploadPdf(formData).pipe(
+          catchError((error) => {
+            console.log("erreur mon ptit gars!");
+            return throwError(() => error);
+          })
+        )
+        .subscribe(
+          (response) => {
+            console.log(response, "pdf enregistré");
+            this.closeCreationModale();
+            this.ngOnInit();
+          }
+        );
+      } else {
+        console.error('Aucun fichier sélectionné');
+      }
     }
-    )
-  }
+}
   
   // Suppression d'un pdf
   deletePdf() {

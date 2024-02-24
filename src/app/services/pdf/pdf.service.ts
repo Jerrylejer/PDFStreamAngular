@@ -27,26 +27,7 @@ export class PdfService {
      * @param data 
      * @returns 
      */
-    uploadPdf(pdfTitle: any, pdfSmallDesc: any, pdfDesc: any, pdfImage: any, pdfFile: any, pdfCategory: any): Observable<any> {
-      const formData: FormData = new FormData();
-      if (pdfTitle !== null) {
-        formData.append('title', pdfTitle);
-      }
-      if (pdfSmallDesc !== null) {
-        formData.append('smallDescription', pdfSmallDesc);
-      }
-      if (pdfDesc !== '') {
-        formData.append('description', pdfDesc);
-      }
-      if (pdfImage !== null) {
-        formData.append('image', pdfImage);
-      }
-      if (pdfFile !== null) {
-        formData.append('pdfFile', pdfFile);
-      }
-      if (pdfCategory !== null) {
-        formData.append('category', pdfCategory);
-      }
+    uploadPdf(formData: FormData): Observable<any> {
       return this.http.post(`${this.apiUrl}/pdf/upload`, formData).pipe(
         catchError((error) => {
           return throwError(() => error)

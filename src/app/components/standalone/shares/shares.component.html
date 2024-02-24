@@ -57,39 +57,31 @@
                         <img src="../../../assets/icones/close.png" alt="close">
                         </a>
                     </div>
-                    <!-- Formulaire de modification des détails user-->
+                    <!-- Formulaire de création d'un pdf'-->
                     <div class="modal-body">
-                        <form class="form" [formGroup]="createForm" (ngSubmit)="createPdf()" enctype="multipart/form-data">
+                        <form class="form" [formGroup]="createForm" (ngSubmit)="createPdf()" enctype="multipart/form-data" method = "post">
                         <!-- <form class="form"> -->
                             <div class="wrapper">
                                     <div class="groupe-a">
                                         <div class="column">
                                             <div class="inline-or-column">
-                                                <label for="pdfTitle">Titre: </label>
-                                                <input type="text" class="input" id="pdfTitle" formControlName="pdfTitle" /> 
+                                                <label for="smallDescription">Chapeau :</label>
+                                                <input type="text" class="input" id="smallDescription"formControlName="smallDescription" /> 
                                             </div>
                                             <div class="inline-or-column">
-                                                <label for="pdfSmallDesc">Chapeau :</label>
-                                                <input type="text" class="input" id="pdfSmallDesc"formControlName="pdfSmallDesc" accept="image/*,.pdf"/> 
+                                                <label for="description">Description : </label>
+                                                <textarea class="input" id="description" formControlName="description"></textarea>
                                             </div>
                                             <div class="inline-or-column">
-                                                <label for="pdfDesc">Description : </label>
-                                                <textarea class="input" id="pdfDesc" formControlName="pdfDesc"></textarea>
-                                            </div>
-                                            <div class="inline-or-column">
-                                                <label for="pdfImage">Image : </label>
-                                                <input type="text" class="input" id="pdfImage" formControlName="pdfImage" /> 
-                                            </div>
-                                            <div class="inline-or-column">
-                                                <label for="pdfFile">Image : </label>
-                                                <input type="text" class="input" id="pdfFile" formControlName="pdfFile" /> 
+                                                <label for="pdfFile">Pdf : </label>
+                                                <input type="file" class="input" id="pdfFile" formControlName="pdfFile"/> 
                                             </div>
                                             <!-- Adapter à catégorie -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="selectCategorie">Catégorie  : </label>
+                                                <label class="col-md-3 col-form-label" for="categories">Catégorie  : </label>
                                                 <div class="select col-md-9">
-                                                    <select name="selectCategorie" class="form-select" 
-                                                    id="pdfCategory" formControlName="pdfCategory">
+                                                    <select name="categories" class="form-select" 
+                                                    id="categories" formControlName="categories">
                                                         <option class="dropdown-item">
                                                             Sélection de la catégorie
                                                         </option>
@@ -116,7 +108,7 @@
                 </div>
             </div>
         </div>
-        <!-- FIN - Modal de modification du formulaire  -->
+        <!-- FIN - Modal de création du formulaire  -->
 
         <!-- DEBUT - Modal de modification  -->
         <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayUpdateModale}">
@@ -137,10 +129,6 @@
                                     <div class="groupe-a">
                                         <div class="column">
                                             <div class="inline-or-column">
-                                                <label for="pdfUpdatedTitle">Titre :</label>
-                                                <input type="text" class="input" id="pdfUpdatedTitle"formControlName="pdfUpdatedTitle" [value]="pdfTitle"/> 
-                                            </div>
-                                            <div class="inline-or-column">
                                                 <label for="pdfUpdatedSmallDesc">Chapeau :</label>
                                                 <input type="text" class="input" id="pdfUpdatedSmallDesc"formControlName="pdfUpdatedSmallDesc" [value]="pdfSmallDesc"/> 
                                             </div>
@@ -148,10 +136,10 @@
                                                 <label for="pdfUpdatedDesc">Description : </label>
                                                 <textarea class="input" id="pdfUpdatedDesc" formControlName="pdfUpdatedDesc" [value]="pdfDesc"></textarea>
                                             </div>
-                                            <div class="inline-or-column">
+                                            <!-- <div class="inline-or-column">
                                                 <label for="pdfUpdatedImage">Image : </label>
                                                 <input type="file" class="input" id="pdfUpdatedImage" formControlName="pdfUpdatedImage" accept="image/*,.pdf"/> 
-                                            </div>
+                                            </div> -->
                                             <div class="inline-or-column">
                                                 <label for="pdfUpdatedFile">Pdf : </label>
                                                 <input type="file" class="input" id="pdfUpdatedFile" formControlName="pdfUpdatedFile" accept=".pdf"/> 

@@ -72,9 +72,13 @@
                                                 <label for="description">Description : </label>
                                                 <textarea class="input" id="description" formControlName="description" required="true"></textarea>
                                             </div>
+                                             <div class="inline-or-column">
+                                                <label for="image">Image : </label>
+                                                <input type="file" class="input" id="image" formControlName="image" accept="image/*"/> 
+                                            </div>
                                             <div class="inline-or-column">
                                                 <label for="pdfFile">Pdf : </label>
-                                                <input type="file" class="input" id="pdfFile" formControlName="pdfFile" required="true"/> 
+                                                <input type="file" class="input" id="pdfFile" formControlName="pdfFile" accept=".pdf" required="true"/> 
                                             </div>
                                             <!-- Adapter à catégorie -->
                                             <div class="form-group row mb-2">
@@ -137,8 +141,8 @@
                                                 <textarea class="input" id="updatedDesc" formControlName="updatedDesc" [value]="pdfDesc"></textarea>
                                             </div>
                                             <!-- <div class="inline-or-column">
-                                                <label for="pdfUpdatedImage">Image : </label>
-                                                <input type="file" class="input" id="pdfUpdatedImage" formControlName="pdfUpdatedImage" accept="image/*,.pdf"/> 
+                                                <label for="updatedImage">Image : </label>
+                                                <input type="file" class="input" id="updatedImage" formControlName="updatedImage" accept="image/*"/> 
                                             </div> -->
                                             <div class="inline-or-column">
                                                 <label for="updatedFile">Pdf : </label>

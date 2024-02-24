@@ -108,10 +108,10 @@ constructor(private pdfService: PdfService,
 
   // Initialisation du formulaire d'update
   this.updateForm = this.formBuilder.group({
-    pdfUpdatedSmallDesc: [''],
-    pdfUpdatedDesc: [''],
-    pdfUpdatedFile: [''],
-    pdfUpdatedCategory: ['']
+    updatedSmallDesc: [''],
+    updatedDesc: [''],
+    updatedFile: [null],
+    updatedCategory: ['']
   });
 
   // Récupération des pdfs d'un User connecté
@@ -231,30 +231,26 @@ constructor(private pdfService: PdfService,
     const formData: FormData = new FormData();
     const formValues = this.updateForm.value;
 
-  if (formValues.pdfUpdatedTitle !== '') {
-      formData.append('title', formValues.pdfUpdatedTitle);
-      console.log(formValues.pdfUpdatedTitle)
+  if (formValues.updatedSmallDesc !== '') {
+      formData.append('smallDescription', formValues.updatedSmallDesc);
+      console.log(formValues.updatedSmallDesc)
   }
-  if (formValues.pdfUpdatedSmallDesc !== '') {
-      formData.append('smallDescription', formValues.pdfUpdatedSmallDesc);
-      console.log(formValues.pdfUpdatedSmallDesc)
+  if (formValues.updatedDesc !== '') {
+      formData.append('description', formValues.updatedDesc);
+      console.log(formValues.updatedDesc)
   }
-  if (formValues.pdfUpdatedDesc !== '') {
-      formData.append('description', formValues.pdfUpdatedDesc);
-      console.log(formValues.pdfUpdatedDesc)
+  if (formValues.updatedCategory !== '') {
+      formData.append('category', formValues.updatedCategory);
+      console.log(formValues.updatedCategory)
   }
-  if (formValues.pdfUpdatedImage) {
-      formData.append('image', formValues.pdfUpdatedImage);
-      console.log(formValues.pdfUpdatedImage)
-  }
-  if (formValues.pdfUpdatedFile) {
-      formData.append('pdfFile', formValues.pdfUpdatedFile);
-      console.log(formValues.pdfUpdatedFile)
-  }
-  if (formValues.pdfUpdatedCategory !== '') {
-      formData.append('category', formValues.pdfUpdatedCategory);
-      console.log(formValues.pdfUpdatedCategory)
-  }
+
+  const updatedFile = this.updateForm.get('updatedFile')?.value;
+  if (updatedFile) {
+    const fileInput = <HTMLInputElement>document.getElementById('updatedFile'); // Récupère l'élément input
+    if (fileInput.files && fileInput.files.length > 0) {
+      const fileToUpdate = fileInput.files[0]; // Récupère le fichier réel à partir de l'élément input
+      formData.append('pdfFile', fileToUpdate, fileToUpdate.name);
+
     this.pdfService.updatePdf(pdfId, formData).pipe(
       catchError((error) => {
         console.log("erreur");
@@ -262,11 +258,13 @@ constructor(private pdfService: PdfService,
       })
     )
     .subscribe(
-      (response) => {console.log(response, "datas modifiées !"),
+      (response) => {console.log(response, "pdf modifié !"),
     this.closeUpdateModale();
     this.ngOnInit();
     }
     )
   }
 }
-
+}
+}
+  

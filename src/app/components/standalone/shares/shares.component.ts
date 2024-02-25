@@ -97,7 +97,6 @@ constructor(private pdfService: PdfService,
   updateForm!: FormGroup;
   
   ngOnInit(): void {
-
   // Initialisation du formulaire de creation
   this.createForm = this.formBuilder.group({
     smallDescription: ['', Validators.required],
@@ -107,15 +106,14 @@ constructor(private pdfService: PdfService,
     categories: ['', Validators.required],
     author: [this.id]
   });
-
   // Initialisation du formulaire d'update
   this.updateForm = this.formBuilder.group({
     updatedSmallDesc: [''],
     updatedDesc: [''],
+    updatedImage: [null],
     updatedFile: [null],
     updatedCategory: ['']
   });
-
   // Récupération des pdfs d'un User connecté
   // Requête de récupération de l'objet user
   this.userService.getUserById(this.id).pipe(
@@ -252,8 +250,17 @@ constructor(private pdfService: PdfService,
       console.log(formValues.updatedDesc)
   }
   if (formValues.updatedCategory !== '') {
-      formData.append('category', formValues.updatedCategory);
+      formData.append('categories', formValues.updatedCategory);
       console.log(formValues.updatedCategory)
+  }
+
+  const updatedImage = this.updateForm.get('updatedImage')?.value;
+  if (updatedImage) {
+    const imageInput = <HTMLInputElement>document.getElementById('updatedImage'); // Récupère l'élément input
+    if (imageInput.files && imageInput.files.length > 0) {
+      const imageToUpdate = imageInput.files[0]; // Récupère le fichier réel à partir de l'élément input
+      formData.append('image', imageToUpdate, imageToUpdate.name);
+    }
   }
 
   const updatedFile = this.updateForm.get('updatedFile')?.value;
@@ -262,21 +269,21 @@ constructor(private pdfService: PdfService,
     if (fileInput.files && fileInput.files.length > 0) {
       const fileToUpdate = fileInput.files[0]; // Récupère le fichier réel à partir de l'élément input
       formData.append('pdfFile', fileToUpdate, fileToUpdate.name);
-
-    this.pdfService.updatePdf(pdfId, formData).pipe(
-      catchError((error) => {
-        console.log("erreur");
-        return throwError(() => error);
-      })
-    )
-    .subscribe(
-      (response) => {console.log(response, "pdf modifié !"),
-    this.closeUpdateModale();
-    this.ngOnInit();
     }
-    )
   }
-}
+
+  this.pdfService.updatePdf(pdfId, formData).pipe(
+    catchError((error) => {
+      console.log("erreur");
+      return throwError(() => error);
+    })
+  )
+  .subscribe(
+    (response) => {console.log(response, "pdf modifié !"),
+  this.closeUpdateModale();
+  this.ngOnInit();
+  }
+  )
 }
 }
 

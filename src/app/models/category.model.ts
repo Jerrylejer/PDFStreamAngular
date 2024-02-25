@@ -2,7 +2,7 @@ import { Pdf } from "./pdf.model";
 
 export class Category {
     id?: number;
-    title?: String;
+    title?: string;
     parentId?: Category;
     children?: Category[];
     createdAt?: Date;

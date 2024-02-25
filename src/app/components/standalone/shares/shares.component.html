@@ -127,7 +127,7 @@
                     </div>
                     <!-- Formulaire de modification des détails user-->
                     <div class="modal-body">
-                        <form class="form" [formGroup]="updateForm" (ngSubmit)="updatePdf()" enctype="multipart/form-data"> 
+                        <form class="form" [formGroup]="updateForm" (ngSubmit)="updatePdf()" enctype="multipart/form-data" method = "put"> 
                         <!-- <form class="form"> -->
                             <div class="wrapper">
                                     <div class="groupe-a">
@@ -140,10 +140,10 @@
                                                 <label for="updatedDesc">Description : </label>
                                                 <textarea class="input" id="updatedDesc" formControlName="updatedDesc" [value]="pdfDesc"></textarea>
                                             </div>
-                                            <!-- <div class="inline-or-column">
+                                            <div class="inline-or-column">
                                                 <label for="updatedImage">Image : </label>
                                                 <input type="file" class="input" id="updatedImage" formControlName="updatedImage" accept="image/*"/> 
-                                            </div> -->
+                                            </div>
                                             <div class="inline-or-column">
                                                 <label for="updatedFile">Pdf : </label>
                                                 <input type="file" class="input" id="updatedFile" formControlName="updatedFile" accept=".pdf"/> 

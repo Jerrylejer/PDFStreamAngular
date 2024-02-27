@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;" *ngIf="categories">
+    <!-- Je n'affiche que les catégories "parents, les autres seront disponibles au click sur le parent" par le path:"/category/:id" -->
+    <ng-container class="cards" *ngIf="categories.parentId == null">
+        <div class="card-body" >
+            <!-- <img class="card-img-top" src={{category.image}} alt="categoryImage"> -->
+          <h5 class="card-title">{{categories.title}}</h5>
+        </div>
+    </ng-container>
+</div>

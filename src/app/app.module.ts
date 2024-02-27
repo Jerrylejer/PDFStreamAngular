@@ -33,6 +33,8 @@ import { SharesComponent } from './components/standalone/shares/shares.component
 import { ConventionComponent } from './components/standalone/convention/convention.component';
 import { DashboardComponent } from './components/standalone/dashboard/dashboard.component';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
+import { CategorieCardComponent } from './components/shared/categorie-card/categorie-card.component';
+import { CategorieListComponent } from './components/standalone/categorie-list/categorie-list.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.co
     SharesComponent,
     ConventionComponent,
     DashboardComponent,
-    PageDashboardComponent
+    PageDashboardComponent,
+    CategorieCardComponent,
+    CategorieListComponent
   ],
   imports: [
     BrowserModule,

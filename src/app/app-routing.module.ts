@@ -4,11 +4,18 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
+import { PageCategorieComponent } from './pages/page-categorie/page-categorie.component';
 
 const routes: Routes = [
   {
+    // ma page "home" affichera la liste des catégories 
     path:"",
     component:PageHomeComponent
+  },
+  {
+    // Le click sur une catégorie mènera à la page de catégorie soumise
+    path:"categorie/:id",
+    component:PageCategorieComponent
   },
   {
     path:"dashboard",

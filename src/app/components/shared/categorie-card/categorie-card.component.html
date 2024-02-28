@@ -2,6 +2,8 @@
     <!-- Je n'affiche que les catégories "parents, les autres seront disponibles au click sur le parent" par le path:"/category/:id" -->
     <ng-container class="cards">
         <div class="card-body" >
+            <!-- Je stocke les images des catégories dans mes assets et adapte mon chemin suivant le title de la catégorie bouclée -->
+            <img [src]="'assets/images/categories/' + categories.title + '.jpg'" alt="Image de la catégorie {{ categories.title }}">
             <!-- <img class="card-img-top" src={{category.image}} alt="categoryImage"> -->
           <h5 class="card-title">{{categories.title}}</h5>
         </div>

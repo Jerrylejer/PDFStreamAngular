@@ -1,7 +1,13 @@
 .card {
     z-index: -1;
+    border: none;
+    /* J'adapte ma largeur maximale à la photo sinon mon texte déborde sur la droite */
+    max-width: fit-content;
 }
 
-.card-body {
-height: 300px;
+.card-title {
+    text-align: right;
+    color: var(--greytext);
+    font-size: 20px;
+    font-weight: 600;
 }

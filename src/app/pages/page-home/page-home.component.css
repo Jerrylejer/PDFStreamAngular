@@ -1,6 +1,6 @@
 .categories {
     display: flex;
-    gap: 2%;
+    gap: 1%;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;

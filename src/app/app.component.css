@@ -55,6 +55,9 @@
 @media only screen and (min-width: 768px) {
         .nav {
             display: block;
+            position: sticky;
+            top: 8%;
+            left: 0;
         }
 }
 
@@ -62,6 +65,9 @@
 @media only screen and (min-width: 992px) {
         .nav {
             display: block;
+            position: sticky;
+            top: 8%;
+            left: 0;
         }
 }
 
@@ -69,5 +75,8 @@
 @media only screen and (min-width: 1200px) {
         .nav {
             display: block;
+            position: sticky;
+            top: 8%;
+            left: 0;
         }
 }

@@ -13,3 +13,8 @@ a {
     font-size: 20px;
     font-weight: 600;
 }
+
+li:hover {
+    /* Effet + fin sur nav en position "normale", effet + épais sur nav en position décalée dans Header */
+    font-weight: 500;
+}

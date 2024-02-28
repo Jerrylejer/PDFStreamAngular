@@ -1,3 +1,5 @@
 <!-- Je boucle sur categoriesList: Category[] => *ngFor = "let categoriesList of categoriesList " et range le résultat dans "let categoriesList" -->
 <!-- Puis passe "let categoriesList" (="categoriesList") à [categories] qui est récupéré par categorie-card.compoenet avec @Input() -->
-<app-categorie-card *ngFor = "let categoriesList of categoriesList " [categories]="categoriesList" class="cards"></app-categorie-card>
+<section *ngFor = "let categoriesList of categoriesList" class="listing">
+    <app-categorie-card [categories]="categoriesList"></app-categorie-card>
+</section>

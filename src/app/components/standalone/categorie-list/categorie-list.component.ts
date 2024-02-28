@@ -21,7 +21,8 @@ ngOnInit(): void {
       })
     )
     .subscribe((categories) => {
-      this.categoriesList = categories
+      // Je ne veux afficher que les catégories "parent" sur ma hommePage => Je filtre !
+      this.categoriesList = categories.filter(categories => categories.parentId == null)
     })
 }
 }

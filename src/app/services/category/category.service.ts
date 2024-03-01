@@ -84,4 +84,17 @@ export class CategoryService {
         })
       )
     }
+
+        /**
+     * Envoi d'une requête http GET pour la lecture d'une liste de category selon une categorie "parent"
+     * @param id 
+     * @returns 
+     */
+        getCategoryByParentId(id: number): Observable<Category[]> {
+          return this.http.get<Category[]>(`${this.apiUrl}/category/parentCategoryId/${id}`).pipe(
+            catchError((error) => {
+              return throwError(() => error)
+            })
+          )
+        }
 }

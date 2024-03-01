@@ -11,9 +11,10 @@ import { PageListePdfsComponent } from './pages/page-liste-pdfs/page-liste-pdfs.
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'categorie', pathMatch: 'full' },
   {
     // ma page "home" affichera la liste des catégories 
-    path:"",
+    path:"categorie",
     component:PageHomeComponent
   },
   {

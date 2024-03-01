@@ -5,6 +5,10 @@ import { PageInscriptionComponent } from './pages/page-inscription/page-inscript
 import { Page404Component } from './pages/page404/page404.component';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { PageCategorieComponent } from './pages/page-categorie/page-categorie.component';
+import { PageCategorieEnfantComponent } from './pages/page-categorie-enfant/page-categorie-enfant.component';
+import { PageSousCategorieEnfantComponent } from './pages/page-sous-categorie-enfant/page-sous-categorie-enfant.component';
+import { PageListePdfsComponent } from './pages/page-liste-pdfs/page-liste-pdfs.component';
+import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
 const routes: Routes = [
   {
@@ -13,19 +17,42 @@ const routes: Routes = [
     component:PageHomeComponent
   },
   {
-    // Le click sur une catégorie mènera à la page de catégorie soumise
-    path:"categorie/:id",
+    // => Chemin vers une catégorie 
+    path:"categorie/:categorieId",
     component:PageCategorieComponent
   },
   {
+    // => Chemin vers une catégorie enfant
+    path:"categorie/:categorieId/:categorieEnfantId",
+    component:PageCategorieEnfantComponent
+  },
+  {
+    // => Chemin vers une catégorie enfant de enfant
+    path:"categorie/:categorieId/:categorieEnfantId/:sousCategorieEnfantId",
+    component:PageSousCategorieEnfantComponent
+  },
+  {
+    // => Chemin vers la liste des pdfs d'une catégorie enfant de enfant
+    path:"categorie/:categorieId/:categorieEnfantId/:sousCategorieEnfantId/listePdfs",
+    component:PageListePdfsComponent
+  },
+  {
+    // => Chemin vers un pdf
+    path:"categorie/:categorieId/:categorieEnfantId/:sousCategorieEnfantId/listePdfs/:pdfId",
+    component:PagePdfComponent
+  },
+  {
+    // Dashboard user
     path:"dashboard",
     component:PageDashboardComponent
   },
   {
+    // Chemin vers l'inscription
     path:"inscription",
     component:PageInscriptionComponent
   },
   {
+    // Page 404
     path:"not-found",
     component:Page404Component
   },

@@ -25,7 +25,6 @@ import { NavCategoriesComponent } from './components/shared/nav-categories/nav-c
 import { SearchComponent } from './components/shared/search/search.component';
 import { RegistrationFormComponent } from './components/standalone/registration-form/registration-form.component';
 import { PageCategorieComponent } from './pages/page-categorie/page-categorie.component';
-import { PageSousCategorieComponent } from './pages/page-sous-categorie/page-sous-categorie.component';
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 import { AccountComponent } from './components/standalone/account/account.component';
 import { CollectionComponent } from './components/standalone/collection/collection.component';
@@ -35,6 +34,9 @@ import { DashboardComponent } from './components/standalone/dashboard/dashboard.
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { CategorieCardComponent } from './components/shared/categorie-card/categorie-card.component';
 import { CategorieListComponent } from './components/standalone/categorie-list/categorie-list.component';
+import { PageCategorieEnfantComponent } from './pages/page-categorie-enfant/page-categorie-enfant.component';
+import { PageSousCategorieEnfantComponent } from './pages/page-sous-categorie-enfant/page-sous-categorie-enfant.component';
+import { PageListePdfsComponent } from './pages/page-liste-pdfs/page-liste-pdfs.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,6 @@ import { CategorieListComponent } from './components/standalone/categorie-list/c
     NavCategoriesComponent,
     RegistrationFormComponent,
     PageCategorieComponent,
-    PageSousCategorieComponent,
     PagePdfComponent,
     AccountComponent,
     CollectionComponent,
@@ -58,7 +59,10 @@ import { CategorieListComponent } from './components/standalone/categorie-list/c
     DashboardComponent,
     PageDashboardComponent,
     CategorieCardComponent,
-    CategorieListComponent
+    CategorieListComponent,
+    PageCategorieEnfantComponent,
+    PageSousCategorieEnfantComponent,
+    PageListePdfsComponent,
   ],
   imports: [
     BrowserModule,

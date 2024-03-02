@@ -25,7 +25,7 @@ import { BannerComponent } from './components/shared/banner/banner.component';
 import { NavCategoriesComponent } from './components/shared/nav-categories/nav-categories.component';
 import { SearchComponent } from './components/shared/search/search.component';
 import { RegistrationFormComponent } from './components/standalone/registration-form/registration-form.component';
-import { PageCategorieComponent } from './pages/page-categorie/page-categorie.component';
+import { PageCategoryComponent } from './pages/page-category/page-category.component';
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 import { AccountComponent } from './components/standalone/account/account.component';
 import { CollectionComponent } from './components/standalone/collection/collection.component';
@@ -33,12 +33,12 @@ import { SharesComponent } from './components/standalone/shares/shares.component
 import { ConventionComponent } from './components/standalone/convention/convention.component';
 import { DashboardComponent } from './components/standalone/dashboard/dashboard.component';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
-import { CategorieCardComponent } from './components/shared/categorie-card/categorie-card.component';
-import { CategorieListComponent } from './components/standalone/categorie-list/categorie-list.component';
-import { PageCategorieEnfantComponent } from './pages/page-categorie-enfant/page-categorie-enfant.component';
-import { PageSousCategorieEnfantComponent } from './pages/page-sous-categorie-enfant/page-sous-categorie-enfant.component';
-import { PageListePdfsComponent } from './pages/page-liste-pdfs/page-liste-pdfs.component';
-import { CategorieEnfantCardComponent } from './components/shared/categorie-enfant-card/categorie-enfant-card.component';
+import { CategoryCardComponent } from './components/shared/category-card/category-card.component';
+import { CategoriesListComponent } from './components/standalone/categories-list/categories-list.component';
+import { PageCategoryChildComponent } from './pages/page-category-child/page-category-child.component';
+import { PageCategorySubChildComponent } from './pages/page-category-sub-child/page-category-sub-child.component';
+import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.component';
+import { CategoryChildCardComponent } from './components/shared/category-child-card/category-child-card.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,7 @@ import { CategorieEnfantCardComponent } from './components/shared/categorie-enfa
     BannerComponent,
     NavCategoriesComponent,
     RegistrationFormComponent,
-    PageCategorieComponent,
+    PageCategoryComponent,
     PagePdfComponent,
     AccountComponent,
     CollectionComponent,
@@ -60,12 +60,12 @@ import { CategorieEnfantCardComponent } from './components/shared/categorie-enfa
     ConventionComponent,
     DashboardComponent,
     PageDashboardComponent,
-    CategorieCardComponent,
-    CategorieListComponent,
-    PageCategorieEnfantComponent,
-    PageSousCategorieEnfantComponent,
-    PageListePdfsComponent,
-    CategorieEnfantCardComponent,
+    CategoryCardComponent,
+    CategoriesListComponent,
+    PageCategoryChildComponent,
+    PageCategorySubChildComponent,
+    PagePdfsListComponent,
+    CategoryChildCardComponent,
   ],
   imports: [
     BrowserModule,

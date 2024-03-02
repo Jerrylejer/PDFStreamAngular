@@ -4,11 +4,11 @@ import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
-  selector: 'app-categorie-list',
-  templateUrl: './categorie-list.component.html',
-  styleUrl: './categorie-list.component.css'
+  selector: 'app-categories-list',
+  templateUrl: './categories-list.component.html',
+  styleUrl: './categories-list.component.css'
 })
-export class CategorieListComponent implements OnInit{
+export class CategoriesListComponent implements OnInit{
   // Mon objet "categoriesList" stocke la liste des catégories que je passe à app-categorie-card
   categoriesList: Category[] = [];
 

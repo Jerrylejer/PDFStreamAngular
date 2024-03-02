@@ -4,7 +4,7 @@
     </div>
     <!-- A FAIRE : Implentation du futur composant "recherche" -->
     <nav class="navigation">
-      <div *ngIf="!isConnectedUser">
+      <div *ngIf="isConnectedUser == false">
         <li (click)="openModale()">Connexion</li>
         <li (click)="routerInscription()">Inscription</li>
       </div>

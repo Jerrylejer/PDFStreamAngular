@@ -1,8 +1,8 @@
 .cards {
     z-index: -1;
     border: none;
-    /* J'adapte ma largeur maximale à la photo sinon mon texte déborde sur la droite */
-    max-width: fit-content;
+    /* J'adapte ma largeur minimale */
+    max-width:fit-content;
 }
 
 .card-title {

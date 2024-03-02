@@ -1,9 +1,6 @@
-<div class="cards" style="width: 18rem;" *ngFor="let category of categories">
-    <!-- Je n'affiche que les catégories "parents, les autres seront disponibles au click sur le parent" par le path:"/category/:id" -->
-        <div class="card-body" [routerLink]="['/categorie', category.id]">
-            <!-- Je stocke les images des catégories dans mes assets et adapte mon chemin suivant le title de la catégorie bouclée -->
-            <img [src]="'assets/images/categories/' + category.title + '.jpg'" alt="Image de la catégorie {{category.title}}">
-            <!-- lien vers la catégorie -->
-          <h5 class="card-title">{{category.title}}</h5>
-        </div>
+<div *ngFor="let category of categories" >
+  <a [routerLink]="['/categories', category.id]">
+    <img [src]="'assets/images/categories/' + category.title + '.jpg'" alt="Image de la catégorie {{category.title}}">
+    <h5 class="card-title">{{category.title}}</h5>
+  </a>
 </div>

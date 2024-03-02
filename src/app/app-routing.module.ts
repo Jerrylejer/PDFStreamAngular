@@ -4,10 +4,10 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
-import { PageCategorieComponent } from './pages/page-categorie/page-categorie.component';
-import { PageCategorieEnfantComponent } from './pages/page-categorie-enfant/page-categorie-enfant.component';
-import { PageSousCategorieEnfantComponent } from './pages/page-sous-categorie-enfant/page-sous-categorie-enfant.component';
-import { PageListePdfsComponent } from './pages/page-liste-pdfs/page-liste-pdfs.component';
+import { PageCategoryComponent } from './pages/page-category/page-category.component';
+import { PageCategoryChildComponent } from './pages/page-category-child/page-category-child.component';
+import { PageCategorySubChildComponent } from './pages/page-category-sub-child/page-category-sub-child.component';
+import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.component';
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
 const routes: Routes = [
@@ -20,22 +20,22 @@ const routes: Routes = [
   {
     // => Chemin vers une catégorie 
     path:"categories/:categorieId",
-    component:PageCategorieComponent
+    component:PageCategoryComponent
   },
   {
     // => Chemin vers une catégorie enfant
     path:"categoriesEnfants/:categorieEnfantId",
-    component:PageCategorieEnfantComponent
+    component:PageCategoryChildComponent
   },
   {
     // => Chemin vers une catégorie enfant de enfant
     path:"sousCategoriesEnfants/:sousCategorieEnfantId",
-    component:PageSousCategorieEnfantComponent
+    component:PageCategorySubChildComponent
   },
   {
     // => Chemin vers la liste des pdfs d'une catégorie enfant de enfant
     path:"sousCategorieEnfant/listePdfs",
-    component:PageListePdfsComponent
+    component:PagePdfsListComponent
   },
   {
     // => Chemin vers un pdf

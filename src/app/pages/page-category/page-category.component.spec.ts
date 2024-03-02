@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageListePdfsComponent } from './page-liste-pdfs.component';
+import { PageCategoryComponent } from './page-category.component';
 
-describe('PageListePdfsComponent', () => {
-  let component: PageListePdfsComponent;
-  let fixture: ComponentFixture<PageListePdfsComponent>;
+describe('PageCategoryComponent', () => {
+  let component: PageCategoryComponent;
+  let fixture: ComponentFixture<PageCategoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PageListePdfsComponent]
+      declarations: [PageCategoryComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PageListePdfsComponent);
+    fixture = TestBed.createComponent(PageCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

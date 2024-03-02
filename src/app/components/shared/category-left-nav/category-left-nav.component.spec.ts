@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CategorieListComponent } from './categorie-list.component';
+import { CategoryLeftNavComponent } from './category-left-nav.component';
 
-describe('CategorieListComponent', () => {
-  let component: CategorieListComponent;
-  let fixture: ComponentFixture<CategorieListComponent>;
+describe('CategoryLeftNavComponent', () => {
+  let component: CategoryLeftNavComponent;
+  let fixture: ComponentFixture<CategoryLeftNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CategorieListComponent]
+      imports: [CategoryLeftNavComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CategorieListComponent);
+    fixture = TestBed.createComponent(CategoryLeftNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

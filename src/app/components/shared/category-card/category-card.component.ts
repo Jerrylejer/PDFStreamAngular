@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 
 @Component({
-  selector: 'app-categorie-card',
-  templateUrl: './categorie-card.component.html',
-  styleUrl: './categorie-card.component.css'
+  selector: 'app-category-card',
+  templateUrl: './category-card.component.html',
+  styleUrl: './category-card.component.css'
 })
-export class CategorieCardComponent {
+export class CategoryCardComponent {
   // Je réceptionne la liste des catégories de categorie-list.component et stocke la liste dans categories
   @Input() categories: Category[] = [];
 

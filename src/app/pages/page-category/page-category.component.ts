@@ -5,11 +5,11 @@ import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
-  selector: 'app-page-categorie',
-  templateUrl: './page-categorie.component.html',
-  styleUrl: './page-categorie.component.css'
+  selector: 'app-page-category',
+  templateUrl: './page-category.component.html',
+  styleUrl: './page-category.component.css'
 })
-export class PageCategorieComponent implements OnInit{
+export class PageCategoryComponent implements OnInit{
 
   // PageCategorieComponent est lié au path "categorie/:categorieId" dans le app-routing
   categorieId!: string;

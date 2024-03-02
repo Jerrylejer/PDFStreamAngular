@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CategorieCardComponent } from './categorie-card.component';
+import { PagePdfsListComponent } from './page-pdfs-list.component';
 
-describe('CategorieCardComponent', () => {
-  let component: CategorieCardComponent;
-  let fixture: ComponentFixture<CategorieCardComponent>;
+describe('PagePdfsListComponent', () => {
+  let component: PagePdfsListComponent;
+  let fixture: ComponentFixture<PagePdfsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CategorieCardComponent]
+      declarations: [PagePdfsListComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CategorieCardComponent);
+    fixture = TestBed.createComponent(PagePdfsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

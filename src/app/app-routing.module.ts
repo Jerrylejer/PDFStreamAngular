@@ -11,35 +11,35 @@ import { PageListePdfsComponent } from './pages/page-liste-pdfs/page-liste-pdfs.
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'categorie', pathMatch: 'full' },
+  { path: '', redirectTo: 'categories', pathMatch: 'full' },
   {
     // ma page "home" affichera la liste des catégories 
-    path:"categorie",
+    path:"categories",
     component:PageHomeComponent
   },
   {
     // => Chemin vers une catégorie 
-    path:"categorie/:categorieId",
+    path:"categories/:categorieId",
     component:PageCategorieComponent
   },
   {
     // => Chemin vers une catégorie enfant
-    path:"categorie/:categorieId/:categorieEnfantId",
+    path:"categories/:categorieId/:categorieEnfantId",
     component:PageCategorieEnfantComponent
   },
   {
     // => Chemin vers une catégorie enfant de enfant
-    path:"categorie/:categorieId/:categorieEnfantId/:sousCategorieEnfantId",
+    path:"categories/:categorieId/:categorieEnfantId/:sousCategorieEnfantId",
     component:PageSousCategorieEnfantComponent
   },
   {
     // => Chemin vers la liste des pdfs d'une catégorie enfant de enfant
-    path:"categorie/:categorieId/:categorieEnfantId/:sousCategorieEnfantId/listePdfs",
+    path:"categories/:categorieId/:categorieEnfantId/:sousCategorieEnfantId/listePdfs",
     component:PageListePdfsComponent
   },
   {
     // => Chemin vers un pdf
-    path:"categorie/:categorieId/:categorieEnfantId/:sousCategorieEnfantId/listePdfs/:pdfId",
+    path:"categories/:categorieId/:categorieEnfantId/:sousCategorieEnfantId/listePdfs/:pdfId",
     component:PagePdfComponent
   },
   {

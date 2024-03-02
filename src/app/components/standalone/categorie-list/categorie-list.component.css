@@ -1,4 +1,9 @@
 .listing {
 margin: 2%;
-cursor: pointer;
+gap: 5%;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
 }
+

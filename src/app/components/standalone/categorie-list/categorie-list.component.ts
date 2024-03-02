@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category/category.service';
@@ -8,7 +8,7 @@ import { CategoryService } from 'src/app/services/category/category.service';
   templateUrl: './categorie-list.component.html',
   styleUrl: './categorie-list.component.css'
 })
-export class CategorieListComponent {
+export class CategorieListComponent implements OnInit{
   // Mon objet "categoriesList" stocke la liste des catégories que je passe à app-categorie-card
   categoriesList: Category[] = [];
 

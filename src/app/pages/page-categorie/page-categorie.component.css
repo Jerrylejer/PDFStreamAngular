@@ -1,7 +1,16 @@
-.categories {
+/* .categories {
     display: flex;
     gap: 1%;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}
+} */
+
+.listing {
+    margin: 2%;
+    gap: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    }

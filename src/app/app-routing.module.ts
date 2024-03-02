@@ -24,22 +24,22 @@ const routes: Routes = [
   },
   {
     // => Chemin vers une catégorie enfant
-    path:"categories/:categorieId/:categorieEnfantId",
+    path:"categoriesEnfants/:categorieEnfantId",
     component:PageCategorieEnfantComponent
   },
   {
     // => Chemin vers une catégorie enfant de enfant
-    path:"categories/:categorieId/:categorieEnfantId/:sousCategorieEnfantId",
+    path:"sousCategoriesEnfants/:sousCategorieEnfantId",
     component:PageSousCategorieEnfantComponent
   },
   {
     // => Chemin vers la liste des pdfs d'une catégorie enfant de enfant
-    path:"categories/:categorieId/:categorieEnfantId/:sousCategorieEnfantId/listePdfs",
+    path:"sousCategorieEnfant/listePdfs",
     component:PageListePdfsComponent
   },
   {
     // => Chemin vers un pdf
-    path:"categories/:categorieId/:categorieEnfantId/:sousCategorieEnfantId/listePdfs/:pdfId",
+    path:"sousCategorieEnfant/listePdfs/:pdfId",
     component:PagePdfComponent
   },
   {

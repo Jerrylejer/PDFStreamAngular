@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
+import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
@@ -10,10 +11,10 @@ import { CategoryService } from 'src/app/services/category/category.service';
 })
 export class PageCategorieComponent implements OnInit{
 
-  // avec ! je notifie à mon composant que la data sera fournie ultérieurement
-  // Sera fourni au click de la catégorie dans la liste des catégories
   // PageCategorieComponent est lié au path "categorie/:categorieId" dans le app-routing
   categorieId!: string;
+  // Je stocke dans childsCategorieList les dataa reçues de ma requête getCategoryByParentId() et passe la propriété à app-categorie-enfant-card.ts
+  childsCategorieList: Category[] = [];
 
   constructor(private activatedRoute: ActivatedRoute, private categoryService: CategoryService){}
 
@@ -23,14 +24,15 @@ export class PageCategorieComponent implements OnInit{
         this.categorieId = params['categorieId'];
         console.log('id de la catégorie cliquée : ', this.categorieId)
       })
-      // Je demande au service de loader les ctégories enfant de la catégorie parent cliquée
+      // Je demande au service de loader les catégories enfants de la catégorie parent cliquée
       this.categoryService.getCategoryByParentId(Number(this.categorieId)).pipe(
         catchError((error) => {
           return throwError(() => error)
         })
       )
       .subscribe(targetedCategory => {
-        console.log(targetedCategory)
+        console.log(targetedCategory);
+        this.childsCategorieList = targetedCategory;
       })
   }
 }

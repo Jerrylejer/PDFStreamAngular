@@ -38,6 +38,7 @@ import { CategorieListComponent } from './components/standalone/categorie-list/c
 import { PageCategorieEnfantComponent } from './pages/page-categorie-enfant/page-categorie-enfant.component';
 import { PageSousCategorieEnfantComponent } from './pages/page-sous-categorie-enfant/page-sous-categorie-enfant.component';
 import { PageListePdfsComponent } from './pages/page-liste-pdfs/page-liste-pdfs.component';
+import { CategorieEnfantCardComponent } from './components/shared/categorie-enfant-card/categorie-enfant-card.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PageListePdfsComponent } from './pages/page-liste-pdfs/page-liste-pdfs.
     PageCategorieEnfantComponent,
     PageSousCategorieEnfantComponent,
     PageListePdfsComponent,
+    CategorieEnfantCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class PageCategoryComponent implements OnInit{
 
   // PageCategorieComponent est lié au path "categorie/:categorieId" dans le app-routing
   categorieId!: string;
-  // Je stocke dans childsCategorieList les dataa reçues de ma requête getCategoryByParentId() et passe la propriété à app-categorie-enfant-card.ts
+  // Je stocke dans childsCategorieList les datas reçues de ma requête getCategoryByParentId() et passe la propriété à app-categorie-enfant-card.ts
   childsCategorieList: Category[] = [];
   // Je stocke la catégorie parent pour accéder à son title et l'afficher dans la nav left
   parentCategory?: Category;
@@ -28,7 +28,8 @@ export class PageCategoryComponent implements OnInit{
     // paramMap émet un objet ParamMap à chaque modification des paramètres d'URL. 
     this.activatedRoute.paramMap.pipe(
       switchMap((params: ParamMap) => {
-        this.categorieId = params.get('categorieId')!;
+        // path:"categories/:categorieId" de app.routing
+        this.categorieId = params.get('categoryId')!;
          console.log('id de la catégorie cliquée : ', this.categorieId);
          return this.categoryService.getCategoryByParentId(Number(this.categorieId)).pipe(
            catchError((error) => {
@@ -45,7 +46,7 @@ export class PageCategoryComponent implements OnInit{
 
       this.activatedRoute.paramMap.pipe(
         switchMap((params: ParamMap) => {
-          this.categorieId = params.get('categorieId')!;
+          this.categorieId = params.get('categoryId')!;
           // Charger la catégorie parent
           return this.categoryService.getCategoryById(Number(this.categorieId)).pipe(
             catchError((error) => {

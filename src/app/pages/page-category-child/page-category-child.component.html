@@ -1,1 +1,15 @@
-<p>page-category-child works!</p>
+<section>
+    <app-banner class="banner"></app-banner>
+    <div class="wrapper">
+        <!-- Ici la navigation gauche  -->
+        <div class="left-nav">
+            <h4 *ngIf="childCategory">Catégorie - {{childCategory.title}}</h4>
+            <nav *ngFor="let subChildCategories of subChildsCategorieList">
+                <a [routerLink]="['/childCategory', subChildCategories.id]">{{subChildCategories.title}}</a>
+            </nav>
+        </div>
+        <span class="border"></span>
+        <!-- Ici les cards -->
+        <app-category-subchild-card [subChildCategories]="subChildsCategorieList" class="listing"></app-category-subchild-card>
+    </div>
+</section>

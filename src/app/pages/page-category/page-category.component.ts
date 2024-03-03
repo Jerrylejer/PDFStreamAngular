@@ -15,7 +15,8 @@ export class PageCategoryComponent implements OnInit{
   categorieId!: string;
   // Je stocke dans childsCategorieList les dataa reçues de ma requête getCategoryByParentId() et passe la propriété à app-categorie-enfant-card.ts
   childsCategorieList: Category[] = [];
-
+  // Je stocke la catégorie parent pour accéder à son title et l'afficher dans la nav left
+  parentCategory!: Category;
   constructor(private activatedRoute: ActivatedRoute, private categoryService: CategoryService){}
 
   ngOnInit(): void {
@@ -33,6 +34,16 @@ export class PageCategoryComponent implements OnInit{
       .subscribe(targetedCategory => {
         console.log(targetedCategory);
         this.childsCategorieList = targetedCategory;
+      })
+      // Je demande au service de loader la catégorie parent 
+      this.categoryService.getCategoryById(Number(this.categorieId)).pipe(
+        catchError((error) => {
+          return throwError(() => error)
+        })
+      )
+      .subscribe(targetedCategory => {
+        console.log(targetedCategory);
+        this.parentCategory = targetedCategory;
       })
   }
 }

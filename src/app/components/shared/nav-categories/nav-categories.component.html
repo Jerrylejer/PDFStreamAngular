@@ -1,8 +1,5 @@
-<nav>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight"><li>Education</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight"><li>Métiers</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight"><li>Arts</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight"><li>Sciences</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight"><li>Passions</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight"><li>Technologies</li></a>
-</nav>
+<div class="wrapper">
+    <nav *ngFor="let parentCategory of categoriesList">
+        <a [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['categories',parentCategory.id]"><li>{{parentCategory.title}}</li></a>
+    </nav>
+</div>

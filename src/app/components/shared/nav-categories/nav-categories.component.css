@@ -1,7 +1,11 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 nav {
     margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
 }
 
 li {

@@ -1,11 +1,5 @@
 <div class="wrapper">
     <nav *ngFor="let parentCategory of categoriesList">
-        <a [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['categories',parentCategory.id]"><li>{{parentCategory.title}}</li></a>
+        <a [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['category',parentCategory.id]"><li>{{parentCategory.title}}</li></a>
     </nav>
-    <!-- <a href="#" [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['categories',1]"><li>Education</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['categories',4]"><li>Métiers</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['categories',5]"><li>Arts</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['categories',6]"><li>Sciences</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['categories',7]"><li>Passions</li></a>
-    <a href="#" [style.color]="color" [style.fontWeight]="fontWeight" [routerLink]="['categories',8]"><li>Technologies</li></a> -->
 </div>

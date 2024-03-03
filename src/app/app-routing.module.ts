@@ -11,15 +11,15 @@ import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.com
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'categories', pathMatch: 'full' },
+  { path: '', redirectTo: 'allCategories', pathMatch: 'full' },
   {
     // ma page "home" affichera la liste des catégories 
-    path:"categories",
+    path:"allCategories",
     component:PageHomeComponent
   },
   {
     // => Chemin vers une catégorie 
-    path:"categories/:categorieId",
+    path:"category/:categoryId",
     component:PageCategoryComponent
   },
   {
@@ -29,17 +29,17 @@ const routes: Routes = [
   },
   {
     // => Chemin vers une catégorie enfant de enfant
-    path:"sousCategoriesEnfants/:sousCategorieEnfantId",
+    path:"subChildCategory/:subChildCategoryId",
     component:PageCategorySubChildComponent
   },
   {
     // => Chemin vers la liste des pdfs d'une catégorie enfant de enfant
-    path:"sousCategorieEnfant/listePdfs",
+    path:"subChildCategory/pdfsList",
     component:PagePdfsListComponent
   },
   {
     // => Chemin vers un pdf
-    path:"sousCategorieEnfant/listePdfs/:pdfId",
+    path:"subChildCategory/pdfsList/:pdfId",
     component:PagePdfComponent
   },
   {

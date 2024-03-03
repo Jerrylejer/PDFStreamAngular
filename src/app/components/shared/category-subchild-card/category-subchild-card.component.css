@@ -1,0 +1,13 @@
+.cards {
+    z-index: -1;
+    border: none;
+    /* J'adapte ma largeur minimale */
+    max-width:fit-content;
+}
+
+.card-title {
+    text-align: right;
+    color: var(--greytext);
+    font-size: 20px;
+    font-weight: 600;
+}

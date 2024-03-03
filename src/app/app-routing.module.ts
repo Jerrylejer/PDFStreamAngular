@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     // => Chemin vers une catégorie enfant
-    path:"categoriesEnfants/:categorieEnfantId",
+    path:"childCategory/:childCategoryId",
     component:PageCategoryChildComponent
   },
   {

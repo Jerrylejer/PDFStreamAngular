@@ -1,13 +1,17 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { catchError, throwError } from 'rxjs';
+import { Category } from 'src/app/models/category.model';
+import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
   selector: 'app-nav-categories',
   templateUrl: './nav-categories.component.html',
   styleUrl: './nav-categories.component.css'
 })
-export class NavCategoriesComponent {
+export class NavCategoriesComponent implements OnInit{
   color = '#3e515b'; // Couleur de font par défaut
   fontWeight = "600"; // font-weight par défaut
+  categoriesList: Category[] = [];
 
   // Mon écouteur d'évènement au scroll
   @HostListener('window:scroll', [])
@@ -22,4 +26,20 @@ export class NavCategoriesComponent {
       this.fontWeight = '600'; // sinon la font weight par défaut
     }
   }
+
+  constructor(private categoryService: CategoryService) {}
+
+  ngOnInit(): void {
+      this.categoryService.getCategorieslist().pipe(
+        catchError((error) => {
+          return throwError(() => error)
+        })
+      )
+      .subscribe((categories) => {
+        // Je filtre la réception des datas pour n'afficher que les catégories parents
+        this.categoriesList = categories.filter(cat => cat.parentId == null);
+      }
+      )
+  }
+
 }

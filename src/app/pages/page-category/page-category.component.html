@@ -1,4 +1,15 @@
 <section>
     <app-banner class="banner"></app-banner>
-    <app-category-child-card [childCategories]="childsCategorieList" class="listing"></app-category-child-card>
+    <div class="wrapper">
+        <!-- Ici la navigation gauche  -->
+        <div class="left-nav">
+            <h4>Catégorie {{parentCategory.title}}</h4>
+            <nav *ngFor="let childCategories of childsCategorieList">
+                <a [routerLink]="['/childCategory', childCategories.id]">{{childCategories.title}}</a>
+            </nav>
+        </div>
+        <span class="border"></span>
+        <!-- Ici les cards -->
+        <app-category-child-card [childCategories]="childsCategorieList" class="listing"></app-category-child-card>
+    </div>
 </section>

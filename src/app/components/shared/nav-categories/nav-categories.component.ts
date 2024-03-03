@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category/category.service';
@@ -27,7 +28,7 @@ export class NavCategoriesComponent implements OnInit{
     }
   }
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService, private route: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
       this.categoryService.getCategorieslist().pipe(
@@ -41,5 +42,4 @@ export class NavCategoriesComponent implements OnInit{
       }
       )
   }
-
 }

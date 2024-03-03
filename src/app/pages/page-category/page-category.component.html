@@ -3,7 +3,7 @@
     <div class="wrapper">
         <!-- Ici la navigation gauche  -->
         <div class="left-nav">
-            <h4>Catégorie {{parentCategory.title}}</h4>
+            <h4 *ngIf="parentCategory">Catégorie - {{parentCategory.title}}</h4>
             <nav *ngFor="let childCategories of childsCategorieList">
                 <a [routerLink]="['/childCategory', childCategories.id]">{{childCategories.title}}</a>
             </nav>

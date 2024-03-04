@@ -41,7 +41,6 @@ export class PageCategoryChildComponent implements OnInit{
         this.subChildsCategorieList = targetedChildCategory;
       })
 
-      // L'ID EST == A 0, pourquoi ???
       this.activatedRoute.paramMap.pipe(
         switchMap((params: ParamMap) => {
           this.categorieId = params.get('childCategoryId')!;

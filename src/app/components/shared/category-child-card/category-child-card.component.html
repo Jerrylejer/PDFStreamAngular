@@ -1,6 +1,0 @@
-<div *ngFor="let category of childCategories" class="wrapper">
-    <a [routerLink]="['/childCategory', category.id]">
-      <img [src]="'assets/images/categories/' + category.title + '.jpg'" alt="Image de la catégorie {{category.title}}">
-      <h5 class="card-title">{{category.title}}</h5>
-    </a>
-</div>

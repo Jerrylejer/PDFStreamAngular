@@ -36,10 +36,8 @@ import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.co
 import { CategoryCardComponent } from './components/shared/category-card/category-card.component';
 import { CategoriesListComponent } from './components/standalone/categories-list/categories-list.component';
 import { PageCategoryChildComponent } from './pages/page-category-child/page-category-child.component';
-import { PageCategorySubChildComponent } from './pages/page-category-sub-child/page-category-sub-child.component';
 import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.component';
-import { CategoryChildCardComponent } from './components/shared/category-child-card/category-child-card.component';
-import { CategorySubchildCardComponent } from './components/shared/category-subchild-card/category-subchild-card.component';
+
 
 @NgModule({
   declarations: [
@@ -64,10 +62,7 @@ import { CategorySubchildCardComponent } from './components/shared/category-subc
     CategoryCardComponent,
     CategoriesListComponent,
     PageCategoryChildComponent,
-    PageCategorySubChildComponent,
     PagePdfsListComponent,
-    CategoryChildCardComponent,
-    CategorySubchildCardComponent,
   ],
   imports: [
     BrowserModule,

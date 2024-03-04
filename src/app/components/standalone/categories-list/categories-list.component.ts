@@ -15,13 +15,14 @@ export class CategoriesListComponent implements OnInit{
   constructor(private categoryService: CategoryService) {}
 
 ngOnInit(): void {
+  // Je requête toute la liste des catégories mais ...
     this.categoryService.getCategorieslist().pipe(
       catchError((error) => {
         return throwError(() => error)
       })
     )
     .subscribe((categories) => {
-      // Je ne veux afficher que les catégories "parent" sur ma hommePage => Je filtre !
+      // ... je ne veux afficher que les catégories "parent" sur ma hommePage => Je filtre !
       this.categoriesList = categories.filter(categories => categories.parentId == null)
     })
 }

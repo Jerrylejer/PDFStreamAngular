@@ -27,6 +27,7 @@ export class PageCategoryChildComponent implements OnInit{
         // path:"childCategory/:childCategoryId"
         this.categorieId = params.get('childCategoryId')!;
          console.log('id de la childCatégorie cliquée : ', this.categorieId);
+          // Je requête les catégories issues d'une catégorie "mère"
          return this.categoryService.getCategoryByParentId(Number(this.categorieId)).pipe(
            catchError((error) => {
              return throwError(() => error);

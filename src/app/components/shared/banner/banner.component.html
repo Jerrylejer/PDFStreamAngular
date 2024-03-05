@@ -1,11 +1,17 @@
 <article>
     <!-- Version desktop -->
     <div class="desktop">
-        <div class="header">
+        <div class="header" *ngIf="!bannerByCategory">
             <span class="redtext">In</span>
             <span class="blacktext">scrivez-vous !</span>
         </div>
-        <div class="body">
+        <div class="header" *ngIf="bannerByCategory">
+            <!-- voir comment adapter les couleurs ... -->
+            <!-- <span class="redtext">In</span>
+            <span class="blacktext">scrivez-vous !</span> -->
+            <span class="blacktext">{{bannerByCategory.title}}</span>
+        </div>
+        <div class="body" *ngIf="!bannerByCategory">
             <p class="text">
                 Découvrez une communauté dynamique où partager et explorer des connaissances à travers des PDF captivants. Inscrivez-vous dès maintenant pour créer votre profil, télécharger des contenus exclusifs et contribuer à une bibliothèque collaborative. Rejoignez-nous dans l'échange et l'exploration !
             </p>
@@ -13,11 +19,15 @@
                 S'inscrire
             </button>
         </div>
+        <div *ngIf="bannerByCategory">
+            <!-- enregistrer l'image du FIGMA -->
+            <img [src]="'assets/images/categories/' + bannerByCategory.title + 'Banner.jpg'" alt="Image bannière de la catégorie {{bannerByCategory.title}}">
+        </div>
     </div>
     <!-- Version mobile -->
     <div class="mobile">
         <div>
-            <span class="redtext">In</span>
+            <span class="redtext">In</span>K
             <span class="blacktext">scrivez-vous !</span>
         </div>
         <p class="mobile-txt">

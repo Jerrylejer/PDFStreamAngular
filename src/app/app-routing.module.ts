@@ -5,7 +5,6 @@ import { PageInscriptionComponent } from './pages/page-inscription/page-inscript
 import { Page404Component } from './pages/page404/page404.component';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { PageCategoryComponent } from './pages/page-category/page-category.component';
-import { PageCategoryChildComponent } from './pages/page-category-child/page-category-child.component';
 import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.component';
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
@@ -20,11 +19,6 @@ const routes: Routes = [
     // => Chemin vers une catégorie 
     path:"category/:categoryId",
     component:PageCategoryComponent
-  },
-  {
-    // => Chemin vers une catégorie enfant
-    path:"childCategory/:childCategoryId",
-    component:PageCategoryChildComponent
   },
   {
     // => Chemin vers la liste des pdfs d'une catégorie enfant de enfant

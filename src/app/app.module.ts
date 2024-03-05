@@ -35,7 +35,6 @@ import { DashboardComponent } from './components/standalone/dashboard/dashboard.
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { CategoryCardComponent } from './components/shared/category-card/category-card.component';
 import { CategoriesListComponent } from './components/standalone/categories-list/categories-list.component';
-import { PageCategoryChildComponent } from './pages/page-category-child/page-category-child.component';
 import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.component';
 
 
@@ -61,7 +60,6 @@ import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.com
     PageDashboardComponent,
     CategoryCardComponent,
     CategoriesListComponent,
-    PageCategoryChildComponent,
     PagePdfsListComponent,
   ],
   imports: [

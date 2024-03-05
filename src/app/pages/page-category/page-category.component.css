@@ -1,3 +1,13 @@
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+.banner {
+    align-self: center;
+    margin-bottom: 1%;
+}
+
 .wrapper {
     display: flex;
     justify-content:space-around;
@@ -20,7 +30,7 @@
     display: flex;
     flex: 1;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 

@@ -1,8 +1,5 @@
 .cards {
-    z-index: -1;
-    border: none;
-    /* J'adapte ma largeur minimale */
-    max-width:fit-content;
+margin: 2%;
 }
 
 .card-title {

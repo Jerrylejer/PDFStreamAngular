@@ -1,11 +1,12 @@
 <section>
-    <app-banner class="banner"></app-banner>
+    <app-banner [bannerByCategory]="parentCategory" class="banner"></app-banner>
     <div class="wrapper">
         <!-- Ici la navigation gauche  -->
         <div class="left-nav">
             <h4 *ngIf="parentCategory">Catégorie - {{parentCategory.title}}</h4>
             <nav *ngFor="let childCategories of childsCategorieList">
-                <a [routerLink]="['/childCategory', childCategories.id]">{{childCategories.title}}</a>
+                <a [routerLink]="['/category', childCategories.id]">{{childCategories.title}}</a>
+                <!-- <a [routerLink]="['/childCategory', childCategories.id]">{{childCategories.title}}</a> -->
             </nav>
         </div>
         <span class="border"></span>

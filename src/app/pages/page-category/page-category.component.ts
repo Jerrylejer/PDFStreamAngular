@@ -42,7 +42,14 @@ export class PageCategoryComponent implements OnInit{
           // Chargement des catégories enfants de la catégorie parent cliquée dans childsCategorieList
       .subscribe(targetedCategory => {
         console.log(targetedCategory);
-        this.childsCategorieList = targetedCategory;
+        // Je trie le tableau par ordre alphabétique
+        this.childsCategorieList = targetedCategory.sort((a, b) => {
+          // Si valeur négative (-1), cela indique à la méthode sort() que le premier élément (a) doit être placé avant le second élément (b)
+          if (a.title! < b.title!) return -1;
+          // Si valeur positive (1), cela indique à la méthode sort() que le premier élément (a) doit être placé après le second élément (b)
+          if (a.title! > b.title!) return 1;
+          return 0;
+        });
       })
 
       this.activatedRoute.paramMap.pipe(

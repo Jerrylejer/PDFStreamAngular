@@ -80,7 +80,18 @@ submitted = false;
 uploadedPdf?: Pdf[] = []; 
 
 // LISTE DES CATEGORIES
+// Pour le select cat 1
 allCategories: Category[] = [];
+selectedParent: any;
+// Pour le select cat 2
+childCategories: Category[] = [];
+selectedChild: any;
+// Pour le select cat 3
+subChildCategories: Category[] = [];
+selectedSubChildCat: any
+// Pour le select cat 4
+finalCategories: Category[] = [];
+selectedFinalCat: any
 
 // Récupération de l'id dans le localStorage
 id = Number(localStorage.getItem('userId'));
@@ -95,6 +106,11 @@ constructor(private pdfService: PdfService,
   createForm!: FormGroup;
   // FORMULAIRE UPDATE
   updateForm!: FormGroup;
+
+  // ##############################################
+  // ############### NGONINIT #####################
+  // ##############################################
+  // Initialisation des formulaires, récupération des datas 
   
   ngOnInit(): void {
   // Initialisation du formulaire de creation
@@ -104,6 +120,9 @@ constructor(private pdfService: PdfService,
     image: [null, Validators.required],
     pdfFile: [null, Validators.required],
     categories: ['', Validators.required],
+    childCategories:[null, Validators.required],
+    subChildCategories:[null, Validators.required],
+    finalCategory: [null, Validators.required],
     author: [this.id]
   });
   // Initialisation du formulaire d'update
@@ -114,6 +133,61 @@ constructor(private pdfService: PdfService,
     updatedFile: [null],
     updatedCategory: ['']
   });
+
+  // Surveillance du premier input select dans le form de création
+  this.createForm.get('categories')!.valueChanges.subscribe((value) => {
+    console.log("Cat 1 sélectionnée :", value);
+    this.selectedParent = value; // Stockez la valeur sélectionnée
+    this.categoryService.getCategoryByParentId(this.selectedParent).pipe(
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+    .subscribe((childCat) => {
+      this.childCategories = childCat.sort((a, b) => {
+        if(a.title! < b.title!) return -1;
+        if(a.title! > b.title!) return 1;
+        return 0;
+      })
+    })
+});
+
+  // Surveillance du second input select dans le form de création
+  this.createForm.get('childCategories')!.valueChanges.subscribe((value) => {
+    console.log("Cat 2 sélectionnée :", value);
+    this.selectedChild = value; // Stockez la valeur sélectionnée
+    this.categoryService.getCategoryByParentId(this.selectedChild).pipe(
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+    .subscribe((subChildCat) => {
+      this.subChildCategories = subChildCat.sort((a, b) => {
+        if(a.title! < b.title!) return -1;
+        if(a.title! > b.title!) return 1;
+        return 0;
+      })
+    })
+});
+
+  // Surveillance du troisième input select dans le form de création
+  this.createForm.get('subChildCategories')!.valueChanges.subscribe((value) => {
+    console.log("Cat 3 sélectionnée :", value);
+    this.selectedSubChildCat = value; // Stockez la valeur sélectionnée
+    this.categoryService.getCategoryByParentId(this.selectedSubChildCat).pipe(
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+    .subscribe((finalCat) => {
+      this.finalCategories = finalCat.sort((a, b) => {
+        if(a.title! < b.title!) return -1;
+        if(a.title! > b.title!) return 1;
+        return 0;
+      })
+    })
+});
+
   // Récupération des pdfs d'un User connecté
   // Requête de récupération de l'objet user
   this.userService.getUserById(this.id).pipe(
@@ -141,15 +215,16 @@ constructor(private pdfService: PdfService,
       })
     )
     .subscribe((response) => {
+      // Je trie mes catégorie par ordre alpha et je ne retourne que les catégories mères
       this.allCategories = response.sort((a, b) => {
         if(a.title! < b.title!) return -1;
         if(a.title! > b.title!) return 1;
         return 0;
-      });
+      }).filter(cat => cat.parentId == null);
     }
     )
   }
-  
+
   // ######################################################################
   // ############### METHODES ADMINISTRATION DES PDFS #####################
   // ######################################################################
@@ -159,7 +234,8 @@ constructor(private pdfService: PdfService,
     const formData = new FormData();
     formData.append('smallDescription', this.createForm.value.smallDescription);
     formData.append('description', this.createForm.value.description);
-    formData.append('categories', this.createForm.value.categories);
+    // formData.append('categories', this.createForm.value.categories);
+    formData.append('categories', this.createForm.value.finalCategory);
     formData.append('author', this.createForm.value.author);
 
     const image = this.createForm.get('image')?.value;

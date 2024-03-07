@@ -131,10 +131,13 @@ constructor(private pdfService: PdfService,
     updatedDesc: [''],
     updatedImage: [null],
     updatedFile: [null],
-    updatedCategory: ['']
+    updatedCategory: [''],
+    updatedChildCategories:[null],
+    updatedSubChildCategories:[null],
+    updatedFinalCategory: [null],
   });
 
-  // Surveillance du premier input select dans le form de création
+  // CREATEFORM => Surveillance du premier input select
   this.createForm.get('categories')!.valueChanges.subscribe((value) => {
     console.log("Cat 1 sélectionnée :", value);
     this.selectedParent = value; // Stockez la valeur sélectionnée
@@ -152,7 +155,7 @@ constructor(private pdfService: PdfService,
     })
 });
 
-  // Surveillance du second input select dans le form de création
+  // CREATEFORM => Surveillance du second input select 
   this.createForm.get('childCategories')!.valueChanges.subscribe((value) => {
     console.log("Cat 2 sélectionnée :", value);
     this.selectedChild = value; // Stockez la valeur sélectionnée
@@ -170,7 +173,7 @@ constructor(private pdfService: PdfService,
     })
 });
 
-  // Surveillance du troisième input select dans le form de création
+  // CREATEFORM => Surveillance du troisième input select 
   this.createForm.get('subChildCategories')!.valueChanges.subscribe((value) => {
     console.log("Cat 3 sélectionnée :", value);
     this.selectedSubChildCat = value; // Stockez la valeur sélectionnée
@@ -188,8 +191,63 @@ constructor(private pdfService: PdfService,
     })
 });
 
+  // UPDATEFORM => Surveillance du premier input select
+  this.updateForm.get('updatedCategory')!.valueChanges.subscribe((value) => {
+    console.log("Cat 1 sélectionnée :", value);
+    this.selectedParent = value; // Stockez la valeur sélectionnée
+    this.categoryService.getCategoryByParentId(this.selectedParent).pipe(
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+    .subscribe((childCat) => {
+      this.childCategories = childCat.sort((a, b) => {
+        if(a.title! < b.title!) return -1;
+        if(a.title! > b.title!) return 1;
+        return 0;
+      })
+    })
+});
+
+  // UPDATEFORM => Surveillance du second input select 
+  this.updateForm.get('updatedChildCategories')!.valueChanges.subscribe((value) => {
+    console.log("Cat 2 sélectionnée :", value);
+    this.selectedChild = value; // Stockez la valeur sélectionnée
+    this.categoryService.getCategoryByParentId(this.selectedChild).pipe(
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+    .subscribe((subChildCat) => {
+      this.subChildCategories = subChildCat.sort((a, b) => {
+        if(a.title! < b.title!) return -1;
+        if(a.title! > b.title!) return 1;
+        return 0;
+      })
+    })
+});
+
+  // UPDATEFORM => Surveillance du troisième input select 
+  this.updateForm.get('updatedSubChildCategories')!.valueChanges.subscribe((value) => {
+    console.log("Cat 3 sélectionnée :", value);
+    this.selectedSubChildCat = value; // Stockez la valeur sélectionnée
+    this.categoryService.getCategoryByParentId(this.selectedSubChildCat).pipe(
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+    .subscribe((finalCat) => {
+      this.finalCategories = finalCat.sort((a, b) => {
+        if(a.title! < b.title!) return -1;
+        if(a.title! > b.title!) return 1;
+        return 0;
+      })
+    })
+});
+
+
   // Récupération des pdfs d'un User connecté
-  // Requête de récupération de l'objet user
+  // J'identifie le user => Requête de récupération de l'objet user
   this.userService.getUserById(this.id).pipe(
     catchError((error) => {
       return throwError(() => error);
@@ -215,7 +273,7 @@ constructor(private pdfService: PdfService,
       })
     )
     .subscribe((response) => {
-      // Je trie mes catégorie par ordre alpha et je ne retourne que les catégories mères
+      // Je trie mes catégories par ordre alpha et je ne retourne que les catégories mères
       this.allCategories = response.sort((a, b) => {
         if(a.title! < b.title!) return -1;
         if(a.title! > b.title!) return 1;
@@ -240,9 +298,9 @@ constructor(private pdfService: PdfService,
 
     const image = this.createForm.get('image')?.value;
     if (image) {
-      const imageInput = <HTMLInputElement>document.getElementById('image'); // Récupère l'élément input
+      const imageInput = <HTMLInputElement>document.getElementById('image'); 
       if (imageInput.files && imageInput.files.length > 0) {
-        const imageToUpload = imageInput.files[0]; // Récupère le fichier réel à partir de l'élément input
+        const imageToUpload = imageInput.files[0]; // Récupère le fichier à partir de l'élément input
         formData.append('image', imageToUpload, imageToUpload.name);
       }
     }
@@ -287,8 +345,8 @@ constructor(private pdfService: PdfService,
     }
   
   // I - UPDATE DU PDF -> Afficher le pdf sélectionné
-  // Récupération des datas this.pdfService.getPdfById(pdf.id)
-  // puis valeurs communiquées au Form d'update
+  // showPdf => Je récupère les données via this.pdfService.getPdfById(pdf.id)
+  // showPdf => J'affiche les datas dans le formulaire
   pdfAuthor: any = '';
   pdfTitle: any = ''; 
   pdfSmallDesc: any = ''; 
@@ -305,7 +363,7 @@ constructor(private pdfService: PdfService,
     .subscribe(
       (response) => {
         console.log(response)
-        // Je récupère les données du pdf, ok
+        // Je récupère les données du pdf puis les affcihe grâce au binding de propriété [value] dans le form
         this.pdfAuthor = response.author
         this.pdfTitle = response.title;
         this.pdfSmallDesc = response.smallDescription;
@@ -321,6 +379,7 @@ constructor(private pdfService: PdfService,
     const formData: FormData = new FormData();
     const formValues = this.updateForm.value;
 
+    // J'hydrate mon pdf avec les données mises à jour
   if (formValues.updatedSmallDesc !== '') {
       formData.append('smallDescription', formValues.updatedSmallDesc);
       console.log(formValues.updatedSmallDesc)
@@ -330,13 +389,13 @@ constructor(private pdfService: PdfService,
       console.log(formValues.updatedDesc)
   }
   if (formValues.updatedCategory !== '') {
-      formData.append('categories', formValues.updatedCategory);
-      console.log(formValues.updatedCategory)
+      formData.append('categories', formValues.updatedFinalCategory);
+      console.log(formValues.updatedFinalCategory)
   }
 
   const updatedImage = this.updateForm.get('updatedImage')?.value;
   if (updatedImage) {
-    const imageInput = <HTMLInputElement>document.getElementById('updatedImage'); // Récupère l'élément input
+    const imageInput = <HTMLInputElement>document.getElementById('updatedImage'); 
     if (imageInput.files && imageInput.files.length > 0) {
       const imageToUpdate = imageInput.files[0]; // Récupère le fichier réel à partir de l'élément input
       formData.append('image', imageToUpdate, imageToUpdate.name);
@@ -345,7 +404,7 @@ constructor(private pdfService: PdfService,
 
   const updatedFile = this.updateForm.get('updatedFile')?.value;
   if (updatedFile) {
-    const fileInput = <HTMLInputElement>document.getElementById('updatedFile'); // Récupère l'élément input
+    const fileInput = <HTMLInputElement>document.getElementById('updatedFile');
     if (fileInput.files && fileInput.files.length > 0) {
       const fileToUpdate = fileInput.files[0]; // Récupère le fichier réel à partir de l'élément input
       formData.append('pdfFile', fileToUpdate, fileToUpdate.name);

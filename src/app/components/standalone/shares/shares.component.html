@@ -200,10 +200,10 @@
                                             </div>
                                             <!-- Select catégorie parent-->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="updatedCategory">Catégorie : </label>
+                                                <label class="col-md-3 col-form-label" for="updatedCategory">Cat 1 : </label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedCategory" class="form-select" 
-                                                    id="updatedCategory" formControlName="updatedCategory" [value]="pdfCategory">
+                                                    id="updatedCategory" formControlName="updatedCategory">
                                                         <option class="dropdown-item">
                                                             Sélection de la catégorie
                                                         </option>
@@ -212,6 +212,57 @@
                                                             [value]="categorie.id">
                                                             <!-- Je veux pouvoir afficher le nom du poste au lieu de l'id -->
                                                             <!-- mais passer la valeur de l'id à ngModel -->
+                                                            {{categorie.title}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- select des sous-catégories parent -->
+                                            <div class="form-group row mb-2">
+                                                <label class="col-md-3 col-form-label" for="updatedChildCategories">Cat 2  : </label>
+                                                <div class="select col-md-9">
+                                                    <select name="updatedChildCategories" class="form-select" 
+                                                    id="updatedChildCategories" formControlName="updatedChildCategories" required="true">
+                                                        <option class="dropdown-item">
+                                                            Sélection sous-catégorie
+                                                        </option>
+                                                        <!-- J'affiche la liste selon la value de id="categories" (premier select)-->
+                                                        <option *ngFor="let categorie of childCategories; let x = index" class="dropdown-item" [ngValue]="categorie.id">
+                                                            {{categorie.title}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                                <!-- select des sub child categories -->
+                                            <div class="form-group row mb-2">
+                                                <label class="col-md-3 col-form-label" for="updatedSubChildCategories">Cat 3  : </label>
+                                                <div class="select col-md-9">
+                                                    <select name="updatedSubChildCategories" class="form-select" 
+                                                    id="updatedSubChildCategories" formControlName="updatedSubChildCategories" required="true">
+                                                        <option class="dropdown-item">
+                                                            Sélection sous-catégorie enfant
+                                                        </option>
+                                                        <!-- J'affiche la liste selon la value de id="subCategories" (second select)-->
+                                                        <option *ngFor="let categorie of subChildCategories; let x = index" class="dropdown-item"
+                                                            [ngValue]="categorie.id">
+                                                            {{categorie.title}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                                <!-- select categorie finale -->
+                                            <div class="form-group row mb-2">
+                                                <label class="col-md-3 col-form-label" for="updatedFinalCategory">Cat 4  : </label>
+                                                <div class="select col-md-9">
+                                                    <select name="updatedFinalCategory" class="form-select" 
+                                                    id="updatedFinalCategory" formControlName="updatedFinalCategory" required="true"  [value]="pdfCategory">
+                                                        <option class="dropdown-item">
+                                                            Sélection sous-catégorie enfant
+                                                        </option>
+                                                        <!-- J'affiche la liste selon la value de id="subChildCategories" (troisième select)-->
+                                                        <!-- Je récupère la valeur grâce à  formControlName="finalCategory" et append mon formData dans createPdf()-->
+                                                        <option *ngFor="let categorie of finalCategories; let x = index" class="dropdown-item"
+                                                            [ngValue]="categorie.id">
                                                             {{categorie.title}}
                                                         </option>
                                                     </select>

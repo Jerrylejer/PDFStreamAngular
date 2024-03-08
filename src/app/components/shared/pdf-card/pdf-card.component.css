@@ -1,0 +1,10 @@
+.cards {
+    margin: 2%;
+    }
+    
+    .card-title {
+        text-align: right;
+        color: var(--greytext);
+        font-size: 20px;
+        font-weight: 600;
+    }

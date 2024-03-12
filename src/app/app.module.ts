@@ -64,7 +64,7 @@ import { PdfCardComponent } from './components/shared/pdf-card/pdf-card.componen
     CategoriesListComponent,
     PagePdfsListComponent,
     PdfsListComponent,
-    PdfCardComponent,
+    PdfCardComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +80,7 @@ import { PdfCardComponent } from './components/shared/pdf-card/pdf-card.componen
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -34,6 +34,10 @@ section {
     align-items: center;
 }
 
+.left-nav .border .listing {
+    margin:auto;
+}
+
 a {
     color: var(--black);
 }
@@ -45,4 +49,8 @@ a:hover {
 
 nav {
     margin-bottom: 2%;
+}
+
+.pdfs-list {
+    margin-top: 10%;
 }

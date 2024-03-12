@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Category } from 'src/app/models/category.model';
 import { Pdf } from 'src/app/models/pdf.model';
 
 @Component({
@@ -9,4 +10,5 @@ import { Pdf } from 'src/app/models/pdf.model';
 export class PdfsListComponent {
 
   @Input() thisCategoryPdfsList: Pdf[] = [];
+  @Input() parentCategory?: Category;
 }

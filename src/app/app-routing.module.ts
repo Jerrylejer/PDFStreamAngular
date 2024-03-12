@@ -21,13 +21,8 @@ const routes: Routes = [
     component:PageCategoryComponent
   },
   {
-    // => Chemin vers la liste des pdfs d'une catégorie enfant de enfant
-    path:"subChildCategory/pdfsList",
-    component:PagePdfsListComponent
-  },
-  {
     // => Chemin vers un pdf
-    path:"subChildCategory/pdfsList/:pdfId",
+    path:"category/:categoryId/:pdfId",
     component:PagePdfComponent
   },
   {

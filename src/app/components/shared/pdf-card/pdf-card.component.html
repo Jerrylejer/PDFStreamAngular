@@ -1,6 +1,8 @@
-<div *ngFor="let pdf of thisCategoryPdfsList" >
-    <!-- <a class="cards" [routerLink]="['/category', category.id]"> -->
-      <!-- <img src="{{pdf.image}}" alt="image du pdf {{pdf.title}}"> -->
+<div *ngFor="let pdf of thisCategoryPdfsList">
+    <a class="cards" [routerLink]="['/category', parentCategory!.id, pdf.id]">
+      <img src="data:image/png;base64, {{pdf.image}}" alt="image du pdf {{pdf.title}}">
       <h5 class="card-title">{{pdf.title}}</h5>
-    <!-- </a> -->
-  </div>
+      <h5 class="card-title">{{pdf.size}}</h5>
+      <h5 class="card-title">{{pdf.author?.username}}</h5>
+    </a> 
+</div>

@@ -1,12 +1,17 @@
+section {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 h3 {
     margin-top: 2%;
 }
 
 h6 {
     margin-top: 3%;
-
 }
 
 li {
     margin-bottom: 1%;
+    text-align: justify;
 }

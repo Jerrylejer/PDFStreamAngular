@@ -28,6 +28,7 @@ export class PageCategoryComponent implements OnInit{
     // => Afficher title dans nav de gauche et l'éventuelle liste de pdfs correspondante
     this.activatedRoute.paramMap.pipe(
       switchMap((params: ParamMap) => {
+        console.log(params);
         this.categorieId = params.get('categoryId')!;
         return this.categoryService.getCategoryById(Number(this.categorieId)).pipe(
           catchError((error) => {

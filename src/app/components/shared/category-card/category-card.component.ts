@@ -11,7 +11,7 @@ export class CategoryCardComponent {
   // Je réceptionne la liste des catégories de categorie-list.component et stocke la liste dans categories
   @Input() categories: Category[] = [];
 
-  constructor(private route: Router) {}
+  constructor() {}
 
 }
 

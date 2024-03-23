@@ -36,8 +36,8 @@ import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.co
 import { CategoryCardComponent } from './components/shared/category-card/category-card.component';
 import { CategoriesListComponent } from './components/standalone/categories-list/categories-list.component';
 import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.component';
-import { PdfsListComponent } from './components/standalone/pdfs-list/pdfs-list.component';
 import { PdfCardComponent } from './components/shared/pdf-card/pdf-card.component';
+import { FileSizePipe } from './pipes/file-size.pipe';
 
 
 @NgModule({
@@ -63,8 +63,8 @@ import { PdfCardComponent } from './components/shared/pdf-card/pdf-card.componen
     CategoryCardComponent,
     CategoriesListComponent,
     PagePdfsListComponent,
-    PdfsListComponent,
-    PdfCardComponent
+    PdfCardComponent,
+    FileSizePipe
   ],
   imports: [
     BrowserModule,

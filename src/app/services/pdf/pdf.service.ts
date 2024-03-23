@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
@@ -29,6 +29,22 @@ export class PdfService {
      */
     uploadPdf(formData: FormData): Observable<any> {
       return this.http.post(`${this.apiUrl}/pdf/upload`, formData).pipe(
+        catchError((error) => {
+          return throwError(() => error)
+        })
+      )
+    }
+
+    /**
+     * Envoi d'une requête http GET pour la lecture d'un pdf selon son id
+     * @param id 
+     * @returns 
+     */
+    downloadPdf(id: number): Observable<HttpResponse<Blob>> {
+      return this.http.get(`${this.apiUrl}/pdf/download/${id}`, {
+        responseType: 'blob',
+        observe: 'response'
+      }).pipe(
         catchError((error) => {
           return throwError(() => error)
         })

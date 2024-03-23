@@ -1,10 +1,28 @@
-.cards {
+.card {
     margin: 2%;
-    }
+}
+
+/* élément base pour fixer la position de .image-banner*/
+.image-card {
+ position: relative;
+}
     
-.card-title {
-    text-align: right;
-    color: var(--greytext);
-    font-size: 20px;
-    font-weight: 600;
+.image-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    position: absolute;
+    bottom: 0;
+    left: -5px;
+    width: 240px;
+    height: 57px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.image-banner-details {
+    color: var(--white);
+    font-size: 12px;
+    margin-bottom: 0;
 }

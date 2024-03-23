@@ -1,1 +1,9 @@
-<p>page-pdf works!</p>
+
+<p>{{pdfDatas?.title}}</p>
+<p>{{pdfDatas?.author?.username}}</p>
+<p>{{pdfDatas?.smallDescription}}</p>
+<p>{{pdfDatas?.description}}</p>
+<!-- Téléchargement  -->
+<button class="btn" type="submit" (click)="downloadPdf(pdfDatas?.id)">
+    Télécharger
+</button>

@@ -43,6 +43,7 @@ a {
 .modal {
     background-color: #2b2b2ba2;
     overflow-y: hidden;
+    z-index: 1000;
 }
 
 .modal-dialog {

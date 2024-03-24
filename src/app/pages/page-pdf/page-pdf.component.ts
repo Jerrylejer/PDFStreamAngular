@@ -40,25 +40,34 @@ export class PagePdfComponent implements OnInit {
       )
   }
 
-  downloadPdf(id: number | undefined): void {
-    this.pdfService.downloadPdf(Number(this.pdfId)).pipe(
+  downloadPdf(id: string | undefined): void {
+    this.pdfService.downloadPdf(Number(id)).pipe(
       catchError((error) => {
         return throwError(() => error)
       }
     ))
     .subscribe(
       response => {
-        const fileNameFromURL = 'file';
-        if(fileNameFromURL) {
+        const responseHeaders = response.headers;
+        // Je ne récupère pas le filename dans "ContentDisposition" ...
+        console.log(responseHeaders);
+        // Diversion pour setter le nom du fichier car impossible via "ContentDisposition"
+        const fileName = String(this.pdfDatas?.title);
+        if(fileName) {
+          // Je récupère le type de contenu de la réponse HTTP
           const contentType = response.headers.get("Content-Type");
+          // Je créé un Blob grâce à HttpResponse<Blob>.body: Blob stocké dans les headers ()
           const blob = new Blob([response.body!], {type:contentType!})
-
+          // Je crée un élément de type <a> + un lien href vers le contenu du fichier
           const link = document.createElement("a");
           link.href = window.URL.createObjectURL(blob);
-          link.download = fileNameFromURL;
-
+          // J'affecte le title du fichier à l'attribut "download" du lien créé
+          // <a href="blob:http://localhost:4200/f8d13b05-e134-48cb-a852-705ca8907448" download="La syntaxe JavaScript – Kourou.pdf"></a>
+          link.download = fileName;
+          console.log(link);
+          // Evenement click lance le lien
           link.click();
-
+          // Je supprime le lien créé
           window.URL.revokeObjectURL(link.href);
           link.remove();
         } else {

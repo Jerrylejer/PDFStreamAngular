@@ -3,7 +3,7 @@
 <p>{{pdfDatas?.author?.username}}</p>
 <p>{{pdfDatas?.smallDescription}}</p>
 <p>{{pdfDatas?.description}}</p>
-<!-- Téléchargement  -->
-<button class="btn" type="submit" (click)="downloadPdf(pdfDatas?.id)">
+<!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
+<button class="btn" type="submit" (click)="downloadPdf(pdfId)">
     Télécharger
 </button>

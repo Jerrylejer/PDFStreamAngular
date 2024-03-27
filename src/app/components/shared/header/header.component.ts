@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   errorMessage: String = '';
   // Boolean => switcher l'affichage de la nav (connexion/inscription => déconnexion/compte)
   isConnectedUser?: boolean;
+
   // Récupération du username renvoyé dans le body de la réponse à la demende de connexion
   username: any = localStorage.getItem('username');
   // ##################################################################
@@ -68,8 +69,14 @@ export class HeaderComponent implements OnInit {
             console.log("authentification réussie")
             // Si la connexion est ok, je ferme ma modale et je modifie l'affichage de la nav
             this.displayStyle = "none";
-            // isConnectedSubject$ reçoit et émet cette nouvelle état
-            this.isConnectedUser = true;
+            // Mettre à jour l'état de connexion
+            this.auth.setIsConnected(true);
+            // Je conditionne l'état de isConnected
+            if(this.auth.getIsConnected() == true) {
+              this.isConnectedUser == true;
+            } else {
+              this.isConnectedUser == false;
+            }
             // Dans cette réponse, je peux récupérer certaines datas du user connecté
             if(response.accessToken) {
               const jwtToken = response.accessToken;
@@ -108,9 +115,11 @@ export class HeaderComponent implements OnInit {
     .subscribe(
       (response) => {
         alert("Déconnexion réussie")
+        // Mettre à jour l'état de connexion
+        this.auth.setIsConnected(false);
         this.router.navigate(["/"]);
         // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage + valeurs du user à ''
-        localStorage.removeItem('isAuthenticated');
+        localStorage.setItem('isAuthenticated', 'false');
         localStorage.removeItem('jwtToken');
         localStorage.removeItem('userId');
         localStorage.removeItem('username');

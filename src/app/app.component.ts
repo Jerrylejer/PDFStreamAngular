@@ -24,15 +24,16 @@ export class AppComponent implements OnInit{
       // Retour page home
       this.router.navigate(["/"]);
     }
+
     // ETAT DE CONNEXION IV (voir dans authService)
-      const isAuthenticated = localStorage.getItem('isAuthenticated');
-      // isAuthenticated est modifié au click connexionUser(), logoutUser() // header
-      if (isAuthenticated === 'true') {
-          // L'utilisateur est connecté
-          this.authService.setIsConnected(true);
-      } else {
-          // L'utilisateur n'est pas connecté
-          this.authService.setIsConnected(false);
-      }
+      // const isAuthenticated = localStorage.getItem('isAuthenticated');
+      // // isAuthenticated est modifié au click connexionUser(), logoutUser() // header
+      // if (isAuthenticated === 'true') {
+      //     // L'utilisateur est connecté
+      //     this.authService.setIsConnected(true);
+      // } else {
+      //     // L'utilisateur n'est pas connecté
+      //     this.authService.setIsConnected(false);
+      // }
   }
 }

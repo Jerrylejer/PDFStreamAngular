@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { catchError, switchMap, throwError } from 'rxjs';
+import { Subscription, catchError, switchMap, throwError } from 'rxjs';
 import { Pdf } from 'src/app/models/pdf.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { PdfService } from 'src/app/services/pdf/pdf.service';
 
 @Component({
@@ -10,17 +11,25 @@ import { PdfService } from 'src/app/services/pdf/pdf.service';
   styleUrl: './page-pdf.component.css'
 })
 export class PagePdfComponent implements OnInit {
-
+  // Boolean => switcher l'affichage des btns (connexion/télécharger => déconnexion/inscription)
+  isConnectedUser!: boolean;
   // Je stocke l'id du pdf issue de la route
   pdfId?: string;
   // Je stocke les datas du pdf sélectionné pour les utiliser dans mon template
   pdfDatas?: Pdf;
-
   // J'injecte mon PdfService pour utiliser ma requête "download" + "getPdfById"
   // J'injecte ActivatedRoute pour interagir avec le param de la route
-  constructor(private pdfService: PdfService, private activatedRoute: ActivatedRoute){}
+  constructor(private pdfService: PdfService, private activatedRoute: ActivatedRoute, private auth: AuthService){}
 
   ngOnInit(): void {
+      // Dans authService, "isConnected$" renvoie la valeur de this.isConnectedSubject = new BehaviorSubject<boolean>()
+      // this.isConnectedSubject = new BehaviorSubject<boolean>() va être modifié par les méthodes connexionUser() & logoutUser() du Header
+      // Si modif, je communique la valeur modifiée de "isConnected$ à "isConnected" 
+      // Puis j'affecte la valeur de "isConnected => " à "this.isConnectedUser"
+      this.auth.isConnected$.subscribe(isConnected => {
+        this.isConnectedUser = isConnected;
+      });
+      
       // Je charge les données du pdf sélectionné
       this.activatedRoute.paramMap.pipe(
         switchMap((params: ParamMap) => {
@@ -37,8 +46,9 @@ export class PagePdfComponent implements OnInit {
           console.log(targetedPdf);
           this.pdfDatas = targetedPdf;
         }
-      )
+      );
   }
+
 
   downloadPdf(id: string | undefined): void {
     this.pdfService.downloadPdf(Number(id)).pipe(

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, throwError } from 'rxjs';
 import { Environnement } from 'src/env/environnement';
 
 @Injectable({
@@ -8,33 +8,71 @@ import { Environnement } from 'src/env/environnement';
 })
 export class AuthService {
 
-    // url de base pour l'accès à l'API
-    private readonly apiUrl = Environnement.pdfStreamApiUrl;
+  // url de base pour l'accès à l'API
+  private readonly apiUrl = Environnement.pdfStreamApiUrl;
 
-    // #############################
-    // ETAT DE CONNEXION I
-    // Objet qui est un Observable mais aussi un "Observateur" (Rxjs)
-    private isConnectedSubject: BehaviorSubject<boolean>;
-    public isConnected$!: Observable<boolean>;
+    // // #############################
+    // // ETAT DE CONNEXION I
+    // // Objet qui est un Observable mais aussi un "Observateur" (Rxjs)
+    // private isConnectedSubject: BehaviorSubject<boolean>;
+    // public isConnected$!: Observable<boolean>;
 
-    constructor(private readonly http: HttpClient) { 
-    // #############################
-    // ETAT DE CONNEXION II
-    // Initialisation des propriétés
-      this.isConnectedSubject = new BehaviorSubject<boolean>(false), 
-      this.isConnected$ = this.isConnectedSubject.asObservable()
+    // constructor(private readonly http: HttpClient) { 
+    // // #############################
+    // // ETAT DE CONNEXION II
+    // // Initialisation des propriétés à false
+    //   this.isConnectedSubject = new BehaviorSubject<boolean>(false), 
+    //   this.isConnected$ = this.isConnectedSubject.asObservable()
+    // }
+    // // #############################
+    // // ETAT DE CONNEXION III
+    // // Déterminer la valeur booléenne pour "isConnected"
+    // setIsConnected(value: boolean) {
+    //   // next() renvoie la valeur à BehaviorSubject<boolean> qui le diffuse
+    //   this.isConnectedSubject.next(value);
+    // }
+    // // Communiquer la valeur de "isConnected"
+    // getIsConnected() {
+    //   return this.isConnectedSubject.value;
+    // }
+
+  // #############################
+  // ETAT CONNEXION I
+  //BehaviorSubject => Objet qui est un Observable mais aussi un "Observateur" (Rxjs)
+  private isConnectedSubject: BehaviorSubject<boolean>;
+  public isConnected$: Observable<boolean>;
+
+  // #############################
+  // ETAT CONNEXION II
+  // Initialisation des propriétés à false
+  constructor(private readonly http: HttpClient) {
+    this.isConnectedSubject = new BehaviorSubject<boolean>(false);
+    this.isConnected$ = this.isConnectedSubject.asObservable();
+    this.isConnectedFromLocalStorage();
+  }
+
+  // #############################
+  // ETAT DE CONNEXION III
+  // Déterminer la valeur booléenne pour "isAuthenticated" dans le LS
+  // Pour modifier la valeur de "isConnectedSubject" via setIsConnected()
+  private isConnectedFromLocalStorage(): void {
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (isAuthenticated === 'true') {
+      this.setIsConnected(true);
+    } else {
+      this.setIsConnected(false);
     }
-    // #############################
-    // ETAT DE CONNEXION III
-    // Déterminer une valeur booléenne pour "isConnected"
-    setIsConnected(value: boolean) {
-      // next() renvoie la valeur à BehaviorSubject<boolean> qui le diffuse
-      this.isConnectedSubject.next(value);
-    }
-    // Communiquer la valeur de "isConnected"
-    getIsConnected() {
-      return this.isConnectedSubject.value;
-    }
+  }
+
+  public setIsConnected(value: boolean): void {
+    // La valeur true ou false est mise à jour en concordance avec le localStorage
+    this.isConnectedSubject.next(value);
+  }
+
+  public getIsConnected(): boolean {
+    // Valeur de l'état de connexion
+    return this.isConnectedSubject.value;
+  }
     
     // #########################################################
     // METHODES "MIROIR" ENDPOINTS DE MON BACK API
@@ -68,8 +106,6 @@ export class AuthService {
         )
       }
       
-
-
     /**
      * Envoi d'une requête http POST pour l'inscription d'un user
      * @param data 

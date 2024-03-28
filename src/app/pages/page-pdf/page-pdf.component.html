@@ -1,14 +1,28 @@
-
-<p>{{pdfDatas?.title}}</p>
-<p>{{pdfDatas?.author?.username}}</p>
-<p>{{pdfDatas?.smallDescription}}</p>
-<p>{{pdfDatas?.description}}</p>
-<!-- Btn utilisateur connecté -->
-<!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
-<button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
-    Télécharger
-</button>
-<!-- Btn utilisateur non connecté -->
-<button *ngIf="isConnectedUser == false" class="btn" type="submit" (click)="downloadPdf(pdfId)">
-    Inscription
-</button>
+<article class="wrapper">
+    <div>
+        <img class="preview-pdf" src="{{pdfPreview}}" alt="première page de {{pdfDatas?.title}}">
+    </div>
+    <div class="details-pdf">
+        <ul>
+            <li class="titre-pdf">Titre : {{pdfDatas?.title}}</li>
+            <li>Auteur : {{pdfDatas?.author?.username}}</li>
+            <li>{{pdfDatas?.description}}</li>
+        </ul>
+        <div>
+            <!-- Btn utilisateur connecté -->
+            <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
+            <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
+                Télécharger
+            </button>
+            <!-- Btn utilisateur non connecté -->
+            <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
+            <div class="btn-wrapper" *ngIf="isConnectedUser == false">
+                <p class="incitation-pdf">Une envie de télécharger ?</p>
+                <button class="btn" type="submit" (click)="routerInscription()">
+                    Inscription
+                </button>
+                <p class="consigne-pdf">Veuillez-vous connecter pour télécharger ...</p>
+            </div>
+        </div>
+    </div>
+</article>

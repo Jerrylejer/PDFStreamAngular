@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription, catchError, switchMap, throwError } from 'rxjs';
 import { Pdf } from 'src/app/models/pdf.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -17,9 +17,10 @@ export class PagePdfComponent implements OnInit {
   pdfId?: string;
   // Je stocke les datas du pdf sélectionné pour les utiliser dans mon template
   pdfDatas?: Pdf;
+  pdfPreview: any;
   // J'injecte mon PdfService pour utiliser ma requête "download" + "getPdfById"
   // J'injecte ActivatedRoute pour interagir avec le param de la route
-  constructor(private pdfService: PdfService, private activatedRoute: ActivatedRoute, private auth: AuthService){}
+  constructor(private pdfService: PdfService, private activatedRoute: ActivatedRoute, private auth: AuthService, private router: Router){}
 
   ngOnInit(): void {
       // Dans authService, "isConnected$" renvoie la valeur de this.isConnectedSubject = new BehaviorSubject<boolean>()
@@ -30,12 +31,12 @@ export class PagePdfComponent implements OnInit {
         this.isConnectedUser = isConnected;
       });
       
-      // Je charge les données du pdf sélectionné
+      // Je charge les données du pdf + image preview sélectionné (ForkJoin pour 2 requêtes en une -> service)
       this.activatedRoute.paramMap.pipe(
         switchMap((params: ParamMap) => {
           console.log(params);
           this.pdfId = params.get('pdfId')!;
-          return this.pdfService.getPdfById(Number(this.pdfId)).pipe(
+          return this.pdfService.getPdfAndPreview(Number(this.pdfId)).pipe(
             catchError((error) => {
               return throwError(() => error);
             })
@@ -43,8 +44,15 @@ export class PagePdfComponent implements OnInit {
           })
       ).subscribe(
         targetedPdf => {
-          console.log(targetedPdf);
-          this.pdfDatas = targetedPdf;
+        console.log(targetedPdf);
+        // J'accède aux détails du pdf
+        this.pdfDatas = targetedPdf.pdfDetails;
+        // J'accède à l'image de preview du pdf
+        const reader = new FileReader();
+        reader.readAsDataURL(targetedPdf.pdfPreview);
+        reader.onloadend = () => {
+          this.pdfPreview = reader.result;
+        };
         }
       );
   }
@@ -86,4 +94,9 @@ export class PagePdfComponent implements OnInit {
       }
     )
   }
+
+    // Redirection vers la page de compte (mode connecté et au click "compte")
+    routerInscription() {
+      this.router.navigate(["/inscription"]);
+    }
 }

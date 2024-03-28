@@ -64,6 +64,7 @@ export class AuthService {
     }
   }
 
+  // Setter l'état selon la valeur reçue de connexionUser(), logoutUser() du header.ts
   public setIsConnected(value: boolean): void {
     // La valeur true ou false est mise à jour en concordance avec le localStorage
     this.isConnectedSubject.next(value);

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, forkJoin, map, throwError } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
 import { Pdf } from 'src/app/models/pdf.model';
 import { User } from 'src/app/models/user.model';
@@ -99,6 +99,32 @@ export class PdfService {
       return this.http.get<Pdf>(`${this.apiUrl}/pdf/id/${id}`).pipe(
         catchError((error) => {
           return throwError(() => error)
+        })
+      )
+    }
+
+    /**
+     * Envoi d'une requête http GET pour la lecture d'un pdf selon son id 
+     * + la lecture d'une image de preview pour affichage
+     * @param id 
+     * @returns 
+     */
+    getPdfAndPreview(id: number): Observable<any> {
+      const pdfDetails$ = this.http.get<Pdf>(`${this.apiUrl}/pdf/id/${id}`);
+      const pdfPreview$ = this.http.get(`${this.apiUrl}/pdf/preview/${id}`, { responseType : 'blob' });   
+      // forkJoin me permet de marier 2 requêtes dans une
+      return forkJoin([pdfDetails$, pdfPreview$])
+      .pipe(
+        catchError((error) => {
+          return throwError(() => error)
+        })
+      )
+      .pipe(
+        map(([pdfDetails, pdfPreview]) => {
+          return {
+            pdfDetails : pdfDetails,
+            pdfPreview : pdfPreview
+          }
         })
       )
     }

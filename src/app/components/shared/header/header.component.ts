@@ -59,7 +59,8 @@ export class HeaderComponent implements OnInit {
         .pipe(
           catchError((error) => {
             console.log("erreur d'authentification : ", error);
-            this.errorMessage = "Nom d'utilisateur ou mot de passe incorrect.";
+            //this.errorMessage = "Nom d'utilisateur ou mot de passe incorrect.";
+            alert("Username ou mot de passe incorrect. Merci de revalider vos données de connexion.");
             return throwError(() => error);
           })
         )

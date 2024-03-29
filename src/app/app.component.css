@@ -2,16 +2,27 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
 }
 
 .main {
     flex-grow: 1;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+/* ############################################ */
+/* ############## MEDIAQUERIES ################ */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+
+/* Header, Footer & Banner ont les même breakpoints et modifient leurs apparences selon
+ces mêmes breakpoints 
+=> par ex: Header show/unshow nav droite, 
+=> footer show/unshow burger 
+=> banner est modifié en version mobile ...*/
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

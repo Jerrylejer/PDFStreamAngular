@@ -1,5 +1,5 @@
 <article class="wrapper">
-    <div>
+    <div class="image-pdf">
         <img class="preview-pdf" src="{{pdfPreview}}" alt="première page de {{pdfDatas?.title}}">
     </div>
     <div class="details-pdf">
@@ -17,11 +17,11 @@
             <!-- Btn utilisateur non connecté -->
             <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
             <div class="btn-wrapper" *ngIf="isConnectedUser == false">
-                <p class="incitation-pdf">Une envie de télécharger ?</p>
+                <p class="incitation-msg">Une envie de télécharger ?</p>
                 <button class="btn" type="submit" (click)="routerInscription()">
                     Inscription
                 </button>
-                <p class="consigne-pdf">Veuillez-vous connecter pour télécharger ...</p>
+                <p class="consigne-msg">Nécesssite d'être connecté.</p>
             </div>
         </div>
     </div>

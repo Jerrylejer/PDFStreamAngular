@@ -135,6 +135,7 @@ export class AuthService {
      * @returns 
      */
     deconnexion(): Observable<any> {
+      // un objet vide pour indiquer une req de déconnexion ou pas de datas utile dans cette req
       return this.http.post(`${this.apiUrl}/auth/deconnexion`, {}).pipe(
         catchError((error) => {
           return throwError(() => "Erreur lors de la tentative de déconnexion. Ré-essayez.")

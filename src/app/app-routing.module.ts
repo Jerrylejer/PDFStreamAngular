@@ -5,7 +5,7 @@ import { PageInscriptionComponent } from './pages/page-inscription/page-inscript
 import { Page404Component } from './pages/page404/page404.component';
 import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { PageCategoryComponent } from './pages/page-category/page-category.component';
-import { PagePdfsListComponent } from './pages/page-pdfs-list/page-pdfs-list.component';
+
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
 const routes: Routes = [

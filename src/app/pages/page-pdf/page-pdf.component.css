@@ -1,9 +1,35 @@
 .wrapper {
-    /* height: 100%; */
-    padding: 5%;
+    width: 100%;
+    height: 100%;
+}
+
+/* IMAGE PREVIEW PDF */
+.image-pdf {
+    max-width: 50%;
+}
+
+.preview-pdf {
+    width: 100%;
+    border: 1px solid var(--black);
+    border-radius: 10px;
+}
+
+/* DETAILS DU PDF */
+.details-pdf {
+    max-width: 50%;
+    padding: 0 10% 0 10%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content:space-between;
     align-items: center;
+}
+
+ul {
+    max-width: 100%;
+}
+
+.titre-pdf {
+    font-size: 24px;
 }
 
 /* BOUTON */
@@ -25,10 +51,10 @@
     background-color: var(--skin);
     font-size: 20px;
     font-weight: 600;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     border: none;
     border-radius: 5px;
     padding: 5px;
+    margin: 2%;
 }
 
 .incitation-msg {
@@ -39,23 +65,90 @@
     font-size: 12px;
 }
 
-/* IMAGE DE PREVIEW DU PDF */
-.preview-pdf {
-    width: 52%;
-    border: 1px solid var(--black);
-    border-radius: 10px;
+/* ############################################ */
+/* ############## MEDIAQUERIES ################ */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .details-pdf {
+        padding: unset;
+    }
 }
 
-/* DETAILS DU PDF */
-.details-pdf {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .details-pdf {
+        padding: unset;
+    }
 }
 
-.titre-pdf {
-    font-size: 24px;
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .details-pdf {
+        padding: unset;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        align-items: center;
+        padding: 5%;
+    }
+
+    .details-pdf {
+        padding: 0 10% 0 10%;
+        /* Fixé lors du scroll */
+        position: fixed;
+        top: 40%;
+        right: 0;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        align-items: center;
+        padding: 5%;
+    }
+
+    .details-pdf {
+        padding: 0 10% 0 10%;
+        /* Fixé lors du scroll */
+        position: fixed;
+        top: 40%;
+        right: 0;
+    }
 }

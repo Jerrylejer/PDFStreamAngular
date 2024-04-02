@@ -9,11 +9,17 @@
             <li>{{pdfDatas?.description}}</li>
         </ul>
         <div>
-            <!-- Btn utilisateur connecté -->
-            <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
-            <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
-                Télécharger
-            </button>
+            <div class="flexbtns">
+                <!-- Btn utilisateur connecté -->
+                <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
+                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
+                    Télécharger
+                </button>
+                <!-- Author  je passe directement pdfId du .ts récupéré de la route  -->
+                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
+                    Fiche auteur
+                </button>
+            </div>
             <!-- Btn utilisateur non connecté -->
             <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
             <div class="btn-wrapper" *ngIf="isConnectedUser == false">

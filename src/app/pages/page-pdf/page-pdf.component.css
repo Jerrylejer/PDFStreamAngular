@@ -60,6 +60,7 @@ li {
     background-color: var(--skin);
     font-size: 20px;
     font-weight: 600;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     border: none;
     border-radius: 5px;
     padding: 5px;
@@ -72,6 +73,74 @@ li {
 
 .consigne-msg {
     font-size: 12px;
+}
+
+/* MODALE */
+.modal {
+    background-color: #2b2b2ba2;
+    overflow-y: hidden;
+}
+
+.modal-dialog {
+    /* hauteur 100vh pour ensuite centrer le modal-content */
+    height: 100%; 
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.modal-span-PDF {
+    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
+    font-weight: 800;
+}
+.modal-span-STREAM {
+    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
+    font-weight: 800;
+    color: var(--red);
+}
+.modal-span-MODIF {
+    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
+}
+
+.modal-body {
+    width: 100%;
+}
+
+.modal-title {
+    font-size: 16px;
+}
+
+.modal-content {
+    background-color: var(--skin);
+    max-width:100%;
+}
+
+.download {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.cancel {
+    border: 2px solid black;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.groupe-b {
+    text-align: end;
 }
 
 /* ############################################ */
@@ -115,6 +184,17 @@ li {
     .btn-wrapper {
         margin-bottom: 1%;
     }
+
+    .modal-dialog {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .groupe-b {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -156,7 +236,6 @@ li {
     }
 }
 
-
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .wrapper {
@@ -193,6 +272,12 @@ li {
 
     .btn-wrapper {
         margin-bottom: 1%;
+    }
+
+    .groupe-b {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
     }
 }
 

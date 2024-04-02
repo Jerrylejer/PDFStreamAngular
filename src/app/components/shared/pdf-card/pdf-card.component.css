@@ -1,28 +1,33 @@
-.card {
+.cards {
     margin: 2%;
 }
 
-/* élément base pour fixer la position de .image-banner*/
-.image-card {
+/* les positions bug et mettent les éléments en z-index supérieur ...*/
+
+/* .image-card {
  position: relative;
-}
+} */
     
 .image-banner {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items:center ;
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
-    left: -5px;
+    left: -5px; */
     width: 240px;
     height: 57px;
     background-color: black;
-    border-radius: 5px;
 }
 
 .image-banner-details {
     color: var(--white);
     font-size: 12px;
     margin-bottom: 0;
+}
+
+.wrapper {
+display: flex;
+flex-direction: column;
 }

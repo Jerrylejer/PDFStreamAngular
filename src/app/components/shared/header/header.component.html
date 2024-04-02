@@ -17,34 +17,34 @@
     </nav>
     <!-- Modal -->
     <!-- [ngStyle]="{'display':displayStyle} =>  -->
-<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title title">Connexion</h4>
-            <a type="button" 
-                    (click)="closeModale()">
-             <img src="../../../assets/icones/close.png" alt="close">
-            </a>
-        </div>
-        <!-- Formulaire username & password -->
-        <div class="modal-body">
-            <form class="form" [formGroup]="authForm" (ngSubmit)="connexionUser()">
-                <div class="column">
+    <div div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title title">Connexion</h4>
+                <a type="button" 
+                        (click)="closeModale()">
+                <img src="../../../assets/icones/close.png" alt="close">
+                </a>
+            </div>
+            <!-- Formulaire username & password -->
+            <div class="modal-body">
+                <form class="form" [formGroup]="authForm" (ngSubmit)="connexionUser()">
                     <div class="column">
-                        <label for="username">Username</label>
-                        <input type="text" class="input" id="username" formControlName="username"/> 
+                        <div class="column">
+                            <label for="username">Username</label>
+                            <input type="text" class="input" id="username" formControlName="username"/> 
+                        </div>
+                        <div class="column">
+                            <label for="password">Password</label>
+                            <input type="password" class="input" id="password" formControlName="password"/> 
+                        </div>
                     </div>
-                    <div class="column">
-                        <label for="password">Password</label>
-                        <input type="password" class="input" id="password" formControlName="password"/> 
-                    </div>
-                </div>
-                <!-- [disabled] => si les champs requis ne sont pas tous remplis, le btn de validation est inactif -->
-                <button class="submit-btn" type="submit" [disabled]="authForm.invalid">Connexion</button>
-            </form>
+                    <!-- [disabled] => si les champs requis ne sont pas tous remplis, le btn de validation est inactif -->
+                    <button class="submit-btn" type="submit" [disabled]="authForm.invalid">Connexion</button>
+                </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 </header>

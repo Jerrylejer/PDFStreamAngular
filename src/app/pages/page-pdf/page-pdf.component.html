@@ -1,4 +1,4 @@
-<article class="wrapper">
+<section class="wrapper">
     <div class="image-pdf">
         <img class="preview-pdf" src="{{pdfPreview}}" alt="première page de {{pdfDatas?.title}}">
     </div>
@@ -12,11 +12,14 @@
             <div class="flexbtns">
                 <!-- Btn utilisateur connecté -->
                 <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
-                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
+                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="openDownloadModale()">
                     Télécharger
                 </button>
+                <!-- <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
+                    Télécharger
+                </button> -->
                 <!-- Author  je passe directement pdfId du .ts récupéré de la route  -->
-                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
+                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="fetchAuthorPage(pdfId)">
                     Fiche auteur
                 </button>
             </div>
@@ -31,4 +34,39 @@
             </div>
         </div>
     </div>
-</article>
+
+    <!-- DEBUT - Modale pour warning de téléchargement -->
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayDownloadModaleStyle}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Téléchargement</span></div>
+                    <a type="button" 
+                            (click)="closeDownloadModale()">
+                    <img src="../../../assets/icones/close.png" alt="close">
+                    </a>
+                </div>
+                <!-- Formulaire de modification des détails user-->
+                <div class="modal-body">
+                    <!--  Le form va ajouter le PDF à la collection du user connecté -->
+                    <form class="form" (ngSubmit)="downloadPdf(pdfId)">
+                        <div class="form-wrapper">
+                                <div class="groupe-a">
+                                    <div class="column">
+                                        <p>Vous êtes sur le point de télécharger un fichier PDF et à l'ajouter à votre collection !</p>
+                                        <p>Confirmez-vous le téléchargement du PDF ?</p>
+                                    </div>
+                                </div>
+                            <!-- Bloc boutons -->
+                            <div class="groupe-b">
+                                <button class="btn cancel" type="button" (click)="closeDownloadModale()">Annuler</button>
+                                <button class="btn download" type="submit" >Télécharger</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN - Modale pour warning de téléchargement -->
+</section>

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription, catchError, switchMap, throwError } from 'rxjs';
 import { Pdf } from 'src/app/models/pdf.model';
@@ -18,9 +19,21 @@ export class PagePdfComponent implements OnInit {
   // Je stocke les datas du pdf sélectionné pour les utiliser dans mon template
   pdfDatas?: Pdf;
   pdfPreview: any;
+  // Boolean pour rendre la modale visible ou non au click
+  displayDownloadModaleStyle = "none"
+
   // J'injecte mon PdfService pour utiliser ma requête "download" + "getPdfById"
   // J'injecte ActivatedRoute pour interagir avec le param de la route
   constructor(private pdfService: PdfService, private activatedRoute: ActivatedRoute, private auth: AuthService, private router: Router){}
+
+  // Manipulation de la modale de téléchargement
+  openDownloadModale() {
+    this.displayDownloadModaleStyle = "block";
+  }
+
+  closeDownloadModale() {
+    this.displayDownloadModaleStyle = "none";
+  }
 
   ngOnInit(): void {
       // Dans authService, "isConnected$" renvoie la valeur de this.isConnectedSubject = new BehaviorSubject<boolean>()
@@ -57,7 +70,6 @@ export class PagePdfComponent implements OnInit {
       );
   }
 
-
   downloadPdf(id: string | undefined): void {
     this.pdfService.downloadPdf(Number(id)).pipe(
       catchError((error) => {
@@ -67,11 +79,15 @@ export class PagePdfComponent implements OnInit {
     .subscribe(
       response => {
         const responseHeaders = response.headers;
-        // Je ne récupère pas le filename dans "ContentDisposition" ...
+        // BUG => Je ne récupère pas le filename dans "ContentDisposition" ...
         console.log(responseHeaders);
         // Diversion pour setter le nom du fichier car impossible via "ContentDisposition"
         const fileName = String(this.pdfDatas?.title);
         if(fileName) {
+          // ############## COLLECTION ###############
+          // Récupérer l'id du pdf + id user qui télécharge
+
+          // ############## DOWNLOAD #################
           // Je récupère le type de contenu de la réponse HTTP
           const contentType = response.headers.get("Content-Type");
           // Je créé un Blob grâce à HttpResponse<Blob>.body: Blob stocké dans les headers ()
@@ -88,6 +104,8 @@ export class PagePdfComponent implements OnInit {
           // Je supprime le lien créé
           window.URL.revokeObjectURL(link.href);
           link.remove();
+          // ############## MODALE #################
+          this.closeDownloadModale();
         } else {
           console.log("unable to extract file");
         }
@@ -95,8 +113,50 @@ export class PagePdfComponent implements OnInit {
     )
   }
 
+  // downloadPdf(id: string | undefined): void {
+  //   this.pdfService.downloadPdf(Number(id)).pipe(
+  //     catchError((error) => {
+  //       return throwError(() => error)
+  //     }
+  //   ))
+  //   .subscribe(
+  //     response => {
+  //       const responseHeaders = response.headers;
+  //       // Je ne récupère pas le filename dans "ContentDisposition" ...
+  //       console.log(responseHeaders);
+  //       // Diversion pour setter le nom du fichier car impossible via "ContentDisposition"
+  //       const fileName = String(this.pdfDatas?.title);
+  //       if(fileName) {
+  //         // Je récupère le type de contenu de la réponse HTTP
+  //         const contentType = response.headers.get("Content-Type");
+  //         // Je créé un Blob grâce à HttpResponse<Blob>.body: Blob stocké dans les headers ()
+  //         const blob = new Blob([response.body!], {type:contentType!})
+  //         // Je crée un élément de type <a> + un lien href vers le contenu du fichier
+  //         const link = document.createElement("a");
+  //         link.href = window.URL.createObjectURL(blob);
+  //         // J'affecte le title du fichier à l'attribut "download" du lien créé
+  //         // <a href="blob:http://localhost:4200/f8d13b05-e134-48cb-a852-705ca8907448" download="La syntaxe JavaScript – Kourou.pdf"></a>
+  //         link.download = fileName;
+  //         console.log(link);
+  //         // Evenement click lance le lien
+  //         link.click();
+  //         // Je supprime le lien créé
+  //         window.URL.revokeObjectURL(link.href);
+  //         link.remove();
+  //       } else {
+  //         console.log("unable to extract file");
+  //       }
+  //     }
+  //   )
+  // }
+
     // Redirection vers la page de compte (mode connecté et au click "compte")
     routerInscription() {
       this.router.navigate(["/inscription"]);
+    }
+
+    // Aller sur la page de l'auteur
+    fetchAuthorPage(id: string | undefined): void {
+
     }
 }

@@ -1,15 +1,16 @@
-<div *ngFor="let pdf of thisCategoryPdfsList">
-    <a class="card" [routerLink]="['/category', parentCategory?.id, pdf.id]">
-      <!-- Image -->
-      <img src="data:image/png;base64, {{pdf.image}}" alt="image du pdf {{pdf.title}}" class="image-card">
-      <!-- bandeau -->
-      <span class="image-banner">
-        <p class="image-banner-details">{{pdf.title}}</p>
-        <!-- Utilisation d'un pipe pour la conversion des bytes en kBytes -->
-        <!-- fileSize(pipe) est une class exportée depuis le folder pipes -->
-        <!-- source = https://blog.bitsrc.io/mastering-custom-pipes-in-angular-31-real-world-examples-2023-c7ce8ec7faae -->
-        <p class="image-banner-details">{{ pdf.size!| fileSize }}</p>
-        <p class="image-banner-details">{{pdf.author?.username}}</p>
-      </span>
-    </a> 
+<div class="wrapper cards" *ngFor="let pdf of thisCategoryPdfsList">
+  <a [routerLink]="['/category', parentCategory!.id, pdf.id]">
+    <img img src="data:image/png;base64, {{pdf.image}}" alt="image du pdf {{pdf.title}}" class="image-card" />
+  </a>
+  <a [routerLink]="['/category', parentCategory!.id, pdf.id]">
+  <!-- bandeau -->
+  <span class="image-banner">
+    <p class="image-banner-details">{{pdf.title}}</p> 
+    <p class="image-banner-details">{{ pdf.size!| fileSize }}</p>
+    <p class="image-banner-details">{{pdf.author?.username}}</p>
+  </span>
+  </a>
 </div>
+
+
+

@@ -6,7 +6,8 @@
 /* FLEXBOX */
 .column {
     display: flex;
-    flex-direction: column;}
+    flex-direction: column;
+}
 
 .inline-or-column {
     display: flex;

@@ -9,7 +9,7 @@ import { FileSizePipe } from 'src/app/pipes/file-size.pipe';
   styleUrl: './pdf-card.component.css'
 })
 export class PdfCardComponent {
-  @Input() thisCategoryPdfsList:Pdf[] = [];
+  @Input() thisCategoryPdfsList!:Pdf[];
   // Pour récupérer l'id catégory dans le routerLink
   @Input() parentCategory?: Category;
 

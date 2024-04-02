@@ -19,9 +19,11 @@ export class HeaderComponent implements OnInit {
   // Boolean pour rendre la modale visible ou non au click "connexion", "X"
   // [ngStyle]="{'display':displayStyle}
   displayStyle = "none";
+
   openModale() {
     this.displayStyle = "block";
   }
+  
   closeModale() {
     this.displayStyle = "none";
   }

@@ -48,6 +48,8 @@ export class HeaderComponent implements OnInit {
     this.auth.isConnected$.subscribe(isConnected => {
       this.isConnectedUser = isConnected;
     });
+    // Je capte le username et l'envoi à ma props "username" pour affichage (en cas de refresh de la page, je le perdais)
+    this.username = localStorage.getItem('username');
   }
   
   // Soumission du formulaire d'authentification

@@ -13,7 +13,7 @@
       </div>
       <div *ngIf="isConnectedUser">
         <!-- <li (click)="routerDashboard()">Compte</li> -->
-        <li (click)="routerDashboard()" [textContent]="username">{{username}}</li> 
+        <span>User : <li (click)="routerDashboard()" [textContent]="username">{{username}}</li></span> 
         <li (click)="logoutUser()">Déconnexion</li>
       </div>
     </nav>
@@ -27,8 +27,6 @@
       <div class="mobile-icons" *ngIf="isConnectedUser">
         <mat-icon (click)="routerDashboard()">account_box</mat-icon>
         <mat-icon (click)="logoutUser()">logout</mat-icon>
-        <!-- <li (click)="routerDashboard()" [textContent]="username">{{username}}</li> décalage d'affichage et bug CORS-->
-        <!-- [(ngModel)]="username" provoque un message d'erreur : Avoid mixing ngModel and formControlName directives on the same element.-->
       </div>
     </nav>
     <!-- Navigation mobile -->

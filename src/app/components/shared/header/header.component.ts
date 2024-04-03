@@ -31,9 +31,8 @@ export class HeaderComponent implements OnInit {
   errorMessage: String = '';
   // Boolean => switcher l'affichage de la nav (connexion/inscription => déconnexion/compte)
   isConnectedUser?: boolean;
-
-  // Récupération du username renvoyé dans le body de la réponse à la demende de connexion
-  username: any = localStorage.getItem('username');
+  // Récupération du username renvoyé dans le body de la réponse à la demande de connexion
+  username!: any;
   // ##################################################################
 
   // Initialisation du formulaire et des critères de validation quant au remplissage des champs
@@ -91,6 +90,8 @@ export class HeaderComponent implements OnInit {
               localStorage.setItem('userId', userId);
               localStorage.setItem('username', username);
               localStorage.setItem('roles', userRoles);
+              // Je capte le username et l'envoir à ma props "username" pour affichage
+              this.username = localStorage.getItem('username');
             }
           }
         );

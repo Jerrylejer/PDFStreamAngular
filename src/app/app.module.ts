@@ -6,15 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon'
 import { HttpClientModule } from '@angular/common/http';
-// Material tables
+// Angular Material -- pour mes tables
+import { MatIconModule } from '@angular/material/icon'
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-// Components
+// Angular Material -- pour mon menu burger
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+// Components créés
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -36,6 +39,7 @@ import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.co
 import { CategoryCardComponent } from './components/shared/category-card/category-card.component';
 import { CategoriesListComponent } from './components/standalone/categories-list/categories-list.component';
 import { PdfCardComponent } from './components/shared/pdf-card/pdf-card.component';
+// Pipes
 import { FileSizePipe } from './pipes/file-size.pipe';
 
 
@@ -78,7 +82,9 @@ import { FileSizePipe } from './pipes/file-size.pipe';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

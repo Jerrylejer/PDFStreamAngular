@@ -2,19 +2,37 @@
     <div class="logo">
         <a href=""><img class="logo" src="../../../../assets/icones/identité/PDFStream.svg" alt="logo PDFStream"></a>
     </div>
+
     <!-- A FAIRE : Implentation du futur composant "recherche" -->
-    <nav class="navigation">
+
+    <!-- Navigation desktop -->
+    <nav class="desk-navigation">
       <div *ngIf="isConnectedUser == false">
-        <li (click)="openModale()">Connexion</li>
         <li (click)="routerInscription()">Inscription</li>
+        <li (click)="openModale()">Connexion</li>
       </div>
       <div *ngIf="isConnectedUser">
+        <!-- <li (click)="routerDashboard()">Compte</li> -->
+        <li (click)="routerDashboard()" [textContent]="username">{{username}}</li> 
         <li (click)="logoutUser()">Déconnexion</li>
-        <li (click)="routerDashboard()">Compte</li>
+      </div>
+    </nav>
+    <!-- Navigation desktop -->
+    <!-- Navigation mobile -->
+    <nav class="mobile-navigation">
+      <div class="mobile-icons" *ngIf="isConnectedUser == false">
+        <mat-icon (click)="routerInscription()">person_add</mat-icon>
+        <mat-icon (click)="openModale()">login</mat-icon>
+      </div>
+      <div class="mobile-icons" *ngIf="isConnectedUser">
+        <mat-icon (click)="routerDashboard()">account_box</mat-icon>
+        <mat-icon (click)="logoutUser()">logout</mat-icon>
         <!-- <li (click)="routerDashboard()" [textContent]="username">{{username}}</li> décalage d'affichage et bug CORS-->
         <!-- [(ngModel)]="username" provoque un message d'erreur : Avoid mixing ngModel and formControlName directives on the same element.-->
       </div>
     </nav>
+    <!-- Navigation mobile -->
+
     <!-- Modal -->
     <!-- [ngStyle]="{'display':displayStyle} =>  -->
     <div div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">

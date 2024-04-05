@@ -116,6 +116,29 @@ input {
     padding: 5px;
 }
 
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 35px;
+    width: 35px;
+    background-color: var(--skin);
+}
+
+#password {
+    margin-bottom: 0;
+    width: 100%;
+}
+
 /* ############################################ */
 /* ############## MEDIAQUERIES ################ */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */

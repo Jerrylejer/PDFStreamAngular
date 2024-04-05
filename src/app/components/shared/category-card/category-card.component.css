@@ -5,6 +5,43 @@ margin: 2%;
 .card-title {
     text-align: right;
     color: var(--greytext);
-    font-size: 20px;
+    font-size: clamp(1rem, 0.8214rem + 0.5714vw, 1.25rem);
     font-weight: 600;
+}
+
+/* ############################################ */
+/* ############## MEDIAQUERIES ################ */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+
+/* Header, Footer & Banner ont les même breakpoints et modifient leurs apparences selon
+ces mêmes breakpoints 
+=> par ex: Header show/unshow nav droite, 
+=> footer show/unshow burger 
+=> banner est modifié en version mobile ...*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    img {
+        width: 150px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
 }

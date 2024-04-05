@@ -54,3 +54,72 @@ nav {
 .pdfs-list {
     margin-top: 10%;
 }
+
+/* ############################################ */
+/* ############## MEDIAQUERIES ################ */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_mq_breakpoints */
+
+/* Header, Footer & Banner ont les même breakpoints et modifient leurs apparences selon
+ces mêmes breakpoints 
+=> par ex: Header show/unshow nav droite, 
+=> footer show/unshow burger 
+=> banner est modifié en version mobile ...*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    section {
+        position: relative;
+        min-height: 100vh;
+        /* 50px est la hauteur estimée du footer */
+        max-height: calc(100vh - 50px);
+        /* Ajoutez un défilement vertical si le contenu dépasse la hauteur maximale */
+        overflow-y: auto;
+    }
+
+    app-banner {
+        position: fixed;
+        top: 12%;
+        z-index: 2;
+    }
+
+    .left-nav {
+        max-width: 50%;
+        position: fixed;
+        top: 40%;
+        left: 1%;
+        z-index: 2;
+    }
+
+    .border {
+        display: none;
+    }
+
+    .listing {
+        max-width: 50%;
+        position: absolute;
+        justify-content: center;
+        top: 25%;
+        right: 0;
+        overflow: hidden;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}

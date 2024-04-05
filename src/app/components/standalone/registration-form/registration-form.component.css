@@ -112,6 +112,26 @@ input {
     padding: 5px;
 }
 
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 35px;
+    width: 35px;
+    background-color: var(--skin);
+}
+
+#passwordRegistration {
+    width: 100%;
+}
+
 /* FORMULAIRE MESSAGES ERREURS */
 
 .field-message {

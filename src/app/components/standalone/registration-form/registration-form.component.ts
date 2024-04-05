@@ -13,8 +13,22 @@ import { createPasswordStrengthValidator } from 'src/utils/passwordSrength';
 export class RegistrationFormComponent implements OnInit{
   // ReactiveForms
   inscriptionForm!: FormGroup; 
-  // Injections
+  // Injections 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router){}
+
+  
+  // Switch pour visibilité password on/off
+  toggleVisibility(): void {
+  const input = document.getElementById("passwordRegistration") as HTMLElement;
+  console.log(input.getAttribute('type'));
+  if (input && input instanceof HTMLInputElement) {
+      if (input.type === "text") {
+          input.type = "password";
+      } else {
+          input.type = "text";
+      }
+  }
+}
 
   // Initialisation du formulaire
   ngOnInit() {

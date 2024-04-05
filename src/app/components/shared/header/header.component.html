@@ -51,9 +51,13 @@
                             <label for="username">Username</label>
                             <input type="text" class="input" id="username" formControlName="username"/> 
                         </div>
-                        <div class="column">
-                            <label for="password">Password</label>
-                            <input type="password" class="input" id="password" formControlName="password"/> 
+                        <!-- <div class="column">
+                          <input type="password" class="input" id="password" formControlName="password"/> 
+                        </div> -->
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                          <input type="password" class="input" id="password" formControlName="password" />
+                          <button class="input-button" (click)="toggleVisibility()"><mat-icon >visibility</mat-icon></button>
                         </div>
                     </div>
                     <!-- [disabled] => si les champs requis ne sont pas tous remplis, le btn de validation est inactif -->

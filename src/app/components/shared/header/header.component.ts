@@ -51,6 +51,19 @@ export class HeaderComponent implements OnInit {
     // Je capte le username et l'envoi à ma props "username" pour affichage (en cas de refresh de la page, je le perdais)
     this.username = localStorage.getItem('username');
   }
+
+  // Switch pour visibilité password on/off
+  toggleVisibility(): void {
+    const input = document.getElementById("password") as HTMLElement;
+    console.log(input.getAttribute('type'));
+    if (input && input instanceof HTMLInputElement) {
+        if (input.type === "text") {
+            input.type = "password";
+        } else {
+            input.type = "text";
+        }
+    }
+  }
   
   // Soumission du formulaire d'authentification
   connexionUser() {

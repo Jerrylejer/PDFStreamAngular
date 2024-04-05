@@ -10,6 +10,7 @@
                     <a [routerLink]="['/category', childCategories.id]">{{childCategories.title}}</a>
                 </nav>
             </div>
+            
             <div *ngIf="parentCategory!.pdfList && parentCategory!.pdfList.length > 0">
                     <h5 class="pdfs-list">Pdfs - {{parentCategory!.title}}</h5>
                     <nav  *ngFor="let pdf of thisCategoryPdfsList">

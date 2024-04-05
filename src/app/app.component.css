@@ -7,11 +7,12 @@
 }
 
 .main {
-    flex-grow: 1;
+    flex: 1;
     max-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+   
 }
 
 /* ############################################ */
@@ -26,6 +27,7 @@ ces mêmes breakpoints
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+
         .nav {
             display: none;
         }
@@ -40,6 +42,8 @@ ces mêmes breakpoints
             position: sticky;
             top: 0;
             left: 0;
+            /* sinon mobile liste categorie & pdf chevauchent le header */
+            z-index: 3;
         }
 }
 

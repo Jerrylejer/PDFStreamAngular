@@ -39,6 +39,19 @@ a {
     color: var(--white);
 }
 
+.user-identity {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.desk-icons {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+}
+
 /* MOBILE NAVIGATION */
 .mobile-navigation {
     width: 20%;
@@ -47,6 +60,7 @@ a {
 }
 
 .mobile-icons {
+    cursor: pointer;
     display: flex;
     justify-content:space-around;
     align-items: center;

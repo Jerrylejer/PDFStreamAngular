@@ -11,10 +11,9 @@
         <li (click)="routerInscription()">Inscription</li>
         <li (click)="openModale()">Connexion</li>
       </div>
-      <div *ngIf="isConnectedUser">
-        <!-- <li (click)="routerDashboard()">Compte</li> -->
-        <span>User : <li (click)="routerDashboard()" [textContent]="username">{{username}}</li></span> 
-        <li (click)="logoutUser()">Déconnexion</li>
+      <div class="desk-icons" *ngIf="isConnectedUser">
+        <span class="user-identity" (click)="routerDashboard()"><mat-icon class="user-icon">account_circle</mat-icon> <li (click)="routerDashboard()" [textContent]="username">{{username}}</li></span> 
+        <mat-icon (click)="logoutUser()">logout</mat-icon>
       </div>
     </nav>
     <!-- Navigation desktop -->
@@ -25,7 +24,7 @@
         <mat-icon (click)="openModale()">login</mat-icon>
       </div>
       <div class="mobile-icons" *ngIf="isConnectedUser">
-        <mat-icon (click)="routerDashboard()">account_box</mat-icon>
+        <mat-icon (click)="routerDashboard()">account_circle</mat-icon>
         <mat-icon (click)="logoutUser()">logout</mat-icon>
       </div>
     </nav>
@@ -51,13 +50,11 @@
                             <label for="username">Username</label>
                             <input type="text" class="input" id="username" formControlName="username"/> 
                         </div>
-                        <!-- <div class="column">
-                          <input type="password" class="input" id="password" formControlName="password"/> 
-                        </div> -->
                         <label for="password">Password</label>
                         <div class="password-wrapper">
-                          <input type="password" class="input" id="password" formControlName="password" />
-                          <button class="input-button" (click)="toggleVisibility()"><mat-icon >visibility</mat-icon></button>
+                          <!-- (keydown.enter)="$event.preventDefault()" empêche la soumission par touche enter (sinon le password apparait) -->
+                          <input type="password" class="input" id="password" formControlName="password" (keydown.enter)="$event.preventDefault()"/>
+                          <button class="input-button" type="button" (click)="toggleVisibility()"><mat-icon >visibility</mat-icon></button>
                         </div>
                     </div>
                     <!-- [disabled] => si les champs requis ne sont pas tous remplis, le btn de validation est inactif -->

@@ -13,6 +13,8 @@ import { createPasswordStrengthValidator } from 'src/utils/passwordSrength';
 export class RegistrationFormComponent implements OnInit{
   // ReactiveForms
   inscriptionForm!: FormGroup; 
+  // Switch pour icone visibilité password
+  isVisible?: boolean = false;
   // Injections 
   constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router){}
 
@@ -24,8 +26,10 @@ export class RegistrationFormComponent implements OnInit{
   if (input && input instanceof HTMLInputElement) {
       if (input.type === "text") {
           input.type = "password";
+          this.isVisible = false;
       } else {
           input.type = "text";
+        this.isVisible = true;
       }
   }
 }

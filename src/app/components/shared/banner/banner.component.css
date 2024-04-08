@@ -93,11 +93,14 @@ img {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .mobile {
-        display: block;
+        /* Je ne l'affiche pas car prend trop de place sur très petits écrans */
+        display: none;
     }
+
     .desktop {
         display: none;
     }
+    
     article {
         margin-top: 10px;
         margin-right: 10px;

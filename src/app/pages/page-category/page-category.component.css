@@ -75,17 +75,17 @@ ces mêmes breakpoints
         /* Ajoutez un défilement vertical si le contenu dépasse la hauteur maximale */
         overflow-y: auto;
     }
-
-    app-banner {
+    
+    /* app-banner {
         position: fixed;
         top: 12%;
         z-index: 2;
-    }
+    } */
 
     .left-nav {
         max-width: 50%;
         position: fixed;
-        top: 47%;
+        top: 10%;
         left: 1%;
         z-index: 2;
     }
@@ -98,7 +98,7 @@ ces mêmes breakpoints
         max-width: 50%;
         position: absolute;
         justify-content: center;
-        top: 55%;
+        top: 10%;
         right: 0;
         overflow: hidden;
     }
@@ -107,6 +107,11 @@ ces mêmes breakpoints
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 
+    app-banner {
+        position: fixed;
+        top: 12%;
+        z-index: 2;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */

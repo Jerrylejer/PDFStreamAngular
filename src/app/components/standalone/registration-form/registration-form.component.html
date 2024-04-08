@@ -36,7 +36,7 @@
                         <label for="passwordRegistration">Password</label>
                         <span class="password-wrapper">
                             <input class="input100" type="password" class="input" id="passwordRegistration" formControlName="password" />
-                            <button class="input-button" type="button" (click)="toggleVisibility()"><mat-icon >visibility</mat-icon></button>
+                            <button class="input-button" type="button" (click)="toggleVisibility()"><mat-icon id="i-visibility">{{isVisible == true ? 'visibility_off' : 'visibility'}}</mat-icon></button>
                         </span>
                         <div class="field-message" *ngIf="inscriptionForm.get('password')?.invalid  && (inscriptionForm.get('password')?.dirty || inscriptionForm.get('password')?.touched)">
                             Majuscules, minuscules, chiffres et 12 caractères minimum.

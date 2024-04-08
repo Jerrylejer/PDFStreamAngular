@@ -54,7 +54,7 @@
                         <div class="password-wrapper">
                           <!-- (keydown.enter)="$event.preventDefault()" empêche la soumission par touche enter (sinon le password apparait) -->
                           <input type="password" class="input" id="password" formControlName="password" (keydown.enter)="$event.preventDefault()"/>
-                          <button class="input-button" type="button" (click)="toggleVisibility()"><mat-icon >visibility</mat-icon></button>
+                          <button class="input-button" type="button" (click)="toggleVisibility()"><mat-icon >{{isVisible == true ? 'visibility_off' : 'visibility'}}</mat-icon></button>
                         </div>
                     </div>
                     <!-- [disabled] => si les champs requis ne sont pas tous remplis, le btn de validation est inactif -->

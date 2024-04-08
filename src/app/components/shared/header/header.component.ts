@@ -33,6 +33,8 @@ export class HeaderComponent implements OnInit {
   isConnectedUser?: boolean;
   // Récupération du username renvoyé dans le body de la réponse à la demande de connexion
   username!: any;
+  // Switch icone pour visibilité du password
+  isVisible?: boolean = false;
   // ##################################################################
 
   // Initialisation du formulaire et des critères de validation quant au remplissage des champs
@@ -59,8 +61,10 @@ export class HeaderComponent implements OnInit {
     if (input && input instanceof HTMLInputElement) {
         if (input.type === "text") {
             input.type = "password";
-        } else {
+            this.isVisible = false;
+          } else {
             input.type = "text";
+            this.isVisible = true;
         }
     }
   }

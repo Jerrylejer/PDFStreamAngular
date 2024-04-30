@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, forkJoin, map, throwError } from 'rxjs';
-import { Category } from 'src/app/models/category.model';
 import { Pdf } from 'src/app/models/pdf.model';
 import { User } from 'src/app/models/user.model';
 import { Environnement } from 'src/env/environnement';

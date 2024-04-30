@@ -88,8 +88,9 @@ export class HeaderComponent implements OnInit {
           // J'accède à la réponse renvoyée par le serveur
           (response) => {
             console.log("authentification réussie")
-            // Si la connexion est ok, je ferme ma modale et je modifie l'affichage de la nav
+            // Si la connexion est ok, je ferme ma modale, je modifie l'affichage de la nav et redirige à l'accueil
             this.displayStyle = "none";
+            this.router.navigate(["/"]);
             // Mettre à jour l'état de connexion
             this.auth.setIsConnected(true);
             // Je conditionne l'état de isConnected

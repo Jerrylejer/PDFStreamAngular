@@ -24,7 +24,10 @@ export class PagePdfComponent implements OnInit {
 
   // J'injecte mon PdfService pour utiliser ma requête "download" + "getPdfById"
   // J'injecte ActivatedRoute pour interagir avec le param de la route
-  constructor(private pdfService: PdfService, private activatedRoute: ActivatedRoute, private auth: AuthService, private router: Router){}
+  constructor(private pdfService: PdfService, 
+    private activatedRoute: ActivatedRoute, 
+    private auth: AuthService, 
+    private router: Router){}
 
   // Manipulation de la modale de téléchargement
   openDownloadModale() {

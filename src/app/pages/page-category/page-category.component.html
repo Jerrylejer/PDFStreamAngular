@@ -10,7 +10,6 @@
                     <a [routerLink]="['/category', childCategories.id]">{{childCategories.title}}</a>
                 </nav>
             </div>
-            
             <div *ngIf="parentCategory!.pdfList && parentCategory!.pdfList.length > 0">
                     <h5 class="pdfs-list">Pdfs - {{parentCategory!.title}}</h5>
                     <nav  *ngFor="let pdf of thisCategoryPdfsList">
@@ -25,4 +24,5 @@
         <!-- Ici les cards des pdfs si liste existe && liste supérieure à 0 -->
         <app-pdf-card [thisCategoryPdfsList]="thisCategoryPdfsList" [parentCategory]="parentCategory" class="listing" *ngIf="parentCategory!.pdfList != null && parentCategory!.pdfList.length > 0"></app-pdf-card>
     </div>
+    <app-back-button></app-back-button>
 </section>

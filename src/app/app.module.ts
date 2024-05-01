@@ -41,6 +41,7 @@ import { CategoriesListComponent } from './components/standalone/categories-list
 import { PdfCardComponent } from './components/shared/pdf-card/pdf-card.component';
 // Pipes
 import { FileSizePipe } from './pipes/file-size.pipe';
+import { BackButtonComponent } from './components/shared/back-button/back-button.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { FileSizePipe } from './pipes/file-size.pipe';
     CategoryCardComponent,
     CategoriesListComponent,
     PdfCardComponent,
-    FileSizePipe
+    FileSizePipe,
+    BackButtonComponent
   ],
   imports: [
     BrowserModule,

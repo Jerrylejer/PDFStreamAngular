@@ -1,6 +1,6 @@
 <div *ngFor="let category of categories" >
     <a class="cards" [routerLink]="['/category', category.id]">
-      <img [src]="'assets/images/categories/' + category.title + '.jpg'" alt="Image de la catégorie {{category.title}}">
+      <img img [src]="'assets/images/categories/' + category.title + '.jpg'" alt="Image de la catégorie {{category.title}}">
       <h5 class="card-title">{{category.title}}</h5>
     </a>
 </div>

@@ -5,7 +5,7 @@
     </div>
     <div class="details-pdf">
         <ul>
-            <li class="titre-pdf">Titre : {{pdfDatas?.title}}</li>
+            <li class="titre-pdf">{{pdfDatas?.title}}</li>
             <li>Auteur : {{pdfDatas?.author?.username}}</li>
             <li>{{pdfDatas?.description}}</li>
         </ul>
@@ -16,11 +16,8 @@
                 <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="openDownloadModale()">
                     Télécharger
                 </button>
-                <!-- <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="downloadPdf(pdfId)">
-                    Télécharger
-                </button> -->
                 <!-- Author  je passe directement pdfId du .ts récupéré de la route  -->
-                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="fetchAuthorPage(pdfId)">
+                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="goToAuthorPage(pdfId)">
                     Fiche auteur
                 </button>
             </div>

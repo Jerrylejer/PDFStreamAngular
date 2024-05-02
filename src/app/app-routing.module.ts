@@ -9,40 +9,44 @@ import { PageCategoryComponent } from './pages/page-category/page-category.compo
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'allCategories', pathMatch: 'full' },
+  { 
+    path: '', 
+    redirectTo: 'allCategories', 
+    pathMatch:'full' 
+  },
   {
     // ma page "home" affichera la liste des catégories 
     path:"allCategories",
     component:PageHomeComponent
   },
   {
-    // => Chemin vers une catégorie 
-    path:"category/:categoryId",
+    // Chemin vers une catégorie 
+    path:'category/:categoryId',
     component:PageCategoryComponent
   },
   {
-    // => Chemin vers un pdf
-    path:"category/:categoryId/:pdfId",
+    // Chemin vers un pdf
+    path:'category/:categoryId/:pdfId',
     component:PagePdfComponent
   },
   {
-    // Dashboard user
-    path:"dashboard",
+    // chemin vers le Dashboard user
+    path:'dashboard',
     component:PageDashboardComponent
   },
   {
     // Chemin vers l'inscription
-    path:"inscription",
+    path:'inscription',
     component:PageInscriptionComponent
   },
   {
     // Page 404
-    path:"not-found",
-    component:Page404Component
+    path:'not-found',
+    component: Page404Component
   },
   {
-    path: "**",
-    redirectTo: "not-found",
+    path: '**',
+    redirectTo: 'not-found',
   },
 ];
 

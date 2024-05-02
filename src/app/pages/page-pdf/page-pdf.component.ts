@@ -159,7 +159,7 @@ export class PagePdfComponent implements OnInit {
     }
 
     // Aller sur la page de l'auteur
-    fetchAuthorPage(id: string | undefined): void {
+    goToAuthorPage(id: string | undefined): void {
 
     }
 }

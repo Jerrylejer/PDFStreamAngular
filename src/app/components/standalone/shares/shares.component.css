@@ -32,6 +32,10 @@ input {
     padding: 5px;
 }
 
+.btn-primary {
+    margin: 2%;
+}
+
 /* MODALE */
 .modal {
     background-color: #2b2b2ba2;

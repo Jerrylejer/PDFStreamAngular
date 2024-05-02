@@ -62,7 +62,13 @@ export class RegistrationFormComponent implements OnInit{
           (response) => {
             console.log("inscription réussie")
             alert("Compte activé. Vous pouvez à présent vous connecter ! ")
-            // Si la connexion est ok, je ferme ma page et redirige vers l'accueil
+            // Si la connexion est ok, je remets le formulaire à zéro, je ferme ma page et redirige vers l'accueil
+            this.inscriptionForm = this.formBuilder.group({
+              username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+              // Validators.email ne tient pas compte du .com ...
+              email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]],
+              password: ['', [Validators.required, Validators.minLength(12), createPasswordStrengthValidator()]],
+            });
             this.router.navigate(['/']);
           }
         );

@@ -18,11 +18,11 @@
                     </nav>
             </div>
         </div>
-        <span class="border"></span>
-        <!-- Ici les cards des catégories si la catégorie n'a pas de liste de pdfs ou si celle-ci est null -->
-        <app-category-card [categories]="childsCategorieList" class="listing" *ngIf="!parentCategory!.pdfList || parentCategory!.pdfList.length === 0"></app-category-card>
-        <!-- Ici les cards des pdfs si liste existe && liste supérieure à 0 -->
-        <app-pdf-card [thisCategoryPdfsList]="thisCategoryPdfsList" [parentCategory]="parentCategory" class="listing" *ngIf="parentCategory!.pdfList != null && parentCategory!.pdfList.length > 0"></app-pdf-card>
+            <span class="border"></span>
+            <!-- Ici les cards des catégories si la catégorie n'a pas de liste de pdfs ou si celle-ci est null -->
+            <app-category-card [categories]="childsCategorieList" class="listing" *ngIf="!parentCategory!.pdfList || parentCategory!.pdfList.length === 0"></app-category-card>
+            <!-- Ici les cards des pdfs si liste existe && liste supérieure à 0 -->
+            <app-pdf-card [thisCategoryPdfsList]="thisCategoryPdfsList" [parentCategory]="parentCategory" class="listing" *ngIf="parentCategory!.pdfList != null && parentCategory!.pdfList.length > 0"></app-pdf-card>
     </div>
     <app-back-button></app-back-button>
 </section>

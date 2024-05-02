@@ -4,23 +4,24 @@
     background-color: var(--night);
     padding: 35px;
     position: fixed;
-    bottom: 63px;
+    bottom: 50px;
     right: 0;
     z-index: 1;
     cursor: pointer;
   }
   
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 768px) {
     .container {
-      height: 74px;
-      width: 74px;
-      padding: 29px;
-      bottom: 74px;
-      left: -503px;
+      height: 50px;
+      width: 50px;
+      padding: 13px;
+      top: 100px;
+      right: 0;
     }
-  
+
     img {
-      height: 14px;
-      width: 14px;
+      height: 20px;
     }
   }
+
+  

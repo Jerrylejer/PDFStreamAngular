@@ -5,7 +5,7 @@
   <a [routerLink]="['/category', parentCategory!.id, pdf.id]">
   <!-- bandeau -->
   <span class="image-banner">
-    <p class="image-banner-details">{{pdf.title}}</p> 
+    <p class="image-banner-details">{{pdf.title!.length > 33 ? pdf.title!.substring(0, 33) + '...' : pdf.title}}</p> 
     <p class="image-banner-details">{{ pdf.size!| fileSize }}</p>
     <p class="image-banner-details">{{pdf.author?.username}}</p>
   </span>

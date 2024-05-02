@@ -4,6 +4,12 @@
 }
 
 /* IMAGE PREVIEW PDF */
+
+.preview-title {
+text-align: center;
+color: var(--night);
+}
+
 .image-pdf {
     max-width: 50%;
 }

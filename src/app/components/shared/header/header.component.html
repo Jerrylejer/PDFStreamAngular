@@ -12,7 +12,10 @@
         <li (click)="openModale()">Connexion</li>
       </div>
       <div class="desk-icons" *ngIf="isConnectedUser">
-        <span class="user-identity" (click)="routerDashboard()"><mat-icon class="user-icon">account_circle</mat-icon> <li (click)="routerDashboard()" [textContent]="username">{{username}}</li></span> 
+        <div class="account-logo">
+          <span class="user-identity" (click)="routerDashboard()"><mat-icon class="user-icon">account_circle</mat-icon></span> 
+          <li (click)="routerDashboard()" [textContent]="username">{{username}}</li>
+        </div>
         <mat-icon (click)="logoutUser()">logout</mat-icon>
       </div>
     </nav>
@@ -39,7 +42,7 @@
               <h4 class="modal-title title">Connexion</h4>
                 <a type="button" 
                         (click)="closeModale()">
-                <img src="../../../assets/icones/close.png" alt="close">
+                <img class="modal-close-button" src="../../../assets/icones/close.png" alt="close">
                 </a>
             </div>
             <!-- Formulaire username & password -->

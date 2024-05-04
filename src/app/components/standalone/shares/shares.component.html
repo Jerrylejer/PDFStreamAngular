@@ -26,7 +26,7 @@
             <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
         </table>
         <mat-form-field>
-            <mat-label>Filtre</mat-label>
+            <!-- <mat-label>Filtre</mat-label> -->
             <input matInput (keyup)="applyFilter($event)" placeholder="Search ..." #input>
         </mat-form-field>
 
@@ -184,7 +184,7 @@
                                     <div class="groupe-a">
                                         <div class="column">
                                             <div>
-                                                <label for="updatedSmallDesc">Titre</label>
+                                                <label for="updatedSmallDesc">Aperçu</label>
                                                 <input type="text" class="input" id="updatedSmallDesc"formControlName="updatedSmallDesc" [value]="pdfSmallDesc"/> 
                                             </div>
                                             <div class="label-textarea">
@@ -201,7 +201,7 @@
                                             </div>
                                             <!-- Select catégorie parent-->
                                             <div class="form-group row mb-2 cat1">
-                                                <label class="col-md-3 col-form-label catlabels" for="updatedCategory">Cat 1 : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="updatedCategory">Cat 1</label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedCategory" class="form-select" 
                                                     id="updatedCategory" formControlName="updatedCategory">
@@ -220,7 +220,7 @@
                                             </div>
                                             <!-- select des sous-catégories parent -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label catlabels" for="updatedChildCategories">Cat 2  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="updatedChildCategories">Cat 2</label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedChildCategories" class="form-select" 
                                                     id="updatedChildCategories" formControlName="updatedChildCategories" required="true">
@@ -236,7 +236,7 @@
                                             </div>
                                                 <!-- select des sub child categories -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label catlabels" for="updatedSubChildCategories">Cat 3  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="updatedSubChildCategories">Cat 3</label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedSubChildCategories" class="form-select" 
                                                     id="updatedSubChildCategories" formControlName="updatedSubChildCategories" required="true">
@@ -253,7 +253,7 @@
                                             </div>
                                                 <!-- select categorie finale -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label catlabels" for="updatedFinalCategory">Cat 4  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="updatedFinalCategory">Cat 4</label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedFinalCategory" class="form-select" 
                                                     id="updatedFinalCategory" formControlName="updatedFinalCategory" required="true"  [value]="pdfCategory">

@@ -155,12 +155,18 @@ li {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+
+    .section {
+        height:100%;
+    }
+    
     .wrapper {
         display: flex;
         flex-direction: column;
         justify-content:center;
         align-items: center;
         padding: 0;
+        margin-bottom: 20%;
     }
 
     .image-pdf {
@@ -189,6 +195,7 @@ li {
 
     .btn-wrapper {
         margin-bottom: 1%;
+        width: 300px;
     }
 
     .modal-dialog {
@@ -211,6 +218,7 @@ li {
         justify-content:center;
         align-items: center;
         padding: 0;
+        margin-bottom: 20%;
     }
 
     .image-pdf {

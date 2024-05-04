@@ -2,17 +2,16 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    max-height: 100%;
     width: 100%;
-}
+    }
 
 .main {
     flex: 1;
-    max-height: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
 }
 
 /* ############################################ */
@@ -33,9 +32,11 @@ ces mêmes breakpoints
         }
 
         .appfooter {
-            position: sticky;
+            /* Si sticky, footer monte lors du scroll */
+            position: fixed;
             bottom: 0;
             left: 0;
+            width: 100%;
         }
     
         .appheader {
@@ -54,9 +55,11 @@ ces mêmes breakpoints
         }
 
         .appfooter {
-            position: sticky;
+             /* Si sticky, footer monte lors du scroll */
+            position: fixed;
             bottom: 0;
             left: 0;
+            width: 100%;
         }
     
         .appheader {

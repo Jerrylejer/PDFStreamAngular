@@ -1,3 +1,7 @@
+section {
+    height: 100%;
+}
+
 .nav-item > a {
     color: var(--lightGreytext);
     font-size: 20px;
@@ -20,3 +24,4 @@
 .account {
     width: 100vh;
 }
+

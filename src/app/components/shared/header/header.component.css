@@ -130,6 +130,7 @@ input {
     border-radius: 5px;
     line-height: 35px;
     margin-bottom: 20px;
+    padding: 1%;
 }
 
 .submit-btn {

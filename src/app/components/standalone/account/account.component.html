@@ -9,8 +9,10 @@
                             <input type="text" name="registeredUsername" class="input" id="registeredUsername" [value]="username" readonly="readonly"/> 
                         </div>
                         <div class="inline-or-column">
-                            <label for="registeredAvatar">Image de profile</label>
+                            <label for="registeredAvatar">Avatar</label>
                             <input type="text" name="registeredAvatar" class="input" id="registeredAvatar" [value]="avatar" readonly="readonly" /> 
+                            <!-- Voir commment aficher un aperçu de l'avatar -->
+                            <!-- <img img src="data:image/png;base64, {{avatar}}" alt="avatar {{avatar.title}}" class="image-card" /> -->
                         </div>
                         <div class="inline-or-column">
                             <label for="registeredEmail">Email</label>
@@ -60,8 +62,8 @@
                                             </div> -->
                                         </div>
                                         <div class="inline-or-column">
-                                            <label for="updatedAvatar">Image de profile</label>
-                                            <input type="file" class="input" id="updatedAvatar"formControlName="updatedAvatar" accept="image/*,.pdf"/> 
+                                            <label for="updatedAvatar">Avatar</label>
+                                            <input type="file" class="input" id="updatedAvatar"formControlName="updatedAvatar" accept="image/*"/> 
                                         </div>
                                         <div class="inline-or-column">
                                             <label for="updatedEmail">Email</label>

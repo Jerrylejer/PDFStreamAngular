@@ -1,19 +1,18 @@
-.form {
-    min-width: 100%;
-    margin-top: 2%;
-}
-
 /* FORMULAIRES => INPUTS ET LABELS */
 input {
     border: 1px solid rgba(0, 0, 0, 0.525);
     border-radius: 5px;
     line-height: 35px;
-    width: 100vh;
+    width:75%;
     color: var(--lightGreytext)
 }
 
+.bio-label {
+    height: 200%;
+}
+
 .textarea {
-    width: 100vh;
+    width: 75%;
     color: var(--lightGreytext)
 }
 
@@ -50,16 +49,16 @@ input {
     align-items: center;
 }
 
-.modal-span-PDF {
+.modal-span-pdf {
     font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
     font-weight: 800;
 }
-.modal-span-STREAM {
+.modal-span-stream {
     font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
     font-weight: 800;
     color: var(--red);
 }
-.modal-span-MODIF {
+.modal-span-modif {
     font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
 }
 
@@ -99,7 +98,6 @@ input {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -113,27 +111,33 @@ input {
     
     .groupe-b {
         margin-top: 2%;
-        align-self: center;
+        /* align-self: center; */
         text-align: center;
     }
 
     .button {
-        margin: 2%;
+        margin-right: unset;
     }
 
+    button {
+        margin: 2%;
+    }
+    
     input {
-        max-width: 100%; 
         margin-bottom: 5%;
+        padding: 1%;
+        width: 100%;
     }
 
     textarea {
-        max-width: 100%;
+        min-width: 100%;
+        padding: 1%;
     }
 
     .inline-or-column {
         display: flex;
         flex-direction: column;
-        margin-bottom: 1%;
+        margin-bottom: 5px;
     }
 }
 
@@ -141,12 +145,15 @@ input {
 @media only screen and (min-width: 600px) {
 
     label {
-    margin-bottom: 17px;
     width: 20%;
+    align-self: flex-start;
+    margin-bottom: 1%;
     }
 
     input {
         max-width: 80%; /* Ajuster la largeur pour les écrans encore plus grands */
+        padding: 5px;
+        margin-bottom: 1%;
     }
 
     textarea {
@@ -154,17 +161,40 @@ input {
     }
 
     .inline-or-column {
-        flex-direction: row;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5px;
     }
 
     .groupe-b {
-        text-align: end;
+        text-align: center;
+        align-items: center;
+        margin-top: 2%;
+    }
+
+    button {
+        margin: 2%;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+    .inline-or-column {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 1%;
+    }
 
+    .input {
+        margin-bottom: none;
+    }
+
+    .groupe-b {
+        text-align: end;
+        margin-top: unset;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

@@ -24,6 +24,10 @@ ces mêmes breakpoints
     img {
         width: 150px;
     }
+
+    .listing {
+        margin-bottom: 10%;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

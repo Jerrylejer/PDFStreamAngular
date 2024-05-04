@@ -35,6 +35,10 @@ ces mêmes breakpoints
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+    .wrapper {
+        margin-bottom: 20%;
+    }
+
     img {
         width: 150px;
     }

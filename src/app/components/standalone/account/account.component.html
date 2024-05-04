@@ -22,7 +22,7 @@
                         </div>
                         <div class="inline-or-column">
                             <label for="registeredBio">Bio</label>
-                            <textarea class="textarea" name="registeredBio" id="registeredBio" rows="10"  [value]="bio" readonly="readonly" ></textarea>
+                            <textarea class="textarea" name="registeredBio" id="registeredBio" rows="5"  [value]="bio" readonly="readonly" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Modification de compte</span></div>
+                <div class="modal-title"><span class="modal-span-pdf">PDF</span><span class="modal-span-stream">Stream</span><span class="modal-span-modif"> - Modification de compte</span></div>
                     <a type="button" 
                             (click)="closeUpdateModale()">
                     <img src="../../../assets/icones/close.png" alt="close">
@@ -48,7 +48,7 @@
                 </div>
                 <!-- Formulaire de modification des détails user-->
                 <div class="modal-body">
-                    <form class="form" [formGroup]="updateForm" (ngSubmit)="updateAccount()">
+                    <form class="form" [formGroup]="updateForm" (ngSubmit)="updateAccount()" enctype="multipart/form-data" method = "put">
                         <div class="wrapper">
                                 <div class="groupe-a">
                                     <div class="column">
@@ -101,7 +101,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Suppression de compte</span></div>
+                <div class="modal-title"><span class="modal-span-pdf">PDF</span><span class="modal-span-stream">Stream</span><span class="modal-span-modif"> - Suppression de compte</span></div>
                     <a type="button" 
                             (click)="closeDeleteModale()">
                     <img src="../../../assets/icones/close.png" alt="close">

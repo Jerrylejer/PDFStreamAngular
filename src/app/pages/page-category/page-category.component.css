@@ -32,6 +32,7 @@ section {
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
+    padding-bottom: 2%;
 }
 
 .left-nav .border .listing {
@@ -75,12 +76,6 @@ ces mêmes breakpoints
         /* Ajoutez un défilement vertical si le contenu dépasse la hauteur maximale */
         overflow-y: auto;
     }
-    
-    /* app-banner {
-        position: fixed;
-        top: 12%;
-        z-index: 2;
-    } */
 
     .left-nav {
         max-width: 50%;
@@ -106,20 +101,9 @@ ces mêmes breakpoints
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
+    .listing {
+        margin-bottom: 2%;
+    }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
 
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-
-}

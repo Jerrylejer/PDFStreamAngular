@@ -36,9 +36,11 @@
     </div>
 
         <!-- BTN d'upload d'un nouveau pdf, ouverture modale et reset du form -->
-        <button class="custbtn btn-block btn-outline-success add" type="button" data-toggle="modal"
-        data-target="#modaleCreation" (click)="openCreationModale()">Ajouter</button>
-        <!-- BTN d'ajout d'un nouveau pdf -->
+        <div class="btn-add-wrapper">
+            <button class="custbtn btn-block btn-outline-success add" type="button" data-toggle="modal"
+            data-target="#modaleCreation" (click)="openCreationModale()">Ajouter</button>
+            <!-- BTN d'ajout d'un nouveau pdf -->
+        </div>
 
             <!-- Si liste vide message suivant apparait -->
     <div *ngIf="uploadedPdf!.length == 0" class="flex-container-row">
@@ -51,7 +53,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Ajout d'un PDF</span></div>
+                    <div class="modal-title"><span class="modal-span-pdf">PDF</span><span class="modal-span-stream">Stream</span><span class="modal-span-modif"> - Ajout d'un PDF</span></div>
                         <a type="button" 
                                 (click)="closeCreationModale()">
                         <img src="../../../assets/icones/close.png" alt="close">
@@ -64,25 +66,25 @@
                             <div class="wrapper">
                                     <div class="groupe-a">
                                         <div class="column">
-                                            <div class="inline-or-column">
-                                                <label for="smallDescription">Titre :</label>
+                                            <div>
+                                                <label for="smallDescription">Titre</label>
                                                 <input type="text" class="input" id="smallDescription"formControlName="smallDescription" required="true"/> 
                                             </div>
-                                            <div class="inline-or-column">
-                                                <label for="description">Description : </label>
-                                                <textarea class="input" id="description" formControlName="description" required="true"></textarea>
+                                            <div class="label-textarea">
+                                                <label for="description">Desc</label>
+                                                <textarea class="textarea" id="description" formControlName="description" required="true"></textarea>
                                             </div>
-                                             <div class="inline-or-column">
-                                                <label for="image">Image : </label>
+                                             <div>
+                                                <label for="image">Image</label>
                                                 <input type="file" class="input" id="image" formControlName="image" accept="image/*"/> 
                                             </div>
-                                            <div class="inline-or-column">
-                                                <label for="pdfFile">Pdf : </label>
+                                            <div>
+                                                <label for="pdfFile">Pdf</label>
                                                 <input type="file" class="input" id="pdfFile" formControlName="pdfFile" accept=".pdf" required="true"/> 
                                             </div>
                                             <!-- Select catégorie parent-->
-                                            <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="categories">Cat 1: </label>
+                                            <div class="form-group row mb-2 cat1">
+                                                <label class="col-md-3 col-form-label catlabels" for="categories">Cat 1</label>
                                                 <div class="select col-md-9">
                                                     <select name="categories" class="form-select" 
                                                     id="categories" formControlName="categories" required="true">
@@ -99,7 +101,7 @@
                                             </div>
                                             <!-- select des sous-catégories parent -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="categories">Cat 2  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="categories">Cat 2</label>
                                                 <div class="select col-md-9">
                                                     <select name="childCategories" class="form-select" 
                                                     id="childCategories" formControlName="childCategories" required="true">
@@ -115,7 +117,7 @@
                                             </div>
                                              <!-- select des sub child categories -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="categories">Cat 3  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="categories">Cat 3</label>
                                                 <div class="select col-md-9">
                                                     <select name="subChildCategories" class="form-select" 
                                                     id="subChildCategories" formControlName="subChildCategories" required="true">
@@ -132,7 +134,7 @@
                                             </div>
                                              <!-- select categorie finale -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="categories">Cat 4  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="categories">Cat 4</label>
                                                 <div class="select col-md-9">
                                                     <select name="finalCategory" class="form-select" 
                                                     id="finalCategory" formControlName="finalCategory" required="true">
@@ -168,7 +170,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Modifier un PDF</span></div>
+                    <div class="modal-title"><span class="modal-span-pdf">PDF</span><span class="modal-span-stream">Stream</span><span class="modal-span-modif"> - Modifier un PDF</span></div>
                         <a type="button" 
                                 (click)="closeUpdateModale()">
                         <img src="../../../assets/icones/close.png" alt="close">
@@ -181,25 +183,25 @@
                             <div class="wrapper">
                                     <div class="groupe-a">
                                         <div class="column">
-                                            <div class="inline-or-column">
-                                                <label for="updatedSmallDesc">Chapeau :</label>
+                                            <div>
+                                                <label for="updatedSmallDesc">Titre</label>
                                                 <input type="text" class="input" id="updatedSmallDesc"formControlName="updatedSmallDesc" [value]="pdfSmallDesc"/> 
                                             </div>
-                                            <div class="inline-or-column">
-                                                <label for="updatedDesc">Description : </label>
-                                                <textarea class="input" id="updatedDesc" formControlName="updatedDesc" [value]="pdfDesc"></textarea>
+                                            <div class="label-textarea">
+                                                <label for="updatedDesc">Desc</label>
+                                                <textarea class="textarea" id="updatedDesc" formControlName="updatedDesc" [value]="pdfDesc"></textarea>
                                             </div>
-                                            <div class="inline-or-column">
-                                                <label for="updatedImage">Image : </label>
+                                            <div>
+                                                <label for="updatedImage">Image</label>
                                                 <input type="file" class="input" id="updatedImage" formControlName="updatedImage" accept="image/*"/> 
                                             </div>
-                                            <div class="inline-or-column">
-                                                <label for="updatedFile">Pdf : </label>
+                                            <div>
+                                                <label for="updatedFile">Pdf</label>
                                                 <input type="file" class="input" id="updatedFile" formControlName="updatedFile" accept=".pdf"/> 
                                             </div>
                                             <!-- Select catégorie parent-->
-                                            <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="updatedCategory">Cat 1 : </label>
+                                            <div class="form-group row mb-2 cat1">
+                                                <label class="col-md-3 col-form-label catlabels" for="updatedCategory">Cat 1 : </label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedCategory" class="form-select" 
                                                     id="updatedCategory" formControlName="updatedCategory">
@@ -218,7 +220,7 @@
                                             </div>
                                             <!-- select des sous-catégories parent -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="updatedChildCategories">Cat 2  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="updatedChildCategories">Cat 2  : </label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedChildCategories" class="form-select" 
                                                     id="updatedChildCategories" formControlName="updatedChildCategories" required="true">
@@ -234,7 +236,7 @@
                                             </div>
                                                 <!-- select des sub child categories -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="updatedSubChildCategories">Cat 3  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="updatedSubChildCategories">Cat 3  : </label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedSubChildCategories" class="form-select" 
                                                     id="updatedSubChildCategories" formControlName="updatedSubChildCategories" required="true">
@@ -251,7 +253,7 @@
                                             </div>
                                                 <!-- select categorie finale -->
                                             <div class="form-group row mb-2">
-                                                <label class="col-md-3 col-form-label" for="updatedFinalCategory">Cat 4  : </label>
+                                                <label class="col-md-3 col-form-label catlabels" for="updatedFinalCategory">Cat 4  : </label>
                                                 <div class="select col-md-9">
                                                     <select name="updatedFinalCategory" class="form-select" 
                                                     id="updatedFinalCategory" formControlName="updatedFinalCategory" required="true"  [value]="pdfCategory">
@@ -287,7 +289,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Suppression d'un PDF</span></div>
+                <div class="modal-title"><span class="modal-span-pdf">PDF</span><span class="modal-span-stream">Stream</span><span class="modal-span-modif"> - Suppression d'un PDF</span></div>
                     <a type="button" 
                             (click)="closeDeleteModale()">
                     <img src="../../../assets/icones/close.png" alt="close">

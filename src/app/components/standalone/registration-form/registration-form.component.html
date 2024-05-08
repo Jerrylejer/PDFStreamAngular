@@ -17,19 +17,19 @@
                 <h5><span class="spanwhite">Com</span><span class="spanblack">pte</span></h5>
                 <div class="groupe-b skin">
                     <div class="groupe-b2 column">
-                        <div class="pseudo column">
+                        <!-- <div class="pseudo column"> -->
                             <label for="usernameRegistration">Username</label>
                             <input type="text" class="input" id="usernameRegistration" formControlName="username"/> 
                             <div class="field-message" *ngIf="inscriptionForm.get('username')?.invalid  && (inscriptionForm.get('username')?.dirty || inscriptionForm.get('username')?.touched)">
-                                De 3 à 15 caractères alphanumérics.
+                                De 3 à 15 caractères alphanumérics
                             </div>
-                        </div>
+                        <!-- </div> -->
                     </div>
                     <div class="groupe-b2 column">
                         <label for="emailRegistration">Email</label>
                         <input class="input100" type="text" class="input" id="emailRegistration" formControlName="email"/> 
                         <div class="field-message" *ngIf="inscriptionForm.get('email')?.invalid  && (inscriptionForm.get('email')?.dirty || inscriptionForm.get('email')?.touched)">
-                            Cet email n'est pas valide.
+                            Cet email n'est pas valide 
                         </div>
                     </div>
                     <div class="groupe-b2 column">
@@ -40,7 +40,7 @@
                                 <button class="input-button" type="button" (click)="toggleVisibility()"><mat-icon id="i-visibility">{{isVisible == true ? 'visibility_off' : 'visibility'}}</mat-icon></button>
                             </span>
                             <div class="field-message" *ngIf="inscriptionForm.get('password')?.invalid  && (inscriptionForm.get('password')?.dirty || inscriptionForm.get('password')?.touched)">
-                                Majuscules, minuscules, chiffres et 12 caractères minimum.
+                                Majuscules, minuscules, chiffres et 12 caractères au minimum
                             </div>
                         </div>
                     </div>

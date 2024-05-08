@@ -54,40 +54,43 @@
                         <div class="wrapper">
                                 <div class="groupe-a">
                                     <div class="column">
-                                        <div class="inline-or-column">
+                                        <div class="column">
                                             <label for="updatedUsername">Username</label>
-                                            <input type="text" class="input" id="updatedUsername" formControlName="updatedUsername" /> 
-                                            <!-- <div class="field-message" *ngIf="updateForm.get('username')?.invalid  && (updateForm.get('username')?.dirty || updateForm.get('username')?.touched)">
+                                            <input type="text" class="input" id="updatedUsername" formControlName="updatedUsername" [value]="username"/> 
+                                            <div class="field-message" *ngIf="updateForm.get('updatedUsername')?.invalid  && (updateForm.get('updatedUsername')?.dirty || updateForm.get('updatedUsername')?.touched)">
                                                 De 3 à 15 caractères alphanumérics.
-                                            </div> -->
+                                            </div>
+                                            <div class="field-message" *ngIf="updateForm.get('updatedUsername')?.touched">
+                                                (La changement apparaîtra lors de votre prochaine connexion)
+                                            </div>
                                         </div>
-                                        <div class="inline-or-column">
+                                        <div class="column">
                                             <label for="updatedAvatar">Avatar</label>
-                                            <input type="file" class="input" id="updatedAvatar"formControlName="updatedAvatar" accept="image/*"/> 
+                                            <input type="file" class="input" id="updatedAvatar"formControlName="updatedAvatar" accept="image/*" [value]="avatar"/> 
                                         </div>
-                                        <div class="inline-or-column">
+                                        <div class="column">
                                             <label for="updatedEmail">Email</label>
-                                            <input type="text" class="input" id="updatedEmail" formControlName="updatedEmail" /> 
-                                            <!-- <div class="field-message" *ngIf="updateForm.get('email')?.invalid  && (updateForm.get('email')?.dirty || updateForm.get('email')?.touched)">
+                                            <input type="text" class="input" id="updatedEmail" formControlName="updatedEmail" [value]="email"/> 
+                                            <div class="field-message" *ngIf="updateForm.get('updatedEmail')?.invalid  && (updateForm.get('updatedEmail')?.dirty || updateForm.get('updatedEmail')?.touched)">
                                                 Cet email n'est pas valide.
-                                            </div> -->
+                                            </div>
                                         </div>
-                                        <div class="inline-or-column">
+                                        <div class="column">
                                             <label for="updatedPassword">Password</label>
-                                            <input type="text" class="input" id="updatedPassword" formControlName="updatedPassword" /> 
-                                            <!-- <div class="field-message" *ngIf="updateForm.get('password')?.invalid  && (updateForm.get('password')?.dirty || updateForm.get('password')?.touched)">
+                                            <input type="password" class="input" id="updatedPassword" formControlName="updatedPassword" [value]="password"/> 
+                                            <div class="field-message" *ngIf="updateForm.get('updatedPassword')?.invalid  && (updateForm.get('updatedPassword')?.dirty || updateForm.get('updatedPassword')?.touched)">
                                                 Majuscules, minuscules, chiffres et 12 caractères minimum.
-                                            </div> -->
+                                            </div>
                                         </div>
-                                        <div class="inline-or-column">
+                                        <div class="column">
                                             <label for="updatedBio">Bio</label>
-                                            <textarea class="textarea" id="updatedBio" formControlName="updatedBio" rows="10"></textarea>
+                                            <textarea class="textarea" id="updatedBio" formControlName="updatedBio" rows="10" [value]="bio"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             <!-- Bloc boutons -->
                             <div class="groupe-b">
-                                <button class="btn delete" type="submit" (click)="closeUpdateModale()">Annuler</button>
+                                <button class="btn delete" type="button" (click)="closeUpdateModale()">Annuler</button>
                                 <button class="btn modify" type="submit">Modifier</button>
                             </div>
                         </div>

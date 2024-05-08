@@ -5,7 +5,6 @@
 }
 
 /* FORMULAIRES => ARCHITECTURE ET STYLES */
-
 .groupe {
     min-width:340px;
 }
@@ -86,6 +85,7 @@ input {
     border: 1px solid rgba(0, 0, 0, 0.525);
     border-radius: 5px;
     line-height: 35px;
+    padding: 1%;
 }
 
 .inline input {
@@ -137,6 +137,7 @@ input {
 .field-message {
     font-size: 10px;
     color: red;
+    font-weight: bold;
 }
 
 /* MESSAGE => VERSION MOBILE */

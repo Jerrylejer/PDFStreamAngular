@@ -26,6 +26,10 @@ export class HeaderComponent implements OnInit {
   
   closeModale() {
     this.displayStyle = "none";
+    this.authForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
   // Configuration du message d'erreur si connexion failed
   errorMessage: String = '';

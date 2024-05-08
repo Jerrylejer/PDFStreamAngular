@@ -23,6 +23,7 @@ export class AccountComponent implements OnInit{
   email: any = ''; 
   password: any = ''; 
   bio: any = ''; 
+
   // Boolean pour rendre la modale visible ou non au click "connexion", "X"
   displayStyle = "none";
   displayDeleteModaleStyle = "none"
@@ -36,11 +37,11 @@ export class AccountComponent implements OnInit{
   ngOnInit(): void {
     // Initialisation du formulaire d'update
     this.updateForm = this.formBuilder.group({
-      updatedUsername: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
-      updatedAvatar: ['', Validators.required],
-      updatedEmail: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]],
-      updatedPassword: ['', [Validators.required, Validators.minLength(12), createPasswordStrengthValidator()]],
-      updatedBio: ['', Validators.required]
+      updatedUsername: ['', [Validators.minLength(3), Validators.maxLength(15)]],
+      updatedAvatar: [''],
+      updatedEmail: ['', [Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]],
+      updatedPassword: ['', [Validators.minLength(12), createPasswordStrengthValidator()]],
+      updatedBio: ['']
     })
     console.log(this.id)
     // Lancer le service pour récupérer les datas du user
@@ -59,7 +60,7 @@ export class AccountComponent implements OnInit{
         this.email = response.email;
         this.password = response.password;
         this.bio = response.bio;
-        }
+      }
     )
   }
 
@@ -119,24 +120,50 @@ export class AccountComponent implements OnInit{
 
   // Soumission du formulaire d'update
   updateAccount() {
-  const updatedUsername: any = this.updateForm.value.updatedUsername;
-  const updatedAvatar: any = this.updateForm.value.updatedAvatar;
-  const updatedEmail: any = this.updateForm.value.updatedEmail;
-  const updatedPassword: any = this.updateForm.value.updatedPassword;
-  const updatedBio: any = this.updateForm.value.updatedBio;
-  // Appel à mon service
-  this.userService.updateUser(this.id, updatedUsername, updatedAvatar, updatedEmail, updatedPassword, updatedBio).pipe(
-    catchError((error) => {
-      console.log("erreur mon ptit gars!");
-      //this.ngOnInit();
-      return throwError(() => error);
-    })
-  )
-  .subscribe(
-    (response) => {console.log(response, "datas modifiées !"),
-  this.closeUpdateModale();
-  this.ngOnInit();
+    if(this.updateForm.valid) {
+      const updatedUsername: any = this.updateForm.value.updatedUsername;
+      const updatedAvatar: any = this.updateForm.value.updatedAvatar;
+      const updatedEmail: any = this.updateForm.value.updatedEmail;
+      const updatedPassword: any = this.updateForm.value.updatedPassword;
+      const updatedBio: any = this.updateForm.value.updatedBio;
+      // Appel à mon service
+      this.userService.updateUser(this.id, updatedUsername, updatedAvatar, updatedEmail, updatedPassword, updatedBio).pipe(
+        catchError((error) => {
+          console.log("erreur mon ptit gars!");
+          return throwError(() => error);
+        })
+      )
+      .subscribe(
+        (response) => {
+        console.log(response, "datas modifiées !"),
+        this.closeUpdateModale();
+        this.ngOnInit();
+      }
+      )
+    } else {
+      alert("Plusieurs champs nécéssitent votre attention et doivent être corrigés !")
+    }
   }
-  )
-  }
+
+  // updateAccount() {
+  // const updatedUsername: any = this.updateForm.value.updatedUsername;
+  // const updatedAvatar: any = this.updateForm.value.updatedAvatar;
+  // const updatedEmail: any = this.updateForm.value.updatedEmail;
+  // const updatedPassword: any = this.updateForm.value.updatedPassword;
+  // const updatedBio: any = this.updateForm.value.updatedBio;
+  // // Appel à mon service
+  // this.userService.updateUser(this.id, updatedUsername, updatedAvatar, updatedEmail, updatedPassword, updatedBio).pipe(
+  //   catchError((error) => {
+  //     console.log("erreur mon ptit gars!");
+  //     //this.ngOnInit();
+  //     return throwError(() => error);
+  //   })
+  // )
+  // .subscribe(
+  //   (response) => {console.log(response, "datas modifiées !"),
+  // this.closeUpdateModale();
+  // this.ngOnInit();
+  // }
+  // )
+  // }
 }

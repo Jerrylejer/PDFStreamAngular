@@ -2,6 +2,10 @@ section {
     height: 100%;
 }
 
+.nav {
+    margin-bottom: 1%;
+}
+
 .nav-item > a {
     color: var(--lightGreytext);
     font-size: 20px;

@@ -2,6 +2,15 @@ section {
     max-height: 100%;
 }
 
+.flex-container-row {
+    margin-top: 5%;
+    text-align: center;
+}
+
+.flex-container-row h1 {
+    color: var(--night);
+}
+
 /* FORMULAIRES => INPUTS ET LABELS */
 label {
     margin-bottom: 17px;

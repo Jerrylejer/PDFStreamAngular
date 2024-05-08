@@ -48,19 +48,21 @@ input {
     align-items: center;
 }
 
-.modal-span-pdf {
-    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
-    font-weight: 800;
+.modal-header img {
+    transform: scale(0.7);
 }
 
+.modal-span-pdf {
+    font-size: clamp(1.375rem, 1.0625rem + 1vw, 1.625rem);
+    font-weight: 800;
+}
 .modal-span-stream {
-    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
+    font-size: clamp(1.375rem, 1.0625rem + 1vw, 1.625rem);
     font-weight: 800;
     color: var(--red);
 }
-
 .modal-span-modif {
-    font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
+    font-size: clamp(1.375rem, 1.0625rem + 1vw, 1.625rem);
 }
 
 .modal-body {

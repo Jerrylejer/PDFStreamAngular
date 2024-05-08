@@ -99,7 +99,7 @@ export class HeaderComponent implements OnInit {
             });
             // Si la connexion est ok, je ferme ma modale, je modifie l'affichage de la nav et redirige à l'accueil
             this.displayStyle = "none";
-            // this.router.navigate(["/"]);
+            this.router.navigate(["/dashboard"]);
             // Mettre à jour l'état de connexion
             this.auth.setIsConnected(true);
             // Je conditionne l'état de isConnected

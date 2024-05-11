@@ -134,7 +134,16 @@ ces mêmes breakpoints
 => footer show/unshow burger 
 => banner est modifié en version mobile ...*/
 
-/* Extra small devices (phones, tablets up to 918px) */
+
+/* Extra small devices (phones, tablets up to 515px) */
+@media only screen and (max-width: 515px) {
+    .evaluation {
+        display: none;
+    }
+}
+
+
+/* small devices (phones, tablets up to 918px) */
 @media only screen and (max-width: 918px) {
     section {
         margin-bottom: 20%;

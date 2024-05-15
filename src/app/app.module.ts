@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 // Angular Material -- pour mon menu burger
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // Components créés
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -86,6 +87,7 @@ import { BackButtonComponent } from './components/shared/back-button/back-button
     MatInputModule,
     MatSidenavModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule
   ],
   providers: [],

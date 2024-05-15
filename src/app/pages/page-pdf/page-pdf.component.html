@@ -1,34 +1,44 @@
 <section class="wrapper">
-    <div class="image-pdf">
-        <h4 class="preview-title">Aperçu de la première page de "{{pdfDatas?.title}}"</h4>
-        <img class="preview-pdf" src="{{pdfPreview}}" alt="première page de {{pdfDatas?.title}}">
-    </div>
-    <div class="details-pdf">
-        <ul>
-            <li class="titre-pdf">{{pdfDatas?.title}}</li>
-            <li>Auteur : {{pdfDatas?.author?.username}}</li>
-            <li>{{pdfDatas?.description}}</li>
-        </ul>
+    
+    <span class="spinner-wrapper" *ngIf="isLoading == true" >
+        <div class="spinner">
+        </div>
+        <p *ngIf="isLoading == true">Nous préparons votre pdf... Il arrive dans quelques instants !</p>
+    </span>
+
+    <div class="image-pdf" *ngIf="isLoading == false">
         <div>
-            <div class="flexbtns">
-                <!-- Btn utilisateur connecté -->
+            <h4 class="preview-title">Aperçu de la première page de "{{pdfDatas?.title}}"</h4>
+            <img class="preview-pdf" src="{{pdfPreview}}" alt="première page de {{pdfDatas?.title}}">
+        </div>
+
+        <div class="details-pdf">
+            <ul>
+                <li class="titre-pdf">{{pdfDatas?.title}}</li>
+                <li>Auteur : {{pdfDatas?.author?.username}}</li>
+                <li>{{pdfDatas?.description}}</li>
+            </ul>
+            <div>
+                <div class="flexbtns">
+                    <!-- Btn utilisateur connecté -->
+                    <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
+                    <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="openDownloadModale()">
+                        Télécharger
+                    </button>
+                    <!-- Author  je passe directement pdfId du .ts récupéré de la route  -->
+                    <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="goToAuthorPage(pdfId)">
+                        Fiche auteur
+                    </button>
+                </div>
+                <!-- Btn utilisateur non connecté -->
                 <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
-                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="openDownloadModale()">
-                    Télécharger
-                </button>
-                <!-- Author  je passe directement pdfId du .ts récupéré de la route  -->
-                <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="goToAuthorPage(pdfId)">
-                    Fiche auteur
-                </button>
-            </div>
-            <!-- Btn utilisateur non connecté -->
-            <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
-            <div class="btn-wrapper" *ngIf="isConnectedUser == false">
-                <p class="incitation-msg">Une envie de télécharger ?</p>
-                <button class="btn" type="submit" (click)="routerInscription()">
-                    Inscription
-                </button>
-                <p class="consigne-msg">Nécesssite d'être connecté.</p>
+                <div class="btn-wrapper" *ngIf="isConnectedUser == false">
+                    <p class="incitation-msg">Une envie de télécharger ?</p>
+                    <button class="btn" type="submit" (click)="routerInscription()">
+                        Inscription
+                    </button>
+                    <p class="consigne-msg">Nécesssite d'être connecté.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -38,16 +48,16 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <div class="modal-title"><span class="modal-span-PDF">PDF</span><span class="modal-span-STREAM">Stream</span><span class="modal-span-MODIF"> - Téléchargement</span></div>
+                <div class="modal-title">
+                    <span class="modal-span-pdf">PDF</span><span class="modal-span-stream">Stream</span><span class="modal-span-modif"> - Téléchargement</span></div>
                     <a type="button" 
                             (click)="closeDownloadModale()">
                     <img src="../../../assets/icones/close.png" alt="close">
                     </a>
                 </div>
-                <!-- Formulaire de modification des détails user-->
+                <!-- Modale de pré-téléchargement-->
                 <div class="modal-body">
-                    <!--  Le form va ajouter le PDF à la collection du user connecté -->
-                    <form class="form" (ngSubmit)="downloadPdf(pdfId)">
+                    <div class="form">
                         <div class="form-wrapper">
                                 <div class="groupe-a">
                                     <div class="column">
@@ -58,10 +68,10 @@
                             <!-- Bloc boutons -->
                             <div class="groupe-b">
                                 <button class="btn cancel" type="button" (click)="closeDownloadModale()">Annuler</button>
-                                <button class="btn download" type="submit" >Télécharger</button>
+                                <button class="btn download" type="submit" (click)="downloadPdf(pdfId)">Télécharger</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

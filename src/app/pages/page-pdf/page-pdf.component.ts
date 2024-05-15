@@ -1,7 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Subscription, catchError, switchMap, throwError } from 'rxjs';
+import { catchError, switchMap, throwError } from 'rxjs';
 import { Pdf } from 'src/app/models/pdf.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { PdfService } from 'src/app/services/pdf/pdf.service';
@@ -21,6 +20,8 @@ export class PagePdfComponent implements OnInit {
   pdfPreview: any;
   // Boolean pour rendre la modale visible ou non au click
   displayDownloadModaleStyle = "none"
+  // Boolean pour ngIf spinner
+  isLoading: boolean = false;
 
   // J'injecte mon PdfService pour utiliser ma requête "download" + "getPdfById"
   // J'injecte ActivatedRoute pour interagir avec le param de la route
@@ -46,7 +47,8 @@ export class PagePdfComponent implements OnInit {
       this.auth.isConnected$.subscribe(isConnected => {
         this.isConnectedUser = isConnected;
       });
-      
+      // Tant que les données ne sont pas chargées, j'affiche le spinner
+      this.isLoading = true;
       // Je charge les données du pdf + image preview sélectionné (ForkJoin pour 2 requêtes en une -> service)
       this.activatedRoute.paramMap.pipe(
         switchMap((params: ParamMap) => {
@@ -60,14 +62,16 @@ export class PagePdfComponent implements OnInit {
           })
       ).subscribe(
         targetedPdf => {
-        console.log(targetedPdf);
-        // J'accède aux détails du pdf
-        this.pdfDatas = targetedPdf.pdfDetails;
-        // J'accède à l'image de preview du pdf
-        const reader = new FileReader();
-        reader.readAsDataURL(targetedPdf.pdfPreview);
-        reader.onloadend = () => {
-          this.pdfPreview = reader.result;
+          // Succès de la requête, je supprime le spinner
+          this.isLoading = false;
+          console.log(targetedPdf);
+          // J'accède aux détails du pdf
+          this.pdfDatas = targetedPdf.pdfDetails;
+          // J'accède à l'image de preview du pdf
+          const reader = new FileReader();
+          reader.readAsDataURL(targetedPdf.pdfPreview);
+          reader.onloadend = () => {
+            this.pdfPreview = reader.result;
         };
         }
       );
@@ -81,16 +85,9 @@ export class PagePdfComponent implements OnInit {
     ))
     .subscribe(
       response => {
-        const responseHeaders = response.headers;
-        // BUG => Je ne récupère pas le filename dans "ContentDisposition" ...
-        console.log(responseHeaders);
-        // Diversion pour setter le nom du fichier car impossible via "ContentDisposition"
+        // Récupération dans fileName du pdf + l'image de preview via le service getPdfAndPreview(id: number)
         const fileName = String(this.pdfDatas?.title);
         if(fileName) {
-          // ############## COLLECTION ###############
-          // Récupérer l'id du pdf + id user qui télécharge
-
-          // ############## DOWNLOAD #################
           // Je récupère le type de contenu de la réponse HTTP
           const contentType = response.headers.get("Content-Type");
           // Je créé un Blob grâce à HttpResponse<Blob>.body: Blob stocké dans les headers ()
@@ -99,15 +96,15 @@ export class PagePdfComponent implements OnInit {
           const link = document.createElement("a");
           link.href = window.URL.createObjectURL(blob);
           // J'affecte le title du fichier à l'attribut "download" du lien créé
-          // <a href="blob:http://localhost:4200/f8d13b05-e134-48cb-a852-705ca8907448" download="La syntaxe JavaScript – Kourou.pdf"></a>
           link.download = fileName;
+          // < href="blob:http://localhost:4200/f8d13b05-e134-48cb-a852-705ca8907448" download="La syntaxe JavaScript – Kourou.pdf">
           console.log(link);
           // Evenement click lance le lien
           link.click();
           // Je supprime le lien créé
           window.URL.revokeObjectURL(link.href);
           link.remove();
-          // ############## MODALE #################
+          // Je ferme la modale
           this.closeDownloadModale();
         } else {
           console.log("unable to extract file");

@@ -6,13 +6,39 @@
 /* IMAGE PREVIEW PDF */
 
 .preview-title {
-text-align: center;
-color: var(--night);
+    text-align: center;
+    color: var(--night);
 }
 
 .image-pdf {
     max-width: 50%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
+
+/* .spinner-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.spinner {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #C0392B; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    }
+    
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+
 
 .preview-pdf {
     width: 100%;
@@ -21,14 +47,14 @@ color: var(--night);
 }
 
 /* DETAILS DU PDF */
-.details-pdf {
+/* .details-pdf {
     max-width: 50%;
     padding: 0 10% 0 10%;
     display: flex;
     flex-direction: column;
     justify-content:space-between;
     align-items: center;
-}
+} */
 
 ul {
     max-width: 100%;
@@ -98,16 +124,16 @@ li {
     margin: auto;
 }
 
-.modal-span-PDF {
+.modal-span-pdf {
     font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
     font-weight: 800;
 }
-.modal-span-STREAM {
+.modal-span-stream {
     font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
     font-weight: 800;
     color: var(--red);
 }
-.modal-span-MODIF {
+.modal-span-modif {
     font-size: clamp(1rem, 0.1071rem + 2.8571vw, 2.25rem);
 }
 
@@ -155,7 +181,6 @@ li {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
     .section {
         height:100%;
     }
@@ -169,15 +194,25 @@ li {
         margin-bottom: 20%;
     }
 
+    .spinner-wrapper {
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30%;
+    }
+    
     .image-pdf {
         margin-top: 1%;
     }
     
     .details-pdf {
-        padding: unset;
+        padding: auto;
         margin-top: 1%;
         margin-bottom: 1%;
-        width: 100%;
+        min-width: 100%;
     }
 
     ul {
@@ -190,6 +225,8 @@ li {
         margin-top: 1rem;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 1rem;
     }
 
@@ -221,6 +258,15 @@ li {
         margin-bottom: 20%;
     }
 
+    .spinner-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30%;
+    }
+
     .image-pdf {
         margin-top: 1%;
     }
@@ -229,7 +275,7 @@ li {
         padding: unset;
         margin-top: 1%;
         margin-bottom: 1%;
-        width: 100%;
+        min-width: 100%;
     }
 
     ul {
@@ -242,51 +288,19 @@ li {
         margin-top: 1rem;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 1rem;
     }
 
     .btn-wrapper {
         margin-bottom: 1%;
+        margin: auto;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content:center;
-        align-items: center;
-        padding: 0;
-    }
-
-    .image-pdf {
-        margin-top: 1%;
-    }
-
-    .details-pdf {
-        padding: unset;
-        margin-top: 1%;
-        margin-bottom: 1%;
-        width: 100%;
-    }
-
-    ul {
-        margin-bottom: 1%;
-        padding: unset;
-        text-align: center;
-    }
-
-    .flexbtns {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .btn-wrapper {
-        margin-bottom: 1%;
-    }
 
     .groupe-b {
         display: flex;
@@ -305,12 +319,18 @@ li {
         padding: 5%;
     }
 
+    .spinner-wrapper {
+        margin-top: 15%;
+    }
+
     .details-pdf {
         padding: 0 10% 0 10%;
         /* Fixé lors du scroll */
         position: fixed;
         top: 40%;
         right: 0;
+        min-width: unset;
+        max-width: 50%;
     }
 
     .flexbtns {
@@ -321,19 +341,5 @@ li {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content:space-between;
-        align-items: center;
-        padding: 5%;
-    }
 
-    .details-pdf {
-        padding: 0 10% 0 10%;
-        /* Fixé lors du scroll */
-        position: fixed;
-        top: 40%;
-        right: 0;
-    }
 }

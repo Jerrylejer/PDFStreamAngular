@@ -1,0 +1,33 @@
+<section>
+    <div class="pdfs-mat-table">
+        <table mat-table matSort [dataSource]="dataSource" class="table table-striped table-hover">
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text">PDF</th>
+                <td mat-cell *matCellDef="let pdf" class="text">{{ pdf?.title }}</td>
+            </ng-container>
+            <ng-container matColumnDef="createdAt">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="date">MISE EN LIGNE</th>
+                <td mat-cell *matCellDef="let pdf" class="text">{{ pdf?.createdAt }}</td>
+            </ng-container>
+            <ng-container matColumnDef="counter">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text">TELECHARGEMENTS</th>
+                <td mat-cell *matCellDef="let pdf" class="text">{{ pdf?.counter }}</td>
+            </ng-container>
+            <ng-container matColumnDef="evaluation">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text evaluation">EVALUATIONS RECUES</th>
+                <td mat-cell *matCellDef="let pdf" class="text evaluation">{{ pdf?.evaluations }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+        </table>
+        <mat-form-field>
+            <!-- <mat-label>Filtre</mat-label> -->
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search ..." #input>
+        </mat-form-field>
+
+        <mat-paginator [pageSizeOptions]="[5]" 
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+</section>
+        

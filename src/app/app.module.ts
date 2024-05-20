@@ -18,31 +18,33 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// Components créés
+// Components 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { Page404Component } from './pages/page404/page404.component';
-import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
-import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
 import { NavCategoriesComponent } from './components/shared/nav-categories/nav-categories.component';
 import { SearchComponent } from './components/shared/search/search.component';
 import { RegistrationFormComponent } from './components/standalone/registration-form/registration-form.component';
-import { PageCategoryComponent } from './pages/page-category/page-category.component';
-import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 import { AccountComponent } from './components/standalone/account/account.component';
 import { CollectionComponent } from './components/standalone/collection/collection.component';
 import { SharesComponent } from './components/standalone/shares/shares.component';
 import { ConventionComponent } from './components/standalone/convention/convention.component';
 import { DashboardComponent } from './components/standalone/dashboard/dashboard.component';
-import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
 import { CategoryCardComponent } from './components/shared/category-card/category-card.component';
 import { CategoriesListComponent } from './components/standalone/categories-list/categories-list.component';
 import { PdfCardComponent } from './components/shared/pdf-card/pdf-card.component';
+import { BackButtonComponent } from './components/shared/back-button/back-button.component';
+// Pages 
+import { Page404Component } from './pages/page404/page404.component';
+import { PageInscriptionComponent } from './pages/page-inscription/page-inscription.component';
+import { PageHomeComponent } from './pages/page-home/page-home.component';
+import { PageCategoryComponent } from './pages/page-category/page-category.component';
+import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
+import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.component';
+import { PageAuthorComponent } from './pages/page-author/page-author.component';
 // Pipes
 import { FileSizePipe } from './pipes/file-size.pipe';
-import { BackButtonComponent } from './components/shared/back-button/back-button.component';
 
 
 @NgModule({
@@ -69,7 +71,8 @@ import { BackButtonComponent } from './components/shared/back-button/back-button
     CategoriesListComponent,
     PdfCardComponent,
     FileSizePipe,
-    BackButtonComponent
+    BackButtonComponent,
+    PageAuthorComponent
   ],
   imports: [
     BrowserModule,

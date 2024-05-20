@@ -22,6 +22,7 @@ html, body {
 /* Variables root couleurs */
 :root {
     --red: #C0392B;
+    --lightRed: #c03a2b8a;
     --white: #ffffff;
     --skin: #F8C291;
     --night: #34495E;

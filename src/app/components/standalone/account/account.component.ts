@@ -102,7 +102,7 @@ export class AccountComponent implements OnInit{
               () => {
                 // Communication de "false" à isConnectedSubject (authService) qui émet alors la nouvelle valeur (pour modif nav header en l'occurence)
                 this.authService.setIsConnected(false);
-                alert("Vous avez été déconnecté-e !")
+                alert("Votre compte est supprimé et vous avez été déconnecté-e ! Nous espérons vous revoir très prochainement sur PDFStream.")
             this.router.navigate(["/"]);
             // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage + valeurs du user à ''
             localStorage.removeItem('isAuthenticated');

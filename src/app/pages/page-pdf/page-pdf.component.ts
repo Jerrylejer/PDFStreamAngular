@@ -113,50 +113,15 @@ export class PagePdfComponent implements OnInit {
     )
   }
 
-  // downloadPdf(id: string | undefined): void {
-  //   this.pdfService.downloadPdf(Number(id)).pipe(
-  //     catchError((error) => {
-  //       return throwError(() => error)
-  //     }
-  //   ))
-  //   .subscribe(
-  //     response => {
-  //       const responseHeaders = response.headers;
-  //       // Je ne récupère pas le filename dans "ContentDisposition" ...
-  //       console.log(responseHeaders);
-  //       // Diversion pour setter le nom du fichier car impossible via "ContentDisposition"
-  //       const fileName = String(this.pdfDatas?.title);
-  //       if(fileName) {
-  //         // Je récupère le type de contenu de la réponse HTTP
-  //         const contentType = response.headers.get("Content-Type");
-  //         // Je créé un Blob grâce à HttpResponse<Blob>.body: Blob stocké dans les headers ()
-  //         const blob = new Blob([response.body!], {type:contentType!})
-  //         // Je crée un élément de type <a> + un lien href vers le contenu du fichier
-  //         const link = document.createElement("a");
-  //         link.href = window.URL.createObjectURL(blob);
-  //         // J'affecte le title du fichier à l'attribut "download" du lien créé
-  //         // <a href="blob:http://localhost:4200/f8d13b05-e134-48cb-a852-705ca8907448" download="La syntaxe JavaScript – Kourou.pdf"></a>
-  //         link.download = fileName;
-  //         console.log(link);
-  //         // Evenement click lance le lien
-  //         link.click();
-  //         // Je supprime le lien créé
-  //         window.URL.revokeObjectURL(link.href);
-  //         link.remove();
-  //       } else {
-  //         console.log("unable to extract file");
-  //       }
-  //     }
-  //   )
-  // }
-
     // Redirection vers la page de compte (mode connecté et au click "compte")
     routerInscription() {
       this.router.navigate(["/inscription"]);
     }
 
     // Aller sur la page de l'auteur
-    goToAuthorPage(id: string | undefined): void {
-
+    goToAuthorPage(id: number | undefined): void {
+      // pdfDatas me permet de récupérer les infos de l'author
+      // Je récupère depuis mon html l'id de l'author et le passe en param de ma méthode
+      this.router.navigate(["/author", id]);
     }
 }

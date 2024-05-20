@@ -89,6 +89,7 @@ export class UserService {
    * @returns 
    */
   getUserById(id: number): Observable<User> {
+    console.log(id);
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': 'http://localhost:4200',

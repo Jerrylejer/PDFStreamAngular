@@ -18,12 +18,12 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class SharesComponent implements OnInit{
 
-// MATERIAL TABLES
+// MATERIAL TABLES - PARAMETRAGES
 displayedColumns: String[] = ['title', 'createdAt', 'evaluation','config'];
 dataSource!: MatTableDataSource<Pdf>; 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 @ViewChild(MatSort) sort!: MatSort;
-// Filtre de recherche
+// MATERIAL TABLES - Filtre de recherche
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
   this.dataSource.filter = filterValue.trim().toLowerCase();

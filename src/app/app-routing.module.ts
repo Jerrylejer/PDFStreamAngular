@@ -7,6 +7,7 @@ import { PageDashboardComponent } from './pages/page-dashboard/page-dashboard.co
 import { PageCategoryComponent } from './pages/page-category/page-category.component';
 
 import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
+import { PageAuthorComponent } from './pages/page-author/page-author.component';
 
 const routes: Routes = [
   { 
@@ -38,6 +39,11 @@ const routes: Routes = [
     // Chemin vers l'inscription
     path:'inscription',
     component:PageInscriptionComponent
+  },
+  {
+    // Chemin vers la fiche d'un auteur
+    path:'author/:authorId',
+    component:PageAuthorComponent
   },
   {
     // Page 404

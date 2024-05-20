@@ -13,16 +13,23 @@ section {
 }
 
 #compte-tab.nav-link.active {
-    color: var(--greytext); 
+    color: var(--lightRed); 
+    text-shadow: 1px 1px 1px var(--lightRed), 0 0 2px var(--lightRed);
 }
-#collection-tab.nav-link.active {
-    color: var(--greytext); 
-}
+
+/* #collection-tab.nav-link.active {
+    color: var(--red); 
+    text-shadow: 2px 2px;
+} */
+
 #partages-tab.nav-link.active {
-    color: var(--greytext); 
+    color: var(--lightRed); 
+    text-shadow: 1px 1px 1px var(--lightRed), 0 0 2px var(--lightRed);
 }
+
 #charte-tab.nav-link.active {
-    color: var(--greytext); 
+    color: var(--lightRed); 
+    text-shadow: 1px 1px 1px var(--lightRed), 0 0 2px var(--lightRed);
 }
 
 .account {

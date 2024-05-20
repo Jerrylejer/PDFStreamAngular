@@ -3,19 +3,19 @@
         <table mat-table matSort [dataSource]="dataSource" class="table table-striped table-hover">
             <ng-container matColumnDef="title">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="text">PDF</th>
-                <td mat-cell *matCellDef="let pdf" class="text">{{ pdf?.title }}</td>
+                <td mat-cell *matCellDef="let pdf" class="text" (click)="routerToPdfPage(pdf?.id)">{{ pdf?.title }}</td>
             </ng-container>
             <ng-container matColumnDef="createdAt">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="date">MISE EN LIGNE</th>
-                <td mat-cell *matCellDef="let pdf" class="text">{{ pdf?.createdAt }}</td>
+                <td mat-cell *matCellDef="let pdf" class="text" (click)="routerToPdfPage(pdf?.id)">{{ pdf?.createdAt }}</td>
             </ng-container>
             <ng-container matColumnDef="counter">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text">TELECHARGEMENTS</th>
-                <td mat-cell *matCellDef="let pdf" class="text">{{ pdf?.counter }}</td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text">NBRE TELECHARGEMENTS</th>
+                <td mat-cell *matCellDef="let pdf" class="text" (click)="routerToPdfPage(pdf?.id)">{{ pdf?.counter }}</td>
             </ng-container>
             <ng-container matColumnDef="evaluation">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text evaluation">EVALUATIONS RECUES</th>
-                <td mat-cell *matCellDef="let pdf" class="text evaluation">{{ pdf?.evaluations }}</td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text evaluation">EVALUATIONS</th>
+                <td mat-cell *matCellDef="let pdf" class="text evaluation" (click)="routerToPdfPage(pdf?.id)">{{ pdf?.evaluations }}</td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
@@ -29,5 +29,23 @@
             aria-label="Select page of periodic elements">
         </mat-paginator>
     </div>
+    <div class="user-infos">
+        <h3>Auteur: {{userDatas?.username}}</h3>
+        <p>{{userDatas?.bio}}</p>
+        <hr>
+        <div class="flexbtns">
+            <!-- Btn utilisateur connecté -->
+            <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
+            <button  class="btn" type="submit">
+                S'abonner
+            </button>
+            <!-- Author  je passe directement pdfId du .ts récupéré de la route  -->
+            <button  class="btn btn-author" type="submit">
+                Don à l'auteur
+            </button>
+        </div>
+        <hr>
+    </div>
+    <app-back-button></app-back-button>
 </section>
         

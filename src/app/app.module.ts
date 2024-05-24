@@ -77,7 +77,11 @@ import { FileSizePipe } from './pipes/file-size.pipe';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-left',
+      preventDuplicates: true,
+    }),
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,

@@ -7,7 +7,7 @@
             </ng-container>
             <ng-container matColumnDef="createdAt">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="date">DATE UPLOAD</th>
-                <td mat-cell *matCellDef="let pdf" class="text">{{ pdf?.createdAt }}</td>
+                <td mat-cell *matCellDef="let pdf" class="text">{{ pdf?.createdAt | date:'dd/MM/yyyy' }}</td>
             </ng-container>
             <ng-container matColumnDef="evaluation">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="text evaluation">EVALUATIONS RECUES</th>

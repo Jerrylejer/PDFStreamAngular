@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   // ReactiveForms
   authForm!: FormGroup;
   //Injections de FormBuilder + AuthService
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router:Router) {};
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router:Router, private toast: ToastrService) {};
 
   // ###################### Variables utilisées ######################
   // Boolean pour rendre la modale visible ou non au click "connexion", "X"
@@ -83,15 +84,14 @@ export class HeaderComponent implements OnInit {
         .pipe(
           catchError((error) => {
             console.log("erreur d'authentification : ", error);
-            //this.errorMessage = "Nom d'utilisateur ou mot de passe incorrect.";
-            alert("Username ou mot de passe incorrect. Merci de revalider vos données de connexion.");
+            this.toast.warning("Nom d'utilisateur ou mot de passe incorrect. !");
             return throwError(() => error);
           })
         )
         .subscribe(
           // J'accède à la réponse renvoyée par le serveur
           (response) => {
-            console.log("authentification réussie")
+            this.toast.success("authentification réussie !");
             // Je remets les champps du formulaire à zéro
             this.authForm = this.formBuilder.group({
               username: ['', Validators.required],
@@ -147,7 +147,7 @@ export class HeaderComponent implements OnInit {
     )
     .subscribe(
       (response) => {
-        alert("Déconnexion réussie")
+        this.toast.success("Vous êtes maintenant déconnecté(e) !");
         // Mettre à jour l'état de connexion
         this.auth.setIsConnected(false);
         this.router.navigate(["/"]);

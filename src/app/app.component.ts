@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'pdf-stream-angular';
+  title = 'pdf-stream';
 
   constructor(private authService: AuthService, private router: Router){}
 

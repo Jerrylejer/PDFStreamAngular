@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, switchMap, throwError } from 'rxjs';
 import { Pdf } from 'src/app/models/pdf.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -28,7 +29,7 @@ export class PagePdfComponent implements OnInit {
   constructor(private pdfService: PdfService, 
     private activatedRoute: ActivatedRoute, 
     private auth: AuthService, 
-    private router: Router){}
+    private router: Router, private toast: ToastrService){}
 
   // Manipulation de la modale de téléchargement
   openDownloadModale() {
@@ -80,6 +81,7 @@ export class PagePdfComponent implements OnInit {
   downloadPdf(id: string | undefined): void {
     this.pdfService.downloadPdf(Number(id)).pipe(
       catchError((error) => {
+        this.toast.warning("Une erreur est survenue, merci de recommencer !");
         return throwError(() => error)
       }
     ))
@@ -106,6 +108,7 @@ export class PagePdfComponent implements OnInit {
           link.remove();
           // Je ferme la modale
           this.closeDownloadModale();
+          this.toast.success("Well done ! Votre pdf se trouve dans votre dossier des téléchargements !");
         } else {
           console.log("unable to extract file");
         }

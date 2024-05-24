@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { createPasswordStrengthValidator } from 'src/utils/passwordSrength';
@@ -16,7 +17,7 @@ export class RegistrationFormComponent implements OnInit{
   // Switch pour icone visibilité password
   isVisible?: boolean = false;
   // Injections 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router){}
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private toast: ToastrService){}
 
   
   // Switch pour visibilité password on/off
@@ -61,7 +62,7 @@ export class RegistrationFormComponent implements OnInit{
         .subscribe(
           (response) => {
             console.log("inscription réussie")
-            alert("Compte activé. Vous pouvez à présent vous connecter ! ")
+            this.toast.success("Félicitations ! Votre compte est à présent activé. Il ne vous plus qu'à vous connecter ! ")
             // Si la connexion est ok, je remets le formulaire à zéro, je ferme ma page et redirige vers l'accueil
             this.inscriptionForm = this.formBuilder.group({
               username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],

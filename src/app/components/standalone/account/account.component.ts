@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -32,7 +33,11 @@ export class AccountComponent implements OnInit{
 
   // #################################################################
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private authService: AuthService, private router: Router){};
+  constructor(private formBuilder: FormBuilder, 
+    private userService: UserService, 
+    private authService: AuthService, 
+    private router: Router,
+    private toast: ToastrService){};
 
   ngOnInit(): void {
     // Initialisation du formulaire d'update
@@ -85,6 +90,7 @@ export class AccountComponent implements OnInit{
   deleteAccount() {
     this.userService.deleteUser(this.id).pipe(
       catchError((error) => {
+        this.toast.warning("Une erreur est survenue, merci de recommencer !");
         console.log("erreur mon ptit gars!");
         return throwError(() => error);
       }))
@@ -94,6 +100,7 @@ export class AccountComponent implements OnInit{
           this.closeDeleteModale();
           this.authService.deconnexion().pipe(
             catchError((error) => {
+              this.toast.warning("Une erreur est survenue, merci de recommencer !");
               console.log("erreur lors de la déconnexion : ", error);
               return throwError(() => error)
             })
@@ -102,7 +109,7 @@ export class AccountComponent implements OnInit{
               () => {
                 // Communication de "false" à isConnectedSubject (authService) qui émet alors la nouvelle valeur (pour modif nav header en l'occurence)
                 this.authService.setIsConnected(false);
-                alert("Votre compte est supprimé et vous avez été déconnecté-e ! Nous espérons vous revoir très prochainement sur PDFStream.")
+                this.toast.success("Votre compte est supprimé et vous avez été déconnecté(e) ! Nous espérons vous revoir très prochainement sur PDFStream."); 
             this.router.navigate(["/"]);
             // Modification de la valeur pour la clé "isAuthenticated" dans le localStorage + valeurs du user à ''
             localStorage.removeItem('isAuthenticated');
@@ -129,41 +136,21 @@ export class AccountComponent implements OnInit{
       // Appel à mon service
       this.userService.updateUser(this.id, updatedUsername, updatedAvatar, updatedEmail, updatedPassword, updatedBio).pipe(
         catchError((error) => {
+          this.toast.warning("Une erreur est survenue, merci de recommencer !");
           console.log("erreur mon ptit gars!");
           return throwError(() => error);
         })
       )
       .subscribe(
         (response) => {
+        this.toast.success("Vos données ont été correctement modifiées !"); 
         console.log(response, "datas modifiées !"),
         this.closeUpdateModale();
         this.ngOnInit();
       }
       )
     } else {
-      alert("Plusieurs champs nécéssitent votre attention et doivent être corrigés !")
+      this.toast.warning("Plusieurs champs nécéssitent votre attention et doivent être corrigés !");
     }
   }
-
-  // updateAccount() {
-  // const updatedUsername: any = this.updateForm.value.updatedUsername;
-  // const updatedAvatar: any = this.updateForm.value.updatedAvatar;
-  // const updatedEmail: any = this.updateForm.value.updatedEmail;
-  // const updatedPassword: any = this.updateForm.value.updatedPassword;
-  // const updatedBio: any = this.updateForm.value.updatedBio;
-  // // Appel à mon service
-  // this.userService.updateUser(this.id, updatedUsername, updatedAvatar, updatedEmail, updatedPassword, updatedBio).pipe(
-  //   catchError((error) => {
-  //     console.log("erreur mon ptit gars!");
-  //     //this.ngOnInit();
-  //     return throwError(() => error);
-  //   })
-  // )
-  // .subscribe(
-  //   (response) => {console.log(response, "datas modifiées !"),
-  // this.closeUpdateModale();
-  // this.ngOnInit();
-  // }
-  // )
-  // }
 }

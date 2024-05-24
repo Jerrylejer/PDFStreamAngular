@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
 import { Pdf } from 'src/app/models/pdf.model';
@@ -100,7 +101,8 @@ constructor(private pdfService: PdfService,
   private router: Router,
   private formBuilder: FormBuilder,
   private userService: UserService,
-  private categoryService: CategoryService) {}
+  private categoryService: CategoryService,
+  private toast: ToastrService) {}
 
   // FORMULAIRE DE CREATION
   createForm!: FormGroup;
@@ -321,12 +323,14 @@ constructor(private pdfService: PdfService,
         )
         .subscribe(
           (response) => {
+            this.toast.success("L'ajout du pdf est confirmé !");
             console.log(response, "pdf enregistré");
             this.closeCreationModale();
             this.ngOnInit();
           }
         );
       } else {
+        this.toast.warning("Une erreur est survenue, merci de recommencer !");
         console.error('Aucun fichier sélectionné');
       }
     }
@@ -337,6 +341,7 @@ constructor(private pdfService: PdfService,
     const pdfId: any = Number(this.pdfToDelete.id);
       this.pdfService.deletePdf(pdfId).subscribe({
         next: (res) => {
+          this.toast.success("Le pdf a été correctement supprimé !");
           this.closeDeleteModale();
           this.ngOnInit();
         },
@@ -357,6 +362,7 @@ constructor(private pdfService: PdfService,
     // Je requête le pdf par son id 
     this.pdfService.getPdfById(pdf.id).pipe(
       catchError((error) => {
+        this.toast.warning("Une erreur est survenue, merci de recommencer !");
         return throwError(() => error);
       })
     )
@@ -413,14 +419,16 @@ constructor(private pdfService: PdfService,
 
   this.pdfService.updatePdf(pdfId, formData).pipe(
     catchError((error) => {
+      this.toast.warning("Une erreur est survenue, merci de recommencer !");
       console.log("erreur");
       return throwError(() => error);
     })
   )
   .subscribe(
     (response) => {console.log(response, "pdf modifié !"),
-  this.closeUpdateModale();
-  this.ngOnInit();
+    this.toast.success("Le pdf a été correctement modifié !");
+    this.closeUpdateModale();
+    this.ngOnInit();
   }
   )
 }

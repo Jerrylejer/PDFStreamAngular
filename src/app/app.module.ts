@@ -24,10 +24,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
 import { NavCategoriesComponent } from './components/shared/nav-categories/nav-categories.component';
-import { SearchComponent } from './components/shared/search/search.component';
 import { RegistrationFormComponent } from './components/standalone/registration-form/registration-form.component';
 import { AccountComponent } from './components/standalone/account/account.component';
-import { CollectionComponent } from './components/standalone/collection/collection.component';
 import { SharesComponent } from './components/standalone/shares/shares.component';
 import { ConventionComponent } from './components/standalone/convention/convention.component';
 import { DashboardComponent } from './components/standalone/dashboard/dashboard.component';
@@ -55,14 +53,12 @@ import { FileSizePipe } from './pipes/file-size.pipe';
     Page404Component,
     PageInscriptionComponent,
     PageHomeComponent,
-    SearchComponent,
     BannerComponent,
     NavCategoriesComponent,
     RegistrationFormComponent,
     PageCategoryComponent,
     PagePdfComponent,
     AccountComponent,
-    CollectionComponent,
     SharesComponent,
     ConventionComponent,
     DashboardComponent,

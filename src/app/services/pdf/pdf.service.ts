@@ -9,7 +9,6 @@ import { Environnement } from 'src/env/environnement';
   providedIn: 'root'
 })
 export class PdfService {
-
     // url de base pour l'accès à l'API
     private readonly apiUrl = Environnement.pdfStreamApiUrl;
     // Injection du module HttpClient pour la communication http

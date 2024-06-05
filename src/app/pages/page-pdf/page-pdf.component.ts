@@ -87,14 +87,14 @@ export class PagePdfComponent implements OnInit {
     ))
     .subscribe(
       response => {
-        // Récupération dans fileName du pdf + l'image de preview via le service getPdfAndPreview(id: number)
+        // NgOnInit => getPdfAndPreview(id: number) => Je stocke le fichier + l'image de preview du PDF
         const fileName = String(this.pdfDatas?.title);
         if(fileName) {
           // Je récupère le type de contenu de la réponse HTTP
           const contentType = response.headers.get("Content-Type");
-          // Je créé un Blob grâce à HttpResponse<Blob>.body: Blob stocké dans les headers ()
+          // Je créé un Blob grâce avec le bytes[] stocké dans le body de la réponse http
           const blob = new Blob([response.body!], {type:contentType!})
-          // Je crée un élément de type <a> + un lien href vers le contenu du fichier
+          // Je crée un lien temporaire pour le déclenchement du téléchargement de mon blob
           const link = document.createElement("a");
           link.href = window.URL.createObjectURL(blob);
           // J'affecte le title du fichier à l'attribut "download" du lien créé
@@ -103,14 +103,14 @@ export class PagePdfComponent implements OnInit {
           console.log(link);
           // Evenement click lance le lien
           link.click();
-          // Je supprime le lien créé
+          // Je supprime le lien créé pour nettoyer le DOM et les données navigateur
           window.URL.revokeObjectURL(link.href);
           link.remove();
           // Je ferme la modale
           this.closeDownloadModale();
           this.toast.success("Well done ! Votre pdf se trouve dans votre dossier des téléchargements !");
         } else {
-          console.log("unable to extract file");
+          console.log("Aucun fichier PDF correspondant");
         }
       }
     )

@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
       // L'utilisateur n'est plus considéré comme connecté
       this.authService.setIsConnected(false);
       // Retour page home
-      this.router.navigate(["/"]);
+      //this.router.navigate(["/"]);
     }
 
     // ETAT DE CONNEXION IV (voir dans authService)

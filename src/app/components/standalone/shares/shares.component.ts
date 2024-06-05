@@ -291,27 +291,58 @@ constructor(private pdfService: PdfService,
 
   // Création d'un pdf
   createPdf() {
+    // Création d'un FormData pour récupérer mes valeur et les transmettre au service
     const formData = new FormData();
     formData.append('smallDescription', this.createForm.value.smallDescription);
     formData.append('description', this.createForm.value.description);
-    // formData.append('categories', this.createForm.value.categories);
     formData.append('categories', this.createForm.value.finalCategory);
     formData.append('author', this.createForm.value.author);
 
+    // Vérifications sur le fichier image
     const image = this.createForm.get('image')?.value;
+
     if (image) {
       const imageInput = <HTMLInputElement>document.getElementById('image'); 
       if (imageInput.files && imageInput.files.length > 0) {
-        const imageToUpload = imageInput.files[0]; // Récupère le fichier à partir de l'élément input
+        const imageToUpload = imageInput.files[0]; 
+        
+        // Vérification du type de fichier 
+        const validTypes = ['image/jpeg', 'image/png'];
+        if (!validTypes.includes(imageToUpload.type)) {
+          this.toast.error('Seulement les fichiers jpeg et png sont acceptés');
+          return;
+        }
+        // Vérification de la taille du fichier 5mo
+        const maxSize = 5 * 1_000_000;
+        if (imageToUpload.size > maxSize) {
+          this.toast.error('Le poids du fichier excède les 5Mo');
+          return;
+        }
         formData.append('image', imageToUpload, imageToUpload.name);
       }
     }
 
+    // Vérifications sur le fichier pdf
     const pdfFile = this.createForm.get('pdfFile')?.value;
+
     if (pdfFile) {
-      const fileInput = <HTMLInputElement>document.getElementById('pdfFile'); // Récupère l'élément input
+      const fileInput = <HTMLInputElement>document.getElementById('pdfFile'); 
       if (fileInput.files && fileInput.files.length > 0) {
-        const fileToUpload = fileInput.files[0]; // Récupère le fichier réel à partir de l'élément input
+        const fileToUpload = fileInput.files[0]; 
+        
+        // Vérification du type de fichier 
+        const validTypes = ['application/pdf'];
+        if (!validTypes.includes(fileToUpload.type)) {
+          this.toast.error('Seulement les fichiers pdf sont acceptés');
+          return;
+        }
+        // Vérification de la taille du fichier 5mo
+        const maxSize = 5 * 1_000_000;
+        if (fileToUpload.size > maxSize) {
+          this.toast.error('Le poids du fichier excède les 5Mo');
+          return;
+        }
+
         formData.append('pdfFile', fileToUpload, fileToUpload.name);
   
         // Appel à mon service

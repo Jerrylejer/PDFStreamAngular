@@ -38,7 +38,7 @@
         <!-- BTN d'upload d'un nouveau pdf, ouverture modale et reset du form -->
         <div class="btn-add-wrapper">
             <button class="custbtn btn-block btn-outline-success add" type="button" data-toggle="modal"
-            data-target="#modaleCreation" (click)="openCreationModale()">Ajouter</button>
+            data-target="#modaleCreation" (click)="openCreationModale()" data-test-id="ajouter">Ajouter</button>
             <!-- BTN d'ajout d'un nouveau pdf -->
         </div>
 
@@ -49,7 +49,7 @@
     <!-- Si liste vide message suivant apparait -->
 
         <!-- DEBUT - Modal de création  -->
-        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayCreationModale}">
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayCreationModale}" data-test-id="modalePdf">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -88,7 +88,7 @@
                                                 <div class="select col-md-9">
                                                     <select name="categories" class="form-select" 
                                                     id="categories" formControlName="categories" required="true">
-                                                        <option class="dropdown-item">
+                                                        <option class="dropdown-item" name="essai">
                                                             Sélection catégorie
                                                         </option>
                                                         <!-- [value] pour type string only, [ngValue] pour any type  -->
@@ -105,9 +105,9 @@
                                                 <div class="select col-md-9">
                                                     <select name="childCategories" class="form-select" 
                                                     id="childCategories" formControlName="childCategories" required="true">
-                                                        <option class="dropdown-item">
+                                                        <!-- <option class="dropdown-item">
                                                             Sélection sous-catégorie
-                                                        </option>
+                                                        </option> -->
                                                         <!-- J'affiche la liste selon la value de id="categories" (premier select)-->
                                                         <option *ngFor="let categorie of childCategories; let x = index" class="dropdown-item" [ngValue]="categorie.id">
                                                             {{categorie.title}}
@@ -121,9 +121,9 @@
                                                 <div class="select col-md-9">
                                                     <select name="subChildCategories" class="form-select" 
                                                     id="subChildCategories" formControlName="subChildCategories" required="true">
-                                                        <option class="dropdown-item">
+                                                        <!-- <option class="dropdown-item">
                                                             Sélection sous-catégorie enfant
-                                                        </option>
+                                                        </option> -->
                                                         <!-- J'affiche la liste selon la value de id="subCategories" (second select)-->
                                                         <option *ngFor="let categorie of subChildCategories; let x = index" class="dropdown-item"
                                                             [ngValue]="categorie.id">
@@ -138,9 +138,9 @@
                                                 <div class="select col-md-9">
                                                     <select name="finalCategory" class="form-select" 
                                                     id="finalCategory" formControlName="finalCategory" required="true">
-                                                        <option class="dropdown-item">
+                                                        <!-- <option class="dropdown-item">
                                                             Sélection sous-catégorie enfant
-                                                        </option>
+                                                        </option> -->
                                                         <!-- J'affiche la liste selon la value de id="subChildCategories" (troisième select)-->
                                                         <!-- Je récupère la valeur grâce à  formControlName="finalCategory" et append mon formData dans createPdf()-->
                                                         <option *ngFor="let categorie of finalCategories; let x = index" class="dropdown-item"
@@ -155,7 +155,7 @@
                                 <!-- Bloc boutons -->
                                 <div class="groupe-b">
                                     <button class="custbtn delete" type="submit" (click)="closeCreationModale()">Annuler</button>
-                                    <button class="custbtn modify" type="submit">Ajouter</button>
+                                    <button class="custbtn modify" type="submit" data-test-id="pdfSubmit">Ajouter</button>
                                 </div>
                             </div>
                         </form>

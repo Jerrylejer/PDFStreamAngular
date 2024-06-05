@@ -10,14 +10,9 @@ import { PagePdfComponent } from './pages/page-pdf/page-pdf.component';
 import { PageAuthorComponent } from './pages/page-author/page-author.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
-    redirectTo: 'allCategories', 
-    pathMatch:'full' 
-  },
   {
     // ma page "home" affichera la liste des catégories 
-    path:"allCategories",
+    path:'allCategories',
     component:PageHomeComponent
   },
   {
@@ -50,9 +45,14 @@ const routes: Routes = [
     path:'not-found',
     component: Page404Component
   },
+  { 
+    path:'', 
+    redirectTo:'/allCategories', 
+    pathMatch:'full' 
+  },
   {
-    path: '**',
-    redirectTo: 'not-found',
+    path:'**',
+    redirectTo:'not-found',
   },
 ];
 

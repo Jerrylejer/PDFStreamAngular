@@ -9,14 +9,14 @@
     <nav class="desk-navigation">
       <div *ngIf="isConnectedUser == false">
         <li (click)="routerInscription()">Inscription</li>
-        <li (click)="openModale()">Connexion</li>
+        <li (click)="openModale()" data-test-id="connexion">Connexion</li>
       </div>
       <div class="desk-icons" *ngIf="isConnectedUser">
         <div class="account-logo">
           <span class="user-identity" (click)="routerDashboard()"><mat-icon class="user-icon">account_circle</mat-icon></span> 
-          <li (click)="routerDashboard()" [textContent]="username">{{username}}</li>
+          <li (click)="routerDashboard()" [textContent]="username" data-test-id="username">{{username}}</li>
         </div>
-        <mat-icon (click)="logoutUser()">logout</mat-icon>
+        <mat-icon (click)="logoutUser()" data-test-id="logout">logout</mat-icon>
       </div>
     </nav>
     <!-- Navigation desktop -->
@@ -24,6 +24,7 @@
     <nav class="mobile-navigation">
       <div class="mobile-icons" *ngIf="isConnectedUser == false">
         <mat-icon (click)="routerInscription()">person_add</mat-icon>
+        <!-- Test de connexion Cypress -->
         <mat-icon (click)="openModale()">login</mat-icon>
       </div>
       <div class="mobile-icons" *ngIf="isConnectedUser">
@@ -35,7 +36,7 @@
 
     <!-- Modal -->
     <!-- [ngStyle]="{'display':displayStyle} =>  -->
-    <div div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" data-test-id="modale_connexion">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">

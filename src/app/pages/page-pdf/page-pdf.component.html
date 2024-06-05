@@ -22,7 +22,7 @@
                 <div class="flexbtns">
                     <!-- Btn utilisateur connecté -->
                     <!-- Téléchargement je passe directement pdfId du .ts récupéré de la route  -->
-                    <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="openDownloadModale()">
+                    <button *ngIf="isConnectedUser == true" class="btn" type="submit" (click)="openDownloadModale()" data-test-id="downloadBtn">
                         Télécharger
                     </button>
                     <!-- Author  je passe directement pdfId du .ts récupéré de la route  -->
@@ -68,7 +68,8 @@
                             <!-- Bloc boutons -->
                             <div class="groupe-b">
                                 <button class="btn cancel" type="button" (click)="closeDownloadModale()">Annuler</button>
-                                <button class="btn download" type="submit" (click)="downloadPdf(pdfId)">Télécharger</button>
+                                <button class="btn download" type="submit" (click)="downloadPdf(pdfId)" 
+                                data-test-id="modaleDownloadBtn">Télécharger</button>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,11 @@
+// https://stackoverflow.com/questions/74563652/cypress-error-in-commands-ts-argument-of-type-login-is-not-assignable-to-pa
+// Solution pour lever l'erreur dans command.ts où 'login' est refusé par typescript
+export {}
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            login(email:string, password:string): Chainable<void>;
+            newPdf(smallDescription: string, description: string, pdfFile: string, cat1: string, cat2: string, cat3: string, cat4: string): Chainable<void>;
+        }
+    }
+}

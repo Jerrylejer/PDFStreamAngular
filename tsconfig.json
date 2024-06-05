@@ -10,7 +10,8 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "sourceMap": true,
+    // Conflit avec Cypress si true
+    "sourceMap": false,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,

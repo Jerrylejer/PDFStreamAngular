@@ -3,15 +3,15 @@
     <div class="wrapper">
         <!-- Ici la navigation gauche pour si catégorie ou liste de pdfs-->
         <div class="left-nav">
-            <div *ngIf="parentCategory">
-                <h4>Catégorie - {{parentCategory.title}}</h4>
+            <div *ngIf="thisCategoryPdfsList[0] == null">
+                <h4>Catégorie - {{parentCategory?.title}}</h4>
                 <nav *ngFor="let childCategories of childsCategorieList">
                     <!-- J'utilise le path:"category/:categoryId" -->
                     <a [routerLink]="['/category', childCategories.id]">{{childCategories.title}}</a>
                 </nav>
             </div>
-            <div *ngIf="parentCategory!.pdfList && parentCategory!.pdfList.length > 0">
-                    <h5 class="pdfs-list">Pdfs - {{parentCategory!.title}}</h5>
+            <div *ngIf="thisCategoryPdfsList[0] != null">
+                    <h5 class="pdfs-list">Pdfs - {{parentCategory?.title}}</h5>
                     <nav  *ngFor="let pdf of thisCategoryPdfsList">
                         <!-- J'utilise le path:"category/:categoryId/:pdfId" -->
                         <a [routerLink]="['/category', parentCategory?.id, pdf.id]">{{pdf.title}}</a>
@@ -20,9 +20,9 @@
         </div>
             <span class="border"></span>
             <!-- Ici les cards des catégories si la catégorie n'a pas de liste de pdfs ou si celle-ci est null -->
-            <app-category-card [categories]="childsCategorieList" class="listing" *ngIf="!parentCategory!.pdfList || parentCategory!.pdfList.length === 0"></app-category-card>
+            <app-category-card [categories]="childsCategorieList" class="listing" *ngIf="thisCategoryPdfsList[0] == null"></app-category-card>
             <!-- Ici les cards des pdfs si liste existe && liste supérieure à 0 -->
-            <app-pdf-card [thisCategoryPdfsList]="thisCategoryPdfsList" [parentCategory]="parentCategory" class="listing" *ngIf="parentCategory!.pdfList != null && parentCategory!.pdfList.length > 0"></app-pdf-card>
+            <app-pdf-card [thisCategoryPdfsList]="thisCategoryPdfsList" [parentCategory]="parentCategory" class="listing" *ngIf="thisCategoryPdfsList[0] != null"></app-pdf-card>
     </div>
     <app-back-button></app-back-button>
 </section>

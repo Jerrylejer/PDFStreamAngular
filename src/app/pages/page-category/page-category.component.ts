@@ -23,7 +23,6 @@ export class PageCategoryComponent implements OnInit{
   constructor(private activatedRoute: ActivatedRoute, private categoryService: CategoryService){}
 
   ngOnInit(): void {
-
     // CHARGER LA CATEGORIE MERE 
     // => Afficher title dans nav de gauche et l'éventuelle liste de pdfs correspondante
     this.activatedRoute.paramMap.pipe(
@@ -43,7 +42,7 @@ export class PageCategoryComponent implements OnInit{
         this.thisCategoryPdfsList = targetedCategory.pdfList!;
         console.log(this.thisCategoryPdfsList);
       }
-      // Et nje stocke le title de la catégorie dans parentCategory
+      // Et je stocke la catégorie dans parentCategory
       this.parentCategory = targetedCategory;
     });
 

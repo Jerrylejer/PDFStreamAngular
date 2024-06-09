@@ -24,6 +24,7 @@ displayedColumns: String[] = ['title', 'createdAt', 'evaluation','config'];
 dataSource!: MatTableDataSource<Pdf>; 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 @ViewChild(MatSort) sort!: MatSort;
+
 // MATERIAL TABLES - Filtre de recherche
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
@@ -62,10 +63,24 @@ openDeleteModale(pdf: any) {
 }
 
 closeCreationModale() {
+  // Réinitialisation du formulaire de creation
+  this.createForm = this.formBuilder.group({
+    smallDescription: ['', Validators.required],
+    description: ['', Validators.required],
+    image: [null, Validators.required],
+    pdfFile: [null, Validators.required],
+    categories: ['', Validators.required],
+    childCategories:[null, Validators.required],
+    subChildCategories:[null, Validators.required],
+    finalCategory: [null, Validators.required],
+    author: [this.id]
+  });
+  // Je cache la modale et le formulaire
   this.displayCreationModale = "none";
 }
 
 closeUpdateModale() {
+  // Je cache la modale et le formulaire
   this.displayUpdateModale = "none";
 }
 

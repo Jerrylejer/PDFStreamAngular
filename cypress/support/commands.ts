@@ -25,16 +25,15 @@ Cypress.Commands.add('login', (username, password) => {
       });
       // Je soumets le formulaire en sélectionnant et en activant le btn
       cy.get('[data-test-id="modale_connexion"] form button[type="submit"]').click();
-      // Attendre apparition du changement de menu pour confirmer la connexion  
-      cy.get('[data-test-id="logout"]');
+      // Attendre apparition du changement de menu "connexion" devient "logout" pour confirmer la connexion  
+      cy.contains('logout');
 });
 
-// Méthode pour le test de remplissage du formulaire d'un nouveau pdf
+// Méthode pour le remplissage du formulaire d'un nouveau pdf
 Cypress.Commands.add('newPdf', (smallDescription, description) => {
   cy.get('[data-test-id="modalePdf"] form').within(() => {
     cy.get('input[formControlName="smallDescription"]').type(smallDescription); 
     cy.get('textarea[formControlName="description"]').type(description); 
-    //cy.get('input[formControlName="pdfFile"]').selectFile('cypress/fixtures/example.pdf').type(pdfFile);
 
     // Charge le fichier PDF de test
     const fileName = 'pdfTest.pdf';
@@ -46,15 +45,28 @@ Cypress.Commands.add('newPdf', (smallDescription, description) => {
         mimeType: 'application/pdf'
       });
     });
-    cy.get('#categories').select('Technologies',{force: true});
-    cy.get('#categories').contains('Technologies');
-    cy.get('#childCategories').select('Dev web',{force: true});
-    cy.get('#childCategories').contains('Dev web');
-    cy.get('#subChildCategories').select('Versioning',{force: true});
-    cy.get('#subChildCategories').contains('Versioning');
-    cy.get('#finalCategory').select('Git',{force: true});
-    cy.get('#finalCategory').contains('Git');
-    // NE FONCTIONNE PAS ---> A VOIR
-    cy.get('[data-test-id="modalePdf"] form button[type="submit"]').click();
+
+    const timeout = 10000; 
+
+    // J'attends 10s pour que les options du select se charge sinon erreur
+    cy.get('#categories', { timeout }).should('be.visible');
+    // Je vérifie que les options soient chargées
+    cy.get('#categories option', { timeout }).should('have.length.greaterThan', 1);
+    // Je sélectionne l'option
+    cy.get('#categories').select('Technologies', { force: true });
+
+    cy.get('#childCategories', { timeout }).should('be.visible');
+    cy.get('#childCategories option', { timeout }).should('have.length.greaterThan', 1);
+    // Sélectionnez l'option avec le texte visible "Technologies"
+    cy.get('#childCategories').select('Dev web', { force: true });
+
+    cy.get('#subChildCategories', { timeout }).should('be.visible');
+    cy.get('#subChildCategories option', { timeout }).should('have.length.greaterThan', 1); 
+    // Sélectionnez l'option avec le texte visible "Technologies"
+    cy.get('#subChildCategories').select('Versioning', { force: true });
+
+    cy.get('#finalCategory', { timeout }).should('be.visible');
+    cy.get('#finalCategory option', { timeout }).should('have.length.greaterThan', 1); 
+    cy.get('#finalCategory').select('Git', { force: true }); 
   });
 });

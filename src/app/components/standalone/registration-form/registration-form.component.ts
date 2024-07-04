@@ -39,7 +39,6 @@ export class RegistrationFormComponent implements OnInit{
   ngOnInit() {
     this.inscriptionForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
-      // Validators.email ne tient pas compte du .com ...
       email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')]],
       password: ['', [Validators.required, Validators.minLength(12), createPasswordStrengthValidator()]],
     });
@@ -62,7 +61,7 @@ export class RegistrationFormComponent implements OnInit{
         .subscribe(
           (response) => {
             console.log("inscription réussie")
-            this.toast.success("Félicitations ! Votre compte est à présent activé. Il ne vous plus qu'à vous connecter ! ")
+            this.toast.success("Félicitations ! Votre compte est à présent activé. Il ne vous reste plus qu'à vous connecter ! ")
             // Si la connexion est ok, je remets le formulaire à zéro, je ferme ma page et redirige vers l'accueil
             this.inscriptionForm = this.formBuilder.group({
               username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],

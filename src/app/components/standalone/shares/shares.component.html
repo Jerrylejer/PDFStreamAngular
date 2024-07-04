@@ -67,7 +67,7 @@
                                     <div class="groupe-a">
                                         <div class="column">
                                             <div>
-                                                <label for="smallDescription">Titre</label>
+                                                <label for="smallDescription">Intro</label>
                                                 <input type="text" class="input" id="smallDescription"formControlName="smallDescription" required="true"/> 
                                             </div>
                                             <div class="label-textarea">
@@ -154,7 +154,7 @@
                                     </div>
                                 <!-- Bloc boutons -->
                                 <div class="groupe-b">
-                                    <button class="custbtn delete" type="submit" (click)="closeCreationModale()">Annuler</button>
+                                    <button class="custbtn delete" type="button" (click)="closeCreationModale()">Annuler</button>
                                     <button class="custbtn modify" type="submit">Ajouter</button>
                                 </div>
                             </div>
@@ -184,7 +184,7 @@
                                     <div class="groupe-a">
                                         <div class="column">
                                             <div>
-                                                <label for="updatedSmallDesc">Aperçu</label>
+                                                <label for="updatedSmallDesc">Intro</label>
                                                 <input type="text" class="input" id="updatedSmallDesc"formControlName="updatedSmallDesc" [value]="pdfSmallDesc"/> 
                                             </div>
                                             <div class="label-textarea">

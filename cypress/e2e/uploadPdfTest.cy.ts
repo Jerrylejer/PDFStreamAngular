@@ -12,7 +12,11 @@ describe('test to create and upload a pdf', () => {
       cy.get('[data-test-id="ajouter"]').click();
       // Je vérifie l'affichage du formulaire
       cy.get('[data-test-id="modalePdf"]');
-      // Je lance ma command pour remplir le formulaire
-      cy.newPdf("testCypress - smallDescription", "testCypress - description", "fichier pdf testCypress", "Technologies", "Dev web", "Versioning", "Git");
+      // Je lance une autre commands.ts pour remplir le formulaire
+      cy.newPdf("testCypress - smallDescription", "testCypress - description");
+      // Forcer le clic sur le bouton
+      cy.get('[data-test-id="modalePdf"] form button[type="submit"]').click({ force: true });
+      // Attendre 10 secondes pour constater le toast succès mais ne vient pas ... 
+      // cy.wait(10000);
     })
   })

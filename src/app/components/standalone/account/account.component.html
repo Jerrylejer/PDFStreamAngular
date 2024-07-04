@@ -20,7 +20,7 @@
                         </div>
                         <div class="inline-or-column">
                             <label for="regiteredPassword">Password</label>
-                            <input type="password" name="regiteredPassword" class="input" id="regiteredPassword" [value]="password" readonly="readonly" /> 
+                            <input type="password" name="regiteredPassword" class="input" id="regiteredPassword" readonly="readonly" placeholder="Mon mot de passe ..."/> 
                         </div>
                         <div class="inline-or-column">
                             <label for="registeredBio">Bio</label>
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="column">
                                             <label for="updatedPassword">Password</label>
-                                            <input type="password" class="input" id="updatedPassword" formControlName="updatedPassword" [value]="password"/> 
+                                            <input type="password" class="input" id="updatedPassword" formControlName="updatedPassword" placeholder="Mon mot de passe ..."/> 
                                             <div class="field-message" *ngIf="updateForm.get('updatedPassword')?.invalid  && (updateForm.get('updatedPassword')?.dirty || updateForm.get('updatedPassword')?.touched)">
                                                 Majuscules, minuscules, chiffres et 12 caractères minimum.
                                             </div>

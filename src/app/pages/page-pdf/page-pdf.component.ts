@@ -68,7 +68,7 @@ export class PagePdfComponent implements OnInit {
           console.log(targetedPdf);
           // J'accède aux détails du pdf
           this.pdfDatas = targetedPdf.pdfDetails;
-          // J'accède à l'image de preview du pdf
+          // J'accède à l'image de preview du pdf (FileReader class JS nav)
           const reader = new FileReader();
           reader.readAsDataURL(targetedPdf.pdfPreview);
           reader.onloadend = () => {
@@ -89,29 +89,25 @@ export class PagePdfComponent implements OnInit {
       response => {
         // NgOnInit => getPdfAndPreview(id: number) => Je stocke le fichier + l'image de preview du PDF
         const fileName = String(this.pdfDatas?.title);
-        if(fileName) {
-          // Je récupère le type de contenu de la réponse HTTP
-          const contentType = response.headers.get("Content-Type");
-          // Je créé un Blob grâce avec le bytes[] stocké dans le body de la réponse http
-          const blob = new Blob([response.body!], {type:contentType!})
-          // Je crée un lien temporaire pour le déclenchement du téléchargement de mon blob
-          const link = document.createElement("a");
-          link.href = window.URL.createObjectURL(blob);
-          // J'affecte le title du fichier à l'attribut "download" du lien créé
-          link.download = fileName;
-          // < href="blob:http://localhost:4200/f8d13b05-e134-48cb-a852-705ca8907448" download="La syntaxe JavaScript – Kourou.pdf">
-          console.log(link);
-          // Evenement click lance le lien
-          link.click();
-          // Je supprime le lien créé pour nettoyer le DOM et les données navigateur
-          window.URL.revokeObjectURL(link.href);
-          link.remove();
-          // Je ferme la modale
-          this.closeDownloadModale();
-          this.toast.success("Well done ! Votre pdf se trouve dans votre dossier des téléchargements !");
-        } else {
-          console.log("Aucun fichier PDF correspondant");
-        }
+        // Je récupère le type de contenu de la réponse HTTP
+        const contentType = response.headers.get("Content-Type");
+        // Je créé un Blob grâce avec le bytes[] stocké dans le body de la réponse http
+        const blob = new Blob([response.body!], {type:contentType!})
+        // Je crée un lien temporaire pour le déclenchement du téléchargement de mon blob
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        // J'affecte le title du fichier à l'attribut "download" du lien créé
+        link.download = fileName;
+        // < href="blob:http://localhost:4200/f8d13b05-e134-48cb-a852-705ca8907448" download="La syntaxe JavaScript – Kourou.pdf">
+        console.log(link);
+        // Evenement click lance le lien
+        link.click();
+        // Je supprime le lien créé pour nettoyer le DOM et les données navigateur
+        window.URL.revokeObjectURL(link.href);
+        link.remove();
+        // Je ferme la modale
+        this.closeDownloadModale();
+        this.toast.success("Well done ! Votre pdf se trouve dans votre dossier des téléchargements !");
       }
     )
   }

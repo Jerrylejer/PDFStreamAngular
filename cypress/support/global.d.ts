@@ -5,7 +5,7 @@ declare global {
     namespace Cypress {
         interface Chainable {
             login(email:string, password:string): Chainable<void>;
-            newPdf(smallDescription: string, description: string, pdfFile: string, cat1: string, cat2: string, cat3: string, cat4: string): Chainable<void>;
+            newPdf(smallDescription: string, description: string): Chainable<void>;
         }
     }
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, throwError } from 'rxjs';
+import { Subscription, catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { createPasswordStrengthValidator } from 'src/utils/passwordSrength';
@@ -12,7 +12,7 @@ import { createPasswordStrengthValidator } from 'src/utils/passwordSrength';
   templateUrl: './account.component.html',
   styleUrl: './account.component.css'
 })
-export class AccountComponent implements OnInit{
+export class AccountComponent implements OnInit, OnDestroy{
 
   updateForm!: FormGroup;
 
@@ -24,12 +24,14 @@ export class AccountComponent implements OnInit{
   email: any = ''; 
   password: any = ''; 
   bio: any = ''; 
+  // Récupéreration de l'id du User connecté et stocké dans le LS
+  id = Number(localStorage.getItem("userId"));
+  // Subscription
+  private userSubscription?: Subscription;
 
   // Boolean pour rendre la modale visible ou non au click "connexion", "X"
   displayStyle = "none";
   displayDeleteModaleStyle = "none"
-  // Récupéreration de l'id du User connecté et stocké dans le LS
-  id = Number(localStorage.getItem("userId"));
 
   // #################################################################
 
@@ -48,9 +50,12 @@ export class AccountComponent implements OnInit{
       updatedPassword: ['', [Validators.minLength(12), createPasswordStrengthValidator()]],
       updatedBio: ['']
     })
+
+    // Lecture de l'id user dans le LS
     console.log(this.id)
-    // Lancer le service pour récupérer les datas du user
-    this.userService.getUserById(this.id).pipe(
+
+    // Lancer le service pour récupérer les datas du user dans userSubscription
+    this.userSubscription = this.userService.getUserById(this.id).pipe(
       catchError((error) => {
         return throwError(() => error);
       })
@@ -67,6 +72,14 @@ export class AccountComponent implements OnInit{
         this.bio = response.bio;
       }
     )
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe au démontage sinon message d'erreur car .subscribe court toujours
+    // et données non disponibles (GET)
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   // Manipulation des modales

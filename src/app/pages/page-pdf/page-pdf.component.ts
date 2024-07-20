@@ -88,7 +88,7 @@ export class PagePdfComponent implements OnInit {
     .subscribe(
       response => {
         // NgOnInit => getPdfAndPreview(id: number) => Je stocke le fichier + l'image de preview du PDF
-        const fileName = String(this.pdfDatas?.title);
+        const fileName = String(this.pdfDatas?.title); // Je caste sinon erreur au niveau de link.download
         // Je récupère le type de contenu de la réponse HTTP
         const contentType = response.headers.get("Content-Type");
         // Je créé un Blob grâce avec le bytes[] stocké dans le body de la réponse http

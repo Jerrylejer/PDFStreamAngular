@@ -10,8 +10,8 @@ section {
 
 .wrapper {
     display: flex;
-    justify-content:space-around;
-    align-items:flex-start;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 
 .left-nav {
@@ -30,7 +30,7 @@ section {
     display: flex;
     flex: 1;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding-bottom: 2%;
 }
